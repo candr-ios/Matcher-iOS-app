@@ -14,6 +14,7 @@
 		4A2B59421DD5F8750032D53D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A2B59411DD5F8750032D53D /* Assets.xcassets */; };
 		4A2B59451DD5F8750032D53D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A2B59431DD5F8750032D53D /* LaunchScreen.storyboard */; };
 		4A2B59501DD5F8750032D53D /* Fifa_competitionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B594F1DD5F8750032D53D /* Fifa_competitionsTests.m */; };
+		4A2B595D1DD607A60032D53D /* CreateCompetitionBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B595B1DD607A60032D53D /* CreateCompetitionBaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		4A2B594B1DD5F8750032D53D /* Fifa_competitionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Fifa_competitionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A2B594F1DD5F8750032D53D /* Fifa_competitionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fifa_competitionsTests.m; sourceTree = "<group>"; };
 		4A2B59511DD5F8750032D53D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A2B595A1DD607A60032D53D /* CreateCompetitionBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCompetitionBaseViewController.h; sourceTree = "<group>"; };
+		4A2B595B1DD607A60032D53D /* CreateCompetitionBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCompetitionBaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				4A2B59391DD5F8750032D53D /* AppDelegate.m */,
 				4A2B593B1DD5F8750032D53D /* ViewController.h */,
 				4A2B593C1DD5F8750032D53D /* ViewController.m */,
+				4A2B595A1DD607A60032D53D /* CreateCompetitionBaseViewController.h */,
+				4A2B595B1DD607A60032D53D /* CreateCompetitionBaseViewController.m */,
 				4A2B593E1DD5F8750032D53D /* Main.storyboard */,
 				4A2B59411DD5F8750032D53D /* Assets.xcassets */,
 				4A2B59431DD5F8750032D53D /* LaunchScreen.storyboard */,
@@ -214,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A2B593D1DD5F8750032D53D /* ViewController.m in Sources */,
+				4A2B595D1DD607A60032D53D /* CreateCompetitionBaseViewController.m in Sources */,
 				4A2B593A1DD5F8750032D53D /* AppDelegate.m in Sources */,
 				4A2B59371DD5F8750032D53D /* main.m in Sources */,
 			);
