@@ -10,4 +10,7 @@
 
 @interface CreateCompetitionBaseViewController : UIViewController
 
+@property (nonatomic, strong) UIButton * nextButton;
+@property (nonatomic, strong) UILabel * subTitleLabel;
+
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "CreateCompetitionBaseViewController.h"
+#import "SetupCompetitionViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -35,6 +35,12 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action: @selector(didTapAddButton:)];
     
     self.competitions = @[];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -91,10 +97,11 @@
     
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     
-    CreateCompetitionBaseViewController * vc = [[CreateCompetitionBaseViewController alloc] init];
+    SetupCompetitionViewController * vc = [[SetupCompetitionViewController alloc] init];
     vc.title = @"League";
     
     [[self navigationController] pushViewController:vc animated:true];
+    
 }
 
 - (void) configureTableView {
