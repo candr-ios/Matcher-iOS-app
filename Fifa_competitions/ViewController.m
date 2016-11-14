@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SetupCompetitionViewController.h"
+#import "MatchesViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -35,6 +36,8 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action: @selector(didTapAddButton:)];
     
     self.competitions = @[];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveXNotification:) name:@"X" object:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -117,6 +120,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) receiveXNotification: (NSNotification *) note {
+    
+    [self.navigationController popToRootViewControllerAnimated:false];
+    
+    [self.navigationController pushViewController:[[MatchesViewController alloc] init] animated:true];
+    
+}
+
 //MARK: UITableViewDelegte && UITableViewDataSource
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -141,5 +152,10 @@
     
 }
 
+
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

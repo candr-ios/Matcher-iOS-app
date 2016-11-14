@@ -11,6 +11,7 @@
 #import "PlayerSetupViewController.h"
 #import "ClubCollectionViewCell.h"
 
+
 @interface PlayerSetupViewController () <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UILabel * playerNameLabel;
@@ -36,6 +37,12 @@
     [self setupViews];
     
     [self.nextButton addTarget:self action:@selector(didTapNext:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self selectItemAtCenter];
 }
 
 - (void) setupViews {
@@ -68,7 +75,7 @@
     _playerNameLabel.translatesAutoresizingMaskIntoConstraints = false;
     _clubsCollectionView.translatesAutoresizingMaskIntoConstraints = false;
     
-    _clubsCollectionView.backgroundColor = [UIColor redColor];
+    _clubsCollectionView.backgroundColor = [UIColor clearColor];
     
     
     
@@ -111,8 +118,18 @@
         self.selectedIndexPath = path;
         [_clubsCollectionView selectItemAtIndexPath:path animated:true scrollPosition:UICollectionViewScrollPositionNone];
     }
+}
+
+- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (decelerate) {
+        return;
+    }
     
-    
+    [self.clubsCollectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:true];
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self.clubsCollectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:true];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,8 +138,15 @@
 }
 
 - (void) didTapNext: (UIButton *) sender {
+    
+    if (_count == 1) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"X" object:nil userInfo:nil];
+        return;
+    }
+    
     PlayerSetupViewController * vc = [PlayerSetupViewController new];
     vc.count = _count + 1;
+    
     
     [self.navigationController pushViewController:vc animated:true];
 }

@@ -20,6 +20,9 @@
 		4A2B59671DD62FD80032D53D /* PlayerSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B59661DD62FD80032D53D /* PlayerSetupViewController.m */; };
 		4A2B596B1DD63EC30032D53D /* ClubCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */; };
 		4A2B596C1DD63EC30032D53D /* ClubCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */; };
+		4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */; };
+		4A95A99A1DD92BEC000F7CF6 /* MatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */; };
+		4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,11 @@
 		4A2B59681DD63EC30032D53D /* ClubCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubCollectionViewCell.h; sourceTree = "<group>"; };
 		4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubCollectionViewCell.m; sourceTree = "<group>"; };
 		4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClubCollectionViewCell.xib; sourceTree = "<group>"; };
+		4A95A9961DD92BEC000F7CF6 /* MatchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchTableViewCell.h; sourceTree = "<group>"; };
+		4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchTableViewCell.m; sourceTree = "<group>"; };
+		4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchTableViewCell.xib; sourceTree = "<group>"; };
+		4A95A99B1DD92CD6000F7CF6 /* MatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesViewController.h; sourceTree = "<group>"; };
+		4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +118,11 @@
 				4A2B59631DD612740032D53D /* SetupCompetitionViewController.m */,
 				4A2B59651DD62FD80032D53D /* PlayerSetupViewController.h */,
 				4A2B59661DD62FD80032D53D /* PlayerSetupViewController.m */,
+				4A95A9961DD92BEC000F7CF6 /* MatchTableViewCell.h */,
+				4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */,
+				4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */,
+				4A95A99B1DD92CD6000F7CF6 /* MatchesViewController.h */,
+				4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */,
 				4A2B59681DD63EC30032D53D /* ClubCollectionViewCell.h */,
 				4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */,
 				4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */,
@@ -222,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A95A99A1DD92BEC000F7CF6 /* MatchTableViewCell.xib in Resources */,
 				4A2B596C1DD63EC30032D53D /* ClubCollectionViewCell.xib in Resources */,
 				4A2B59451DD5F8750032D53D /* LaunchScreen.storyboard in Resources */,
 				4A2B59421DD5F8750032D53D /* Assets.xcassets in Resources */,
@@ -245,7 +259,9 @@
 			files = (
 				4A2B596B1DD63EC30032D53D /* ClubCollectionViewCell.m in Sources */,
 				4A2B59671DD62FD80032D53D /* PlayerSetupViewController.m in Sources */,
+				4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */,
 				4A2B59641DD612740032D53D /* SetupCompetitionViewController.m in Sources */,
+				4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */,
 				4A2B593D1DD5F8750032D53D /* ViewController.m in Sources */,
 				4A2B59611DD610720032D53D /* UnderlineTextField.m in Sources */,
 				4A2B595D1DD607A60032D53D /* CreateCompetitionBaseViewController.m in Sources */,
@@ -449,6 +465,7 @@
 				4A2B59561DD5F8750032D53D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4A2B59571DD5F8750032D53D /* Build configuration list for PBXNativeTarget "Fifa_competitionsTests" */ = {
 			isa = XCConfigurationList;
@@ -457,6 +474,7 @@
 				4A2B59591DD5F8750032D53D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
