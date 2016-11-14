@@ -17,6 +17,17 @@
 
 @implementation MatchesViewController
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear: animated];
+    
+     [[self navigationController] setNavigationBarHidden:NO animated:false];
+}
+
 - (void) loadView {
     self.tableView = [[UITableView alloc] init];
     self.view = self.tableView;

@@ -124,7 +124,8 @@
     
     [self.navigationController popToRootViewControllerAnimated:false];
     
-    [self.navigationController pushViewController:[[MatchesViewController alloc] init] animated:true];
+    [self.navigationController pushViewController:[[MatchesViewController alloc] init] animated:false];
+    
     
 }
 

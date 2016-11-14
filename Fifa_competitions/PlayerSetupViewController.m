@@ -140,7 +140,33 @@
 - (void) didTapNext: (UIButton *) sender {
     
     if (_count == 1) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"X" object:nil userInfo:nil];
+        
+        UIView * rect = [[UIView alloc] init];
+        rect.backgroundColor = [UIColor whiteColor];
+        rect.layer.cornerRadius = 4;
+        
+        [self.view setUserInteractionEnabled:false];
+        
+        UIActivityIndicatorView * vc = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.view addSubview:rect];
+        [self.view addSubview:vc];
+        
+        
+        rect.frame = CGRectMake(0, 0, 100, 100);
+        
+        rect.center = self.view.center;
+        
+        vc.center = self.view.center;
+        
+        [vc startAnimating];
+        
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"X" object:nil userInfo:nil];
+        });
+        
+        
         return;
     }
     
