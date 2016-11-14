@@ -69,6 +69,8 @@
     matchCell.homeScoreTextField.userInteractionEnabled = true;
     [matchCell.homeScoreTextField becomeFirstResponder];
     
+    [tableView selectRowAtIndexPath:indexPath animated:true scrollPosition:UITableViewScrollPositionTop];
+    
 }
 
 - (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

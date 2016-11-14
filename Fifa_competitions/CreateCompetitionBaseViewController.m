@@ -35,6 +35,7 @@
     return UIStatusBarStyleLightContent;
 }
 
+/// Accepts array of players and returns array of balanced tournament matches
 - (void) configureViews {
     _titleLabel = [UILabel new];
     _titleLabel.font = [UIFont systemFontOfSize:19];
