@@ -139,7 +139,7 @@
 
 - (void) didTapNext: (UIButton *) sender {
     
-    if (_count == 1) {
+    if (_count == 2) {
         
         UIView * rect = [[UIView alloc] init];
         rect.backgroundColor = [UIColor whiteColor];
@@ -152,7 +152,7 @@
         [self.view addSubview:vc];
         
         
-        rect.frame = CGRectMake(0, 0, 100, 100);
+        rect.frame = CGRectMake(0, 0, 50, 50);
         
         rect.center = self.view.center;
         
@@ -161,7 +161,7 @@
         [vc startAnimating];
         
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
             [[NSNotificationCenter defaultCenter] postNotificationName:@"X" object:nil userInfo:nil];
         });

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0BB2D41DDAE0210036E6B2 /* MatchesHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0BB2D31DDAE0210036E6B2 /* MatchesHeaderView.m */; };
+		4A0BB2D71DDB01A10036E6B2 /* StatisticsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0BB2D61DDB01A10036E6B2 /* StatisticsTableViewController.m */; };
+		4A0BB2DB1DDB05BC0036E6B2 /* StatsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0BB2D91DDB05BC0036E6B2 /* StatsTableViewCell.m */; };
+		4A0BB2DC1DDB05BC0036E6B2 /* StatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0BB2DA1DDB05BC0036E6B2 /* StatsTableViewCell.xib */; };
+		4A2716371DDB1CAC00A48BDD /* StatsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2716361DDB1CAC00A48BDD /* StatsHeaderView.m */; };
+		4A2716391DDB1CBF00A48BDD /* StatsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2716381DDB1CBF00A48BDD /* StatsHeaderView.xib */; };
 		4A2B59371DD5F8750032D53D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B59361DD5F8750032D53D /* main.m */; };
 		4A2B593A1DD5F8750032D53D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B59391DD5F8750032D53D /* AppDelegate.m */; };
 		4A2B593D1DD5F8750032D53D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B593C1DD5F8750032D53D /* ViewController.m */; };
@@ -36,6 +42,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A0BB2D21DDAE0210036E6B2 /* MatchesHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesHeaderView.h; sourceTree = "<group>"; };
+		4A0BB2D31DDAE0210036E6B2 /* MatchesHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesHeaderView.m; sourceTree = "<group>"; };
+		4A0BB2D51DDB01A10036E6B2 /* StatisticsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsTableViewController.h; sourceTree = "<group>"; };
+		4A0BB2D61DDB01A10036E6B2 /* StatisticsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsTableViewController.m; sourceTree = "<group>"; };
+		4A0BB2D81DDB05BC0036E6B2 /* StatsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsTableViewCell.h; sourceTree = "<group>"; };
+		4A0BB2D91DDB05BC0036E6B2 /* StatsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsTableViewCell.m; sourceTree = "<group>"; };
+		4A0BB2DA1DDB05BC0036E6B2 /* StatsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsTableViewCell.xib; sourceTree = "<group>"; };
+		4A2716351DDB1CAC00A48BDD /* StatsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsHeaderView.h; sourceTree = "<group>"; };
+		4A2716361DDB1CAC00A48BDD /* StatsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsHeaderView.m; sourceTree = "<group>"; };
+		4A2716381DDB1CBF00A48BDD /* StatsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsHeaderView.xib; sourceTree = "<group>"; };
 		4A2B59321DD5F8750032D53D /* Fifa_competitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifa_competitions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A2B59361DD5F8750032D53D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4A2B59381DD5F8750032D53D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -123,6 +139,16 @@
 				4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */,
 				4A95A99B1DD92CD6000F7CF6 /* MatchesViewController.h */,
 				4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */,
+				4A0BB2D81DDB05BC0036E6B2 /* StatsTableViewCell.h */,
+				4A0BB2D91DDB05BC0036E6B2 /* StatsTableViewCell.m */,
+				4A0BB2DA1DDB05BC0036E6B2 /* StatsTableViewCell.xib */,
+				4A2716351DDB1CAC00A48BDD /* StatsHeaderView.h */,
+				4A2716361DDB1CAC00A48BDD /* StatsHeaderView.m */,
+				4A2716381DDB1CBF00A48BDD /* StatsHeaderView.xib */,
+				4A0BB2D51DDB01A10036E6B2 /* StatisticsTableViewController.h */,
+				4A0BB2D61DDB01A10036E6B2 /* StatisticsTableViewController.m */,
+				4A0BB2D21DDAE0210036E6B2 /* MatchesHeaderView.h */,
+				4A0BB2D31DDAE0210036E6B2 /* MatchesHeaderView.m */,
 				4A2B59681DD63EC30032D53D /* ClubCollectionViewCell.h */,
 				4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */,
 				4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */,
@@ -238,7 +264,9 @@
 				4A95A99A1DD92BEC000F7CF6 /* MatchTableViewCell.xib in Resources */,
 				4A2B596C1DD63EC30032D53D /* ClubCollectionViewCell.xib in Resources */,
 				4A2B59451DD5F8750032D53D /* LaunchScreen.storyboard in Resources */,
+				4A0BB2DC1DDB05BC0036E6B2 /* StatsTableViewCell.xib in Resources */,
 				4A2B59421DD5F8750032D53D /* Assets.xcassets in Resources */,
+				4A2716391DDB1CBF00A48BDD /* StatsHeaderView.xib in Resources */,
 				4A2B59401DD5F8750032D53D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,14 +285,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A0BB2D71DDB01A10036E6B2 /* StatisticsTableViewController.m in Sources */,
 				4A2B596B1DD63EC30032D53D /* ClubCollectionViewCell.m in Sources */,
 				4A2B59671DD62FD80032D53D /* PlayerSetupViewController.m in Sources */,
+				4A2716371DDB1CAC00A48BDD /* StatsHeaderView.m in Sources */,
 				4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */,
 				4A2B59641DD612740032D53D /* SetupCompetitionViewController.m in Sources */,
 				4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */,
 				4A2B593D1DD5F8750032D53D /* ViewController.m in Sources */,
 				4A2B59611DD610720032D53D /* UnderlineTextField.m in Sources */,
 				4A2B595D1DD607A60032D53D /* CreateCompetitionBaseViewController.m in Sources */,
+				4A0BB2DB1DDB05BC0036E6B2 /* StatsTableViewCell.m in Sources */,
+				4A0BB2D41DDAE0210036E6B2 /* MatchesHeaderView.m in Sources */,
 				4A2B593A1DD5F8750032D53D /* AppDelegate.m in Sources */,
 				4A2B59371DD5F8750032D53D /* main.m in Sources */,
 			);
