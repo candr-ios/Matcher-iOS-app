@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Club" representedClassName="Club" syncable="YES">
+        <attribute name="logoName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="club" inverseEntity="Player" syncable="YES"/>
+    </entity>
+    <entity name="Competition" representedClassName="Competition" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="competition" inverseEntity="Group" syncable="YES"/>
+        <relationship name="knockoutStages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="KnockoutStage" syncable="YES"/>
+        <relationship name="league" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="League" syncable="YES"/>
+        <relationship name="winner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" syncable="YES"/>
+    </entity>
+    <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="competition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Competition" inverseName="groups" inverseEntity="Competition" syncable="YES"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="group" inverseEntity="Player" syncable="YES"/>
+        <relationship name="statistics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Statistics" inverseName="group" inverseEntity="Statistics" syncable="YES"/>
+        <relationship name="weeks" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Week" syncable="YES"/>
+    </entity>
+    <entity name="KnockoutStage" representedClassName="KnockoutStage" syncable="YES" codeGenerationType="class">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Match" syncable="YES"/>
+    </entity>
+    <entity name="League" representedClassName="League" syncable="YES" codeGenerationType="class">
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="league" inverseEntity="Player" syncable="YES"/>
+        <relationship name="statistics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Statistics" inverseName="league" inverseEntity="Statistics" syncable="YES"/>
+        <relationship name="weeks" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Week" syncable="YES"/>
+    </entity>
+    <entity name="Match" representedClassName="Match" syncable="YES" codeGenerationType="class">
+        <attribute name="awayGoals" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="homeGoals" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="away" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" syncable="YES"/>
+        <relationship name="home" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" syncable="YES"/>
+    </entity>
+    <entity name="Player" representedClassName="Player" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="club" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Club" inverseName="player" inverseEntity="Club" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="players" inverseEntity="Group" syncable="YES"/>
+        <relationship name="league" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="League" inverseName="players" inverseEntity="League" syncable="YES"/>
+        <relationship name="stats" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StatisticsItem" inverseName="player" inverseEntity="StatisticsItem" syncable="YES"/>
+    </entity>
+    <entity name="Statistics" representedClassName="Statistics" syncable="YES" codeGenerationType="class">
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="statistics" inverseEntity="Group" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StatisticsItem" syncable="YES"/>
+        <relationship name="league" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="League" inverseName="statistics" inverseEntity="League" syncable="YES"/>
+    </entity>
+    <entity name="StatisticsItem" representedClassName="StatisticsItem" syncable="YES" codeGenerationType="class">
+        <attribute name="draws" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gamesPlayed" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="goalsAgainst" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="goalsDiff" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="goalsFor" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="loses" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="score_full" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="wins" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="games" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Match" syncable="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="stats" inverseEntity="Player" syncable="YES"/>
+    </entity>
+    <entity name="Week" representedClassName="Week" syncable="YES" codeGenerationType="class">
+        <attribute name="number" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Match" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Club" positionX="-9567" positionY="-2061" width="128" height="90"/>
+        <element name="Player" positionX="-9414" positionY="-2061" width="128" height="120"/>
+        <element name="Match" positionX="-9486" positionY="-2034" width="128" height="105"/>
+        <element name="Group" positionX="-9477" positionY="-1998" width="128" height="120"/>
+        <element name="Week" positionX="-9468" positionY="-1989" width="128" height="75"/>
+        <element name="Statistics" positionX="-9459" positionY="-1962" width="128" height="90"/>
+        <element name="StatisticsItem" positionX="-9450" positionY="-1953" width="128" height="210"/>
+        <element name="League" positionX="-9441" positionY="-1890" width="128" height="90"/>
+        <element name="KnockoutStage" positionX="-9432" positionY="-1881" width="128" height="75"/>
+        <element name="Competition" positionX="-9486" positionY="-1926" width="128" height="150"/>
+    </elements>
+</model>

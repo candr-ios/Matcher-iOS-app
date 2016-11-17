@@ -10,6 +10,7 @@
 #import "SetupCompetitionViewController.h"
 #import "MatchesViewController.h"
 
+
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UILabel * messageLabel;
@@ -38,7 +39,9 @@
     self.competitions = @[];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveXNotification:) name:@"X" object:nil];
+   
 }
+
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
