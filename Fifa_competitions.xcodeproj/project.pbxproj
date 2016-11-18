@@ -31,6 +31,8 @@
 		4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */; };
 		4AD5ADA91DDE1B7D00913B54 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; };
 		4AD5ADAA1DDE1B7D00913B54 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4AD5ADB01DDF309E00913B54 /* Club.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADAF1DDF309E00913B54 /* Club.m */; };
+		4AD5ADB31DDF347B00913B54 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADB21DDF347B00913B54 /* Player.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,10 @@
 		4A95A99B1DD92CD6000F7CF6 /* MatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesViewController.h; sourceTree = "<group>"; };
 		4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesViewController.m; sourceTree = "<group>"; };
 		4AD5ADA81DDE1B7D00913B54 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		4AD5ADAE1DDF309E00913B54 /* Club.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Club.h; path = Model/Club.h; sourceTree = "<group>"; };
+		4AD5ADAF1DDF309E00913B54 /* Club.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Club.m; path = Model/Club.m; sourceTree = "<group>"; };
+		4AD5ADB11DDF347B00913B54 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Model/Player.h; sourceTree = "<group>"; };
+		4AD5ADB21DDF347B00913B54 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = Model/Player.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,10 @@
 		4A2716621DDD2A9200A48BDD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4AD5ADAE1DDF309E00913B54 /* Club.h */,
+				4AD5ADAF1DDF309E00913B54 /* Club.m */,
+				4AD5ADB11DDF347B00913B54 /* Player.h */,
+				4AD5ADB21DDF347B00913B54 /* Player.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -129,9 +139,9 @@
 		4A2B59291DD5F8750032D53D = {
 			isa = PBXGroup;
 			children = (
-				4AD5ADA81DDE1B7D00913B54 /* Realm.framework */,
 				4A2B59341DD5F8750032D53D /* Fifa_competitions */,
 				4A2B594E1DD5F8750032D53D /* Fifa_competitionsTests */,
+				4AD5ADAD1DDF2E9300913B54 /* Frameworks */,
 				4A2B59331DD5F8750032D53D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -203,6 +213,14 @@
 				4A2B59511DD5F8750032D53D /* Info.plist */,
 			);
 			path = Fifa_competitionsTests;
+			sourceTree = "<group>";
+		};
+		4AD5ADAD1DDF2E9300913B54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AD5ADA81DDE1B7D00913B54 /* Realm.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,11 +349,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD5ADB31DDF347B00913B54 /* Player.m in Sources */,
 				4A0BB2D71DDB01A10036E6B2 /* StatisticsTableViewController.m in Sources */,
 				4A2B596B1DD63EC30032D53D /* ClubCollectionViewCell.m in Sources */,
 				4A2B59671DD62FD80032D53D /* PlayerSetupViewController.m in Sources */,
 				4A2716371DDB1CAC00A48BDD /* StatsHeaderView.m in Sources */,
 				4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */,
+				4AD5ADB01DDF309E00913B54 /* Club.m in Sources */,
 				4A2B59641DD612740032D53D /* SetupCompetitionViewController.m in Sources */,
 				4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */,
 				4A2B593D1DD5F8750032D53D /* ViewController.m in Sources */,
@@ -412,6 +432,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -459,6 +480,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -519,6 +541,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)",
+					Realm.framework,
+				);
 				INFOPLIST_FILE = Fifa_competitionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dev.ios.Fifa-competitionsTests";
@@ -531,6 +557,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)",
+					Realm.framework,
+				);
 				INFOPLIST_FILE = Fifa_competitionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dev.ios.Fifa-competitionsTests";

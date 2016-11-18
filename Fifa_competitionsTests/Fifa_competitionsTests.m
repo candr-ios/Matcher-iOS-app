@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "Club.h"
 
 @interface Fifa_competitionsTests : XCTestCase
 
@@ -16,6 +17,10 @@
 
 - (void)setUp {
     [super setUp];
+    Club * club = [Club new];
+    
+    club.title = @"213213";
+    
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 

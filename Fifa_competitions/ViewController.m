@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import "SetupCompetitionViewController.h"
 #import "MatchesViewController.h"
-
+#import "Club.h"
+#import "Player.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -39,6 +40,33 @@
     self.competitions = @[];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveXNotification:) name:@"X" object:nil];
+    
+    
+    NSLog(@"%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
+    
+    RLMRealm * realm = [RLMRealm defaultRealm];
+    
+    
+    for (int i = 0 ; i < 5 ; i ++) {
+        
+        Club * club = [Club new];
+        
+        club.title = [NSString stringWithFormat:@"Club %d", i];
+        club.logoImageName = @"TEST";
+
+        Player * player = [Player new];
+        player.name = [NSString stringWithFormat:@"Player %d", i];
+        player.club = club;
+        
+        [realm beginWriteTransaction];
+        [realm addObject:player];
+        [realm commitWriteTransaction];
+    }
+    
+    
+
+    
+    
    
 }
 
