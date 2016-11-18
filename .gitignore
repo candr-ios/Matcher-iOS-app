@@ -20,7 +20,11 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+
+
 ## Other
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+Realm.framework
+
