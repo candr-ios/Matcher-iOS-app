@@ -33,6 +33,15 @@
 		4AD5ADAA1DDE1B7D00913B54 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AD5ADB01DDF309E00913B54 /* Club.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADAF1DDF309E00913B54 /* Club.m */; };
 		4AD5ADB31DDF347B00913B54 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADB21DDF347B00913B54 /* Player.m */; };
+		4AD5ADB61DDF8FD500913B54 /* Week.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADB51DDF8FD500913B54 /* Week.m */; };
+		4AD5ADB91DDF8FF400913B54 /* Match.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADB81DDF8FF400913B54 /* Match.m */; };
+		4AD5ADBC1DDF938C00913B54 /* Competition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADBB1DDF938C00913B54 /* Competition.m */; };
+		4AD5ADBF1DDF942800913B54 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADBE1DDF942800913B54 /* Statistics.m */; };
+		4AD5ADC21DDF944800913B54 /* StatisticsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADC11DDF944800913B54 /* StatisticsItem.m */; };
+		4AD5ADC51DDF976E00913B54 /* League.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADC41DDF976E00913B54 /* League.m */; };
+		4AD5ADC81DDF9C7500913B54 /* Tournament.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADC71DDF9C7500913B54 /* Tournament.m */; };
+		4AD5ADCB1DDF9DF800913B54 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCA1DDF9DF800913B54 /* Group.m */; };
+		4AD5ADCE1DDFA0C900913B54 /* KnockoutStage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +113,24 @@
 		4AD5ADAF1DDF309E00913B54 /* Club.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Club.m; path = Model/Club.m; sourceTree = "<group>"; };
 		4AD5ADB11DDF347B00913B54 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Model/Player.h; sourceTree = "<group>"; };
 		4AD5ADB21DDF347B00913B54 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = Model/Player.m; sourceTree = "<group>"; };
+		4AD5ADB41DDF8FD500913B54 /* Week.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Week.h; sourceTree = "<group>"; };
+		4AD5ADB51DDF8FD500913B54 /* Week.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Week.m; sourceTree = "<group>"; };
+		4AD5ADB71DDF8FF400913B54 /* Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match.h; sourceTree = "<group>"; };
+		4AD5ADB81DDF8FF400913B54 /* Match.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Match.m; sourceTree = "<group>"; };
+		4AD5ADBA1DDF938C00913B54 /* Competition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Competition.h; sourceTree = "<group>"; };
+		4AD5ADBB1DDF938C00913B54 /* Competition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Competition.m; sourceTree = "<group>"; };
+		4AD5ADBD1DDF942800913B54 /* Statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Statistics.h; path = Model/Statistics.h; sourceTree = "<group>"; };
+		4AD5ADBE1DDF942800913B54 /* Statistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Statistics.m; path = Model/Statistics.m; sourceTree = "<group>"; };
+		4AD5ADC01DDF944800913B54 /* StatisticsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticsItem.h; path = Model/StatisticsItem.h; sourceTree = "<group>"; };
+		4AD5ADC11DDF944800913B54 /* StatisticsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatisticsItem.m; path = Model/StatisticsItem.m; sourceTree = "<group>"; };
+		4AD5ADC31DDF976E00913B54 /* League.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = League.h; path = Model/League.h; sourceTree = "<group>"; };
+		4AD5ADC41DDF976E00913B54 /* League.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = League.m; path = Model/League.m; sourceTree = "<group>"; };
+		4AD5ADC61DDF9C7500913B54 /* Tournament.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tournament.h; path = Model/Tournament.h; sourceTree = "<group>"; };
+		4AD5ADC71DDF9C7500913B54 /* Tournament.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tournament.m; path = Model/Tournament.m; sourceTree = "<group>"; };
+		4AD5ADC91DDF9DF800913B54 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = Model/Group.h; sourceTree = "<group>"; };
+		4AD5ADCA1DDF9DF800913B54 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = Model/Group.m; sourceTree = "<group>"; };
+		4AD5ADCC1DDFA0C900913B54 /* KnockoutStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnockoutStage.h; sourceTree = "<group>"; };
+		4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnockoutStage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +159,24 @@
 				4AD5ADAF1DDF309E00913B54 /* Club.m */,
 				4AD5ADB11DDF347B00913B54 /* Player.h */,
 				4AD5ADB21DDF347B00913B54 /* Player.m */,
+				4AD5ADB41DDF8FD500913B54 /* Week.h */,
+				4AD5ADB51DDF8FD500913B54 /* Week.m */,
+				4AD5ADB71DDF8FF400913B54 /* Match.h */,
+				4AD5ADB81DDF8FF400913B54 /* Match.m */,
+				4AD5ADBA1DDF938C00913B54 /* Competition.h */,
+				4AD5ADBB1DDF938C00913B54 /* Competition.m */,
+				4AD5ADC31DDF976E00913B54 /* League.h */,
+				4AD5ADC41DDF976E00913B54 /* League.m */,
+				4AD5ADC91DDF9DF800913B54 /* Group.h */,
+				4AD5ADCA1DDF9DF800913B54 /* Group.m */,
+				4AD5ADC61DDF9C7500913B54 /* Tournament.h */,
+				4AD5ADC71DDF9C7500913B54 /* Tournament.m */,
+				4AD5ADCC1DDFA0C900913B54 /* KnockoutStage.h */,
+				4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */,
+				4AD5ADBD1DDF942800913B54 /* Statistics.h */,
+				4AD5ADBE1DDF942800913B54 /* Statistics.m */,
+				4AD5ADC01DDF944800913B54 /* StatisticsItem.h */,
+				4AD5ADC11DDF944800913B54 /* StatisticsItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -353,16 +398,25 @@
 				4A0BB2D71DDB01A10036E6B2 /* StatisticsTableViewController.m in Sources */,
 				4A2B596B1DD63EC30032D53D /* ClubCollectionViewCell.m in Sources */,
 				4A2B59671DD62FD80032D53D /* PlayerSetupViewController.m in Sources */,
+				4AD5ADC81DDF9C7500913B54 /* Tournament.m in Sources */,
 				4A2716371DDB1CAC00A48BDD /* StatsHeaderView.m in Sources */,
 				4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */,
+				4AD5ADBF1DDF942800913B54 /* Statistics.m in Sources */,
 				4AD5ADB01DDF309E00913B54 /* Club.m in Sources */,
+				4AD5ADB61DDF8FD500913B54 /* Week.m in Sources */,
 				4A2B59641DD612740032D53D /* SetupCompetitionViewController.m in Sources */,
 				4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */,
+				4AD5ADBC1DDF938C00913B54 /* Competition.m in Sources */,
 				4A2B593D1DD5F8750032D53D /* ViewController.m in Sources */,
 				4A2B59611DD610720032D53D /* UnderlineTextField.m in Sources */,
+				4AD5ADCB1DDF9DF800913B54 /* Group.m in Sources */,
+				4AD5ADCE1DDFA0C900913B54 /* KnockoutStage.m in Sources */,
+				4AD5ADC21DDF944800913B54 /* StatisticsItem.m in Sources */,
 				4A2B595D1DD607A60032D53D /* CreateCompetitionBaseViewController.m in Sources */,
 				4A0BB2DB1DDB05BC0036E6B2 /* StatsTableViewCell.m in Sources */,
 				4A0BB2D41DDAE0210036E6B2 /* MatchesHeaderView.m in Sources */,
+				4AD5ADC51DDF976E00913B54 /* League.m in Sources */,
+				4AD5ADB91DDF8FF400913B54 /* Match.m in Sources */,
 				4A2B593A1DD5F8750032D53D /* AppDelegate.m in Sources */,
 				4A2B59371DD5F8750032D53D /* main.m in Sources */,
 			);
