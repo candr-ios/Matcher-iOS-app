@@ -13,8 +13,6 @@
 
 @interface League : RLMObject
 
-
-// Test collaborationg
 @property  NSString * id;
 @property BOOL twoStages;
 @property RLMArray<Player *><Player> * players;

@@ -26,6 +26,8 @@
 		4A2B59671DD62FD80032D53D /* PlayerSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B59661DD62FD80032D53D /* PlayerSetupViewController.m */; };
 		4A2B596B1DD63EC30032D53D /* ClubCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */; };
 		4A2B596C1DD63EC30032D53D /* ClubCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */; };
+		4A4B04401DE0ECA500581C0C /* clubs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A4B043F1DE0ECA500581C0C /* clubs.plist */; };
+		4A4B04421DE0ECB700581C0C /* Logos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4B04411DE0ECB700581C0C /* Logos.xcassets */; };
 		4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */; };
 		4A95A99A1DD92BEC000F7CF6 /* MatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */; };
 		4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */; };
@@ -104,6 +106,8 @@
 		4A2B59681DD63EC30032D53D /* ClubCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubCollectionViewCell.h; sourceTree = "<group>"; };
 		4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubCollectionViewCell.m; sourceTree = "<group>"; };
 		4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClubCollectionViewCell.xib; sourceTree = "<group>"; };
+		4A4B043F1DE0ECA500581C0C /* clubs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clubs.plist; sourceTree = "<group>"; };
+		4A4B04411DE0ECB700581C0C /* Logos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Logos.xcassets; sourceTree = "<group>"; };
 		4A95A9961DD92BEC000F7CF6 /* MatchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchTableViewCell.h; sourceTree = "<group>"; };
 		4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchTableViewCell.m; sourceTree = "<group>"; };
 		4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchTableViewCell.xib; sourceTree = "<group>"; };
@@ -208,9 +212,9 @@
 			children = (
 				4A2716621DDD2A9200A48BDD /* Model */,
 				4A2B59381DD5F8750032D53D /* AppDelegate.h */,
+				4A2B59391DD5F8750032D53D /* AppDelegate.m */,
 				4AD5ADCF1DDFB5EB00913B54 /* Utils.h */,
 				4AD5ADD01DDFB5EB00913B54 /* Utils.m */,
-				4A2B59391DD5F8750032D53D /* AppDelegate.m */,
 				4A2B593B1DD5F8750032D53D /* ViewController.h */,
 				4A2B593C1DD5F8750032D53D /* ViewController.m */,
 				4A2B595A1DD607A60032D53D /* CreateCompetitionBaseViewController.h */,
@@ -238,6 +242,8 @@
 				4A0BB2D31DDAE0210036E6B2 /* MatchesHeaderView.m */,
 				4A2B59681DD63EC30032D53D /* ClubCollectionViewCell.h */,
 				4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */,
+				4A4B043F1DE0ECA500581C0C /* clubs.plist */,
+				4A4B04411DE0ECB700581C0C /* Logos.xcassets */,
 				4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */,
 				4A2B593E1DD5F8750032D53D /* Main.storyboard */,
 				4A2B59411DD5F8750032D53D /* Assets.xcassets */,
@@ -365,6 +371,8 @@
 				4A0BB2DC1DDB05BC0036E6B2 /* StatsTableViewCell.xib in Resources */,
 				4A2B59421DD5F8750032D53D /* Assets.xcassets in Resources */,
 				4A2716391DDB1CBF00A48BDD /* StatsHeaderView.xib in Resources */,
+				4A4B04401DE0ECA500581C0C /* clubs.plist in Resources */,
+				4A4B04421DE0ECB700581C0C /* Logos.xcassets in Resources */,
 				4A2B59401DD5F8750032D53D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

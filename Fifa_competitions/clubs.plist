@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>Dynamo Kyiv</string>
+	<string>Manchester United</string>
+	<string>Tottenham</string>
+	<string>Shakhtar Donetsk</string>
+	<string>Liverpool</string>
+	<string>Chelsea</string>
+	<string>Roma</string>
+	<string>Manchester City</string>
+	<string>Arsenal</string>
+	<string>Borussia Dortmund</string>
+	<string>Benfica</string>
+	<string>PSG</string>
+	<string>Juventus</string>
+	<string>Atlético Madrid</string>
+	<string>Bayern München</string>
+	<string>Barcelona</string>
+	<string>Real Madrid</string>
+</array>
+</plist>

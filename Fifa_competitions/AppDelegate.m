@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+@import Realm;
+#import "Club.h"
 
 @interface AppDelegate ()
 
@@ -19,15 +20,54 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [self incrementLaunchCounter];
     
-    
-    
+    [self setupClubsIfNeeded];
     
     [[UITextField appearance] setTintColor:[UIColor whiteColor]];
     [self configureNavBarAppearance];
     return YES;
 }
 
+- (void) setupClubsIfNeeded {
+    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger count = [ud integerForKey:@"launch_counter"];
+    
+    if (count != 1) {
+        return;
+    }
+    
+    NSArray<NSString *> * clubNames = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"clubs" ofType:@"plist"]];
+    NSMutableArray<Club *> * clubs = [[NSMutableArray alloc] initWithCapacity:clubNames.count];
+    
+    for (NSString * clubName in clubNames) {
+        Club * club = [Club new];
+        club.title = clubName;
+        club.logoImageName = clubName;
+        [clubs addObject:club];
+    }
+    
+    RLMRealm * realm = [RLMRealm defaultRealm];
+    
+    [realm beginWriteTransaction];
+    [realm addObjects:clubs];
+    [realm commitWriteTransaction];
+}
+
+- (void) incrementLaunchCounter {
+    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger count = [ud integerForKey:@"launch_counter"];
+    
+    if (count == NSNotFound) {
+        count = 0;
+    }
+    
+    [ud setInteger:count + 1 forKey:@"launch_counter"];
+    
+    [ud synchronize];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

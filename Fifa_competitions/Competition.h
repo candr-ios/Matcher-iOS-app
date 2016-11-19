@@ -16,7 +16,7 @@
 @property NSString * id;
 @property int  type;
 @property NSString * title;
-@property NSDate * dataCreated;
+@property NSDate * dateCreated;
 @property Player * winner;
 @property League * league;
 @property Tournament * tournament;

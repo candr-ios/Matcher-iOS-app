@@ -14,11 +14,12 @@
 #import "League.h"
 #import "Utils.h"
 #import "Statistics.h"
+#import "Competition.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UILabel * messageLabel;
-
+@property (nonatomic, strong) RLMResults<Competition *> * competitions;
 
 @end
 
@@ -40,67 +41,72 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action: @selector(didTapAddButton:)];
     
-    self.competitions = @[];
+    // Fetch all competitions
+    self.competitions = [[Competition allObjects] sortedResultsUsingProperty:@"dateCreated" ascending:true];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveXNotification:) name:@"X" object:nil];
     
-    
-    NSLog(@"%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
-    
-    RLMRealm * realm = [RLMRealm defaultRealm];
-    
-    
-    League * l = [League new];
-    l.id = [Utils uniqueId];
-    l.twoStages = true;
-    
-    l.statistics = [Statistics new];
-    
-    [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy", @"id": [Utils uniqueId]}],
-                            [[Player alloc] initWithValue: @{@"name": @"Stephan", @"id": [Utils uniqueId]}],
-                            [[Player alloc] initWithValue: @{@"name": @"Clark", @"id": [Utils uniqueId]}],
-                            [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}]
-//                            [[Player alloc] initWithValue: @{@"name": @"Poul", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Mark", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"John", @"id": [Utils uniqueId]}]
-//                            [[Player alloc] initWithValue: @{@"name": @"Michael 2", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Andy 3", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Steven 3", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Clark 3", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Michael 3", @"id": [Utils uniqueId]}]
-                            ]];
-    
-    for (Player * player in l.players) {
-        StatisticsItem * item = [[StatisticsItem alloc] init];
-        item.player = player;
-        item.id = [Utils uniqueId];
-        
-        [l.statistics.items addObject:item];
-    }
-    
-    [l generateMatches];
-    
-    NSLog(@"%@",l);
-    
-    [realm beginWriteTransaction];
-    
-    [realm addOrUpdateObject:l];
-    
-    [realm commitWriteTransaction];
-    
-    for (int i = 0; i < l.weeks.count ; i++) {
-        for (Match * match in l.weeks[l.currentWeek - 1].matches) {
-            [realm beginWriteTransaction];
-            match.played = true;
-            int lowerBound = 0;
-            int upperBound = 5;
-            match.homeGoals = lowerBound + arc4random() % (upperBound - lowerBound);
-            match.awayGoals = lowerBound + arc4random() % (upperBound - lowerBound);
-            
-            [realm commitWriteTransaction];
-        }
-        
-        [l updateStatistics];
+    {
+//    
+//    
+//    
+//    NSLog(@"%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
+//    
+//    RLMRealm * realm = [RLMRealm defaultRealm];
+//    
+//    
+//    League * l = [League new];
+//    l.id = [Utils uniqueId];
+//    l.twoStages = true;
+//    
+//    l.statistics = [Statistics new];
+//    
+//    [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Stephan", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Clark", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}]
+////                            [[Player alloc] initWithValue: @{@"name": @"Poul", @"id": [Utils uniqueId]}],
+////                            [[Player alloc] initWithValue: @{@"name": @"Mark", @"id": [Utils uniqueId]}],
+////                            [[Player alloc] initWithValue: @{@"name": @"John", @"id": [Utils uniqueId]}]
+////                            [[Player alloc] initWithValue: @{@"name": @"Michael 2", @"id": [Utils uniqueId]}],
+////                            [[Player alloc] initWithValue: @{@"name": @"Andy 3", @"id": [Utils uniqueId]}],
+////                            [[Player alloc] initWithValue: @{@"name": @"Steven 3", @"id": [Utils uniqueId]}],
+////                            [[Player alloc] initWithValue: @{@"name": @"Clark 3", @"id": [Utils uniqueId]}],
+////                            [[Player alloc] initWithValue: @{@"name": @"Michael 3", @"id": [Utils uniqueId]}]
+//                            ]];
+//    
+//    for (Player * player in l.players) {
+//        StatisticsItem * item = [[StatisticsItem alloc] init];
+//        item.player = player;
+//        item.id = [Utils uniqueId];
+//        
+//        [l.statistics.items addObject:item];
+//    }
+//    
+//    [l generateMatches];
+//    
+//    NSLog(@"%@",l);
+//    
+//    [realm beginWriteTransaction];
+//    
+//    [realm addOrUpdateObject:l];
+//    
+//    [realm commitWriteTransaction];
+//    
+//    for (int i = 0; i < l.weeks.count ; i++) {
+//        for (Match * match in l.weeks[l.currentWeek - 1].matches) {
+//            [realm beginWriteTransaction];
+//            match.played = true;
+//            int lowerBound = 0;
+//            int upperBound = 5;
+//            match.homeGoals = lowerBound + arc4random() % (upperBound - lowerBound);
+//            match.awayGoals = lowerBound + arc4random() % (upperBound - lowerBound);
+//            
+//            [realm commitWriteTransaction];
+//        }
+//        
+//        [l updateStatistics];
+//    }
     }
 
 }
@@ -216,7 +222,7 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    //TODO
 }
 
 
