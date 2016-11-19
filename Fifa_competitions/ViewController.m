@@ -57,7 +57,7 @@
     l.statistics = [Statistics new];
     
     [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy", @"id": [Utils uniqueId]}],
-                            [[Player alloc] initWithValue: @{@"name": @"Steven", @"id": [Utils uniqueId]}],
+                            [[Player alloc] initWithValue: @{@"name": @"Stephan", @"id": [Utils uniqueId]}],
                             [[Player alloc] initWithValue: @{@"name": @"Clark", @"id": [Utils uniqueId]}],
                             [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}]
 //                            [[Player alloc] initWithValue: @{@"name": @"Poul", @"id": [Utils uniqueId]}],
@@ -102,9 +102,7 @@
         
         [l updateStatistics];
     }
-    
-    
-    
+
 }
 
 

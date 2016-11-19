@@ -21,7 +21,7 @@ typedef enum : int {
 @interface KnockoutStage : RLMObject
 
 @property NSString * id;
-@property int  type;
+@property KnockoutStageType  type;
 @property RLMArray<Match *><Match> * matches;
 
 @end
