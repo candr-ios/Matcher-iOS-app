@@ -13,6 +13,7 @@
 
 @property int number;
 
+@property BOOL isCompleted;
 @property RLMArray<Match *><Match> * matches;
 
 @end

@@ -10,4 +10,8 @@
 
 @implementation Week
 
++ (NSDictionary *) defaultPropertyValues {
+    return @{@"isCompleted": @(false)};
+}
+
 @end

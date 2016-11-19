@@ -18,7 +18,9 @@
              @"loses" : @(0),
              @"goalsFor": @(0),
              @"goalsAgainst" : @(0),
-             @"goalsDiff": @(0)
+             @"goalsDiff": @(0),
+             @"score": @(0),
+             @"full_score": @(0)
              };
 }
 

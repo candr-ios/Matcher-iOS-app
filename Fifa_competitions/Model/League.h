@@ -13,14 +13,15 @@
 
 @interface League : RLMObject
 
-@property  NSInteger id;
+@property  NSString * id;
 @property BOOL twoStages;
 @property RLMArray<Player *><Player> * players;
 @property RLMArray<Week *><Week> * weeks;
 @property Statistics * statistics;
 @property BOOL isCompleted;
+@property int currentWeek;
 
 - (NSError *) generateMatches;
-
+- (void) updateStatistics;
 
 @end

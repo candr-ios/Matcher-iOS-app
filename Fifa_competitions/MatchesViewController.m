@@ -144,6 +144,8 @@
                          self.tableView.contentInset = UIEdgeInsetsZero;
                      }
      ];
+    
+    [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:false];
 }
 
 - (void) dealloc {

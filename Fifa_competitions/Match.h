@@ -11,7 +11,7 @@
 
 @interface Match : RLMObject
 
-@property NSInteger id;
+@property NSString * id;
 
 @property Player * home;
 @property Player * away;

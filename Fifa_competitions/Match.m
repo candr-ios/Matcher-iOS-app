@@ -7,6 +7,7 @@
 //
 
 #import "Match.h"
+#import "Utils.h"
 
 @implementation Match
 
@@ -21,6 +22,7 @@
 - (Match *) swap {
     
     Match * newMatch = [[Match alloc] init];
+    newMatch.id = [Utils uniqueId];
     
     newMatch.home = self.away;
     newMatch.away = self.home;

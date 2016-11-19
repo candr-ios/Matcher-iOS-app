@@ -14,7 +14,7 @@
 
 @property Player * player;
 
-@property  NSInteger id;
+@property  NSString * id;
 @property int gamesPlayed;
 @property int wins;
 @property int draws;

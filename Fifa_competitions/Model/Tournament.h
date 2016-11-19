@@ -13,7 +13,10 @@
 
 @interface Tournament : RLMObject
 
-@property NSInteger id;
+
+@property KnockoutStageType currentStage;
+@property BOOL isInitialized;
+@property NSString * id;
 @property RLMArray<Player *><Player> * players;
 @property BOOL hasGroupStage;
 @property RLMArray<Group*><Group> * groups;

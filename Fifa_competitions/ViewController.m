@@ -12,6 +12,8 @@
 #import "Club.h"
 #import "Player.h"
 #import "League.h"
+#import "Utils.h"
+#import "Statistics.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -48,43 +50,56 @@
     RLMRealm * realm = [RLMRealm defaultRealm];
     
     
-//    for (int i = 0 ; i < 5 ; i ++) {
-//        
-//        Club * club = [Club new];
-//        
-//        club.title = [NSString stringWithFormat:@"Club %d", i];
-//        club.logoImageName = @"TEST";
-//
-//        Player * player = [Player new];
-//        player.name = [NSString stringWithFormat:@"Player %d", i];
-//        player.club = club;
-//        
-//        [realm beginWriteTransaction];
-//        [realm addObject:player];
-//        [realm commitWriteTransaction];
-//    }
-//    
+    League * l = [League new];
+    l.id = [Utils uniqueId];
     
-    League * l = [[League alloc] init];
-    [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy"}],
-                            [[Player alloc] initWithValue: @{@"name": @"Steven"}],
-                            [[Player alloc] initWithValue: @{@"name": @"Clark"}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Michael"}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Andy 2"}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Steven 2"}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Clark 2"}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Michael 2"}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Andy 3"}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Steven 3"}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Clark 3"}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Michael 3"}]
+    l.statistics = [Statistics new];
+    
+    [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy", @"id": [Utils uniqueId]}],
+                            [[Player alloc] initWithValue: @{@"name": @"Steven", @"id": [Utils uniqueId]}],
+                            [[Player alloc] initWithValue: @{@"name": @"Clark", @"id": [Utils uniqueId]}]
+//                            [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Andy 2", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Steven 2", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Clark 2", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Michael 2", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Andy 3", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Steven 3", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Clark 3", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Michael 3", @"id": [Utils uniqueId]}]
                             ]];
+    
+    for (Player * player in l.players) {
+        StatisticsItem * item = [[StatisticsItem alloc] init];
+        item.player = player;
+        
+        [l.statistics.items addObject:item];
+    }
     
     [l generateMatches];
     
-    NSLog(@"%@",l.weeks);
+    NSLog(@"%@",l);
     
-   
+    [realm beginWriteTransaction];
+    
+    [realm addOrUpdateObject:l];
+    
+    [realm commitWriteTransaction];
+    
+    
+    for (Match * match in l.weeks[l.currentWeek - 1].matches) {
+        [realm beginWriteTransaction];
+        match.played = true;
+        int lowerBound = 0;
+        int upperBound = 10;
+        match.homeGoals = lowerBound + arc4random() % (upperBound - lowerBound);
+        match.awayGoals = lowerBound + arc4random() % (upperBound - lowerBound);
+        
+        [realm commitWriteTransaction];
+    }
+    
+    [l updateStatistics];
+    
 }
 
 
@@ -97,7 +112,7 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-   
+    
     if (self.competitions.count == 0) {
         [self showMessage];
     }
@@ -129,7 +144,7 @@
 }
 
 - (void) hideMessage {
-
+    
     [UIView animateWithDuration:0.3 animations:^{
         self.messageLabel.alpha = 0;
         self.messageLabel.frame = CGRectMake(20, 0, self.view.frame.size.width - 40, 50);
@@ -140,11 +155,11 @@
 }
 
 - (void) didTapAddButton: (UIBarButtonItem *) sender {
-//    if (self.messageLabel.superview) {
-//        [self hideMessage];
-//    } else {
-//        [self showMessage];
-//    }
+    //    if (self.messageLabel.superview) {
+    //        [self hideMessage];
+    //    } else {
+    //        [self showMessage];
+    //    }
     
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     

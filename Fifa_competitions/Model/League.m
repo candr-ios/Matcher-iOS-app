@@ -8,11 +8,12 @@
 
 #import "League.h"
 #import "Utils.h"
+#import "Statistics.h"
 
 @implementation League
 
 + (NSDictionary *) defaultPropertyValues {
-    return @{@"isCompleted": @(false)};
+    return @{@"isCompleted": @(false), @"twoStages": @(false), @"currentWeek": @(1)};
 }
 
 + (NSString *)primaryKey {
@@ -20,6 +21,10 @@
 }
 
 - (NSError *) generateMatches {
+    
+    if (_players.count < 2) {
+        return [[NSError alloc] initWithDomain:@"LeagueError" code:400 userInfo:@{@"description": @"Number of players must be > than 1"}];
+    }
     
     [self.weeks addObjects:[self generateSchedule]];
     
@@ -86,6 +91,7 @@
             Match * tmpMatch = [Match new];
             tmpMatch.home = home;
             tmpMatch.away = away;
+            tmpMatch.id = [Utils uniqueId];
             
             [tmpWeek.matches addObject:tmpMatch];
         }
@@ -102,6 +108,8 @@
     if (addDummy) {
         [self removeDummyGames: weeks];
     }
+    
+    //TODO: Implement Issue #1
     
     
     return weeks;
@@ -124,6 +132,7 @@
     
     for (int i = 0; i < count; i++) {
         Match * m = [Match new];
+        m.id = [Utils uniqueId];
         
         m.home = top[i];
         m.away = bottom[i];
@@ -148,10 +157,91 @@
     }
     
     if (count % 2 == 1) {
+        
         [array addObject: [[Player alloc] initWithValue:@{@"name": @"Dummy", @"index": @(i) }]];
     }
     
     return array;
+    
+}
+
+- (void) updateStatistics {
+    
+    if (self.weeks.count > self.currentWeek) {
+        [self.realm beginWriteTransaction];
+        
+        self.isCompleted = true;
+        
+        [self.realm commitWriteTransaction];
+    
+        return;
+    }
+    
+    Week * currentWeek = [self.weeks objectAtIndex:self.currentWeek - 1];
+    
+    BOOL allMatchesPlayed = true;
+    for (Match * match in currentWeek.matches) {
+        
+        if (match.played) {
+            if (!match.statsFlag) {
+                NSPredicate * homePred = [NSPredicate predicateWithFormat:@"player == %@", match.home];
+                StatisticsItem * homeItem = [[self.statistics.items objectsWithPredicate:homePred] firstObject];
+                
+                NSPredicate * awayPred = [NSPredicate predicateWithFormat:@"player == %@", match.away];
+                StatisticsItem * awayItem = [[self.statistics.items objectsWithPredicate:awayPred] firstObject];
+                
+                
+                [self.realm beginWriteTransaction];
+                
+                [homeItem.matches addObject:match];
+                [awayItem.matches addObject:match];
+                
+                match.statsFlag = true;
+                
+                homeItem.gamesPlayed += 1;
+                awayItem.gamesPlayed += 1;
+                
+                if(match.homeGoals > match.awayGoals) {
+                    homeItem.wins += 1;
+                    homeItem.score += 3;
+                    awayItem.loses += 1;
+                } else if (match.homeGoals < match.awayGoals) {
+                    homeItem.loses += 1;
+                    awayItem.wins += 1;
+                    awayItem.score += 3;
+                } else {
+                    homeItem.draws += 1;
+                    awayItem.draws += 1;
+                    awayItem.score += 1;
+                    homeItem.score += 1;
+                }
+                
+                homeItem.goalsFor += match.homeGoals;
+                homeItem.goalsAgainst += match.awayGoals;
+                awayItem.goalsFor += match.awayGoals;
+                awayItem.goalsAgainst += match.homeGoals;
+                
+                homeItem.goalsDiff = homeItem.goalsFor - homeItem.goalsAgainst;
+                awayItem.goalsDiff = awayItem.goalsFor - awayItem.goalsAgainst;
+                
+                [self.realm commitWriteTransaction];
+                
+            }
+            
+        } else {
+            allMatchesPlayed = false;
+        }
+    
+    }
+    
+    if (allMatchesPlayed) {
+        [self.realm beginWriteTransaction];
+        
+        currentWeek.isCompleted = true;
+        self.currentWeek +=1;
+        
+        [self.realm commitWriteTransaction];
+    }
     
 }
 

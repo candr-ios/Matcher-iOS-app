@@ -11,7 +11,7 @@
 @implementation Tournament
 
 + (NSDictionary *) defaultPropertyValues {
-    return @{@"isGroupStageCompleted": @(false),@"isCompleted": @(false)};
+    return @{@"isGroupStageCompleted": @(false),@"isCompleted": @(false), @"isInitialized":@(false), @"currentStage": @(-1)};
 }
 
 + (NSString *)primaryKey {

@@ -11,7 +11,7 @@
 
 @interface Player : RLMObject
 
-@property NSInteger id;
+@property NSString * id;
 @property NSString * name;
 @property Club * club;
 @property int index;

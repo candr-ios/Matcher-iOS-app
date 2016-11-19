@@ -15,4 +15,8 @@
     return (res == 0) ? limit : res;
 }
 
++ (NSString *) uniqueId {
+    return [[NSUUID UUID] UUIDString];
+}
+
 @end

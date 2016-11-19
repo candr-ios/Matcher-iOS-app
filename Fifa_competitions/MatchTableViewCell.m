@@ -44,7 +44,11 @@
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                                    style:UIBarButtonItemStyleDone target:self
                                                                   action:@selector(doneClicked:)];
-    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                   style:UIBarButtonItemStylePlain target:self
+                                                                  action:@selector(cancelClicked:)];
+    UIBarButtonItem * space1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, space1, cancelButton, nil]];
     
     _awayScoreTextField.inputAccessoryView = keyboardDoneButtonView;
     
@@ -53,10 +57,29 @@
     UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next"
                                                                    style:UIBarButtonItemStylePlain target:self
                                                                   action:@selector(nextClicked:)];
-    [keyboardNextButtonView setItems:[NSArray arrayWithObjects:nextButton, nil]];
+    
+    UIBarButtonItem *cancelButton2 = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                     style:UIBarButtonItemStylePlain target:self
+                                                                    action:@selector(cancelClicked:)];
+    UIBarButtonItem * space2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [keyboardNextButtonView setItems:[NSArray arrayWithObjects:nextButton,space2, cancelButton2, nil]];
     
     _homeScoreTextField.inputAccessoryView = keyboardNextButtonView;
     
+}
+
+- (void) cancelClicked: (UIBarButtonItem *) sender {
+    
+    _homeScoreTextField.text = @"";
+    _awayScoreTextField.text = @"";
+    
+    if (_homeScoreTextField.isFirstResponder) {
+    [_homeScoreTextField resignFirstResponder];
+    _homeScoreTextField.userInteractionEnabled = false;
+    } else {
+        [_awayScoreTextField resignFirstResponder];
+        _awayScoreTextField.userInteractionEnabled = false;
+    }
 }
 
 - (void) doneClicked: (UIBarButtonItem *) sender {

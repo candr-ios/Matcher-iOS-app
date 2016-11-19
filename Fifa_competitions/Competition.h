@@ -13,7 +13,7 @@
 
 @interface Competition : RLMObject
 
-@property NSInteger id;
+@property NSString * id;
 @property int  type;
 @property NSString * title;
 @property NSDate * dataCreated;

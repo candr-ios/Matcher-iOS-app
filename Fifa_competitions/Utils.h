@@ -12,6 +12,8 @@
 
 + (NSUInteger) addA: (NSUInteger) a andB: (NSUInteger)b withLimit: (NSUInteger) limit;
 
++ (NSString *) uniqueId;
+
 @end
 
 

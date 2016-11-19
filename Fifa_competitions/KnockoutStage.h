@@ -14,12 +14,13 @@ typedef enum : int {
     Round16,
     Quarterfinal,
     Semifinal,
-    Final
+    Final,
+    ThirdPlace
 } KnockoutStageType;
 
 @interface KnockoutStage : RLMObject
 
-@property NSInteger id;
+@property NSString * id;
 @property int  type;
 @property RLMArray<Match *><Match> * matches;
 
