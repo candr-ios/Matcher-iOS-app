@@ -110,9 +110,30 @@
     }
     
     //TODO: Implement Issue #1
+    if (self.twoStages) {
+        [weeks addObjectsFromArray:[self reversedWeeksFrom:weeks]];
+    }
     
     
     return weeks;
+}
+
+- (NSArray<Week *> *) reversedWeeksFrom: (NSArray<Week *> *) weeks {
+    NSMutableArray<Week *> * weeksRes = [[NSMutableArray alloc] initWithCapacity:weeks.count];
+    int number = (int)weeks.count;
+    for (Week * week in weeks) {
+        Week * weekTmp = [Week new];
+        weekTmp.number = number + 1;
+        
+        for (Match * match in week.matches) {
+            [weekTmp.matches addObject:[match swap]];
+        }
+        
+        [weeksRes addObject:weekTmp];
+        number++;
+    }
+    
+    return weeksRes;
 }
 
 - (void) removeDummyGames: (NSArray<Week*> *) weeks  {

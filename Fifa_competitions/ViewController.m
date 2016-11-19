@@ -52,16 +52,17 @@
     
     League * l = [League new];
     l.id = [Utils uniqueId];
+    l.twoStages = true;
     
     l.statistics = [Statistics new];
     
     [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy", @"id": [Utils uniqueId]}],
                             [[Player alloc] initWithValue: @{@"name": @"Steven", @"id": [Utils uniqueId]}],
                             [[Player alloc] initWithValue: @{@"name": @"Clark", @"id": [Utils uniqueId]}],
-                            [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}],
-                            [[Player alloc] initWithValue: @{@"name": @"Poul", @"id": [Utils uniqueId]}],
-                            [[Player alloc] initWithValue: @{@"name": @"Mark", @"id": [Utils uniqueId]}],
-                            [[Player alloc] initWithValue: @{@"name": @"John", @"id": [Utils uniqueId]}]
+                            [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}]
+//                            [[Player alloc] initWithValue: @{@"name": @"Poul", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Mark", @"id": [Utils uniqueId]}],
+//                            [[Player alloc] initWithValue: @{@"name": @"John", @"id": [Utils uniqueId]}]
 //                            [[Player alloc] initWithValue: @{@"name": @"Michael 2", @"id": [Utils uniqueId]}],
 //                            [[Player alloc] initWithValue: @{@"name": @"Andy 3", @"id": [Utils uniqueId]}],
 //                            [[Player alloc] initWithValue: @{@"name": @"Steven 3", @"id": [Utils uniqueId]}],
