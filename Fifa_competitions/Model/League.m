@@ -243,6 +243,19 @@
         [self.realm commitWriteTransaction];
     }
     
+    BOOL allWeeksCompleted = true;
+    for (Week * w in self.weeks) {
+        allWeeksCompleted = w.isCompleted && allWeeksCompleted;
+    }
+    
+    if (allWeeksCompleted) {
+        [self.realm beginWriteTransaction];
+        
+        self.isCompleted = true;
+        
+        [self.realm commitWriteTransaction];
+    }
+    
 }
 
 @end

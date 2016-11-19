@@ -57,11 +57,11 @@
     
     [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy", @"id": [Utils uniqueId]}],
                             [[Player alloc] initWithValue: @{@"name": @"Steven", @"id": [Utils uniqueId]}],
-                            [[Player alloc] initWithValue: @{@"name": @"Clark", @"id": [Utils uniqueId]}]
-//                            [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Andy 2", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Steven 2", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Clark 2", @"id": [Utils uniqueId]}],
+                            [[Player alloc] initWithValue: @{@"name": @"Clark", @"id": [Utils uniqueId]}],
+                            [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}],
+                            [[Player alloc] initWithValue: @{@"name": @"Poul", @"id": [Utils uniqueId]}],
+                            [[Player alloc] initWithValue: @{@"name": @"Mark", @"id": [Utils uniqueId]}],
+                            [[Player alloc] initWithValue: @{@"name": @"John", @"id": [Utils uniqueId]}]
 //                            [[Player alloc] initWithValue: @{@"name": @"Michael 2", @"id": [Utils uniqueId]}],
 //                            [[Player alloc] initWithValue: @{@"name": @"Andy 3", @"id": [Utils uniqueId]}],
 //                            [[Player alloc] initWithValue: @{@"name": @"Steven 3", @"id": [Utils uniqueId]}],
@@ -87,19 +87,22 @@
     
     [realm commitWriteTransaction];
     
-    
-    for (Match * match in l.weeks[l.currentWeek - 1].matches) {
-        [realm beginWriteTransaction];
-        match.played = true;
-        int lowerBound = 0;
-        int upperBound = 10;
-        match.homeGoals = lowerBound + arc4random() % (upperBound - lowerBound);
-        match.awayGoals = lowerBound + arc4random() % (upperBound - lowerBound);
+    for (int i = 0; i < l.weeks.count ; i++) {
+        for (Match * match in l.weeks[l.currentWeek - 1].matches) {
+            [realm beginWriteTransaction];
+            match.played = true;
+            int lowerBound = 0;
+            int upperBound = 5;
+            match.homeGoals = lowerBound + arc4random() % (upperBound - lowerBound);
+            match.awayGoals = lowerBound + arc4random() % (upperBound - lowerBound);
+            
+            [realm commitWriteTransaction];
+        }
         
-        [realm commitWriteTransaction];
+        [l updateStatistics];
     }
     
-    [l updateStatistics];
+    
     
 }
 
