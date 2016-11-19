@@ -42,6 +42,7 @@
 		4AD5ADC81DDF9C7500913B54 /* Tournament.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADC71DDF9C7500913B54 /* Tournament.m */; };
 		4AD5ADCB1DDF9DF800913B54 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCA1DDF9DF800913B54 /* Group.m */; };
 		4AD5ADCE1DDFA0C900913B54 /* KnockoutStage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */; };
+		4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADD01DDFB5EB00913B54 /* Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,8 @@
 		4AD5ADCA1DDF9DF800913B54 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = Model/Group.m; sourceTree = "<group>"; };
 		4AD5ADCC1DDFA0C900913B54 /* KnockoutStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnockoutStage.h; sourceTree = "<group>"; };
 		4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnockoutStage.m; sourceTree = "<group>"; };
+		4AD5ADCF1DDFB5EB00913B54 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		4AD5ADD01DDFB5EB00913B54 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +208,8 @@
 			children = (
 				4A2716621DDD2A9200A48BDD /* Model */,
 				4A2B59381DD5F8750032D53D /* AppDelegate.h */,
+				4AD5ADCF1DDFB5EB00913B54 /* Utils.h */,
+				4AD5ADD01DDFB5EB00913B54 /* Utils.m */,
 				4A2B59391DD5F8750032D53D /* AppDelegate.m */,
 				4A2B593B1DD5F8750032D53D /* ViewController.h */,
 				4A2B593C1DD5F8750032D53D /* ViewController.m */,
@@ -397,6 +402,7 @@
 				4AD5ADB31DDF347B00913B54 /* Player.m in Sources */,
 				4A0BB2D71DDB01A10036E6B2 /* StatisticsTableViewController.m in Sources */,
 				4A2B596B1DD63EC30032D53D /* ClubCollectionViewCell.m in Sources */,
+				4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */,
 				4A2B59671DD62FD80032D53D /* PlayerSetupViewController.m in Sources */,
 				4AD5ADC81DDF9C7500913B54 /* Tournament.m in Sources */,
 				4A2716371DDB1CAC00A48BDD /* StatsHeaderView.m in Sources */,

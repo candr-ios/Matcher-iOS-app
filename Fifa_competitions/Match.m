@@ -14,8 +14,19 @@
     return @{@"homeGoals" : @(-1), @"awayGoals": @(-1), @"played": @(false), @"statsFlag" : @(false)};
 }
 
-+ (NSString *)primaryKey {
++ (NSString *) primaryKey {
     return @"id";
+}
+
+- (Match *) swap {
+    
+    Match * newMatch = [[Match alloc] init];
+    
+    newMatch.home = self.away;
+    newMatch.away = self.home;
+    
+    return newMatch;
+    
 }
 
 @end

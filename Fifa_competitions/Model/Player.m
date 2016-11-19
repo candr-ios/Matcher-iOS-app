@@ -10,4 +10,12 @@
 
 @implementation Player
 
++ (NSArray<NSString *> *) indexedProperties {
+    return  @[@"index"];
+}
+
++ (NSString *) primaryKey {
+    return @"id";
+}
+
 @end

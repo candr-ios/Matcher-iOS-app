@@ -14,7 +14,7 @@
 
 @interface Group : RLMObject
 
-@property NSString * id;
+@property NSInteger id;
 @property NSString * name;
 @property RLMArray<Player *><Player> * players;
 @property RLMArray<Week *><Week> * weeks;

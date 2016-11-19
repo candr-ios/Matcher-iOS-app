@@ -13,7 +13,7 @@
 
 @interface League : RLMObject
 
-@property NSString * id;
+@property  NSInteger id;
 @property BOOL twoStages;
 @property RLMArray<Player *><Player> * players;
 @property RLMArray<Week *><Week> * weeks;

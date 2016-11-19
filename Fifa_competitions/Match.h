@@ -11,7 +11,7 @@
 
 @interface Match : RLMObject
 
-@property NSString * id;
+@property NSInteger id;
 
 @property Player * home;
 @property Player * away;
@@ -22,6 +22,9 @@
 @property BOOL played;
 
 @property BOOL statsFlag; // if already in statistics;
+
+- (Match *) swap;
+
 
 @end
 RLM_ARRAY_TYPE(Match)

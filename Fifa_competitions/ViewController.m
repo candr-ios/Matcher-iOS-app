@@ -11,6 +11,7 @@
 #import "MatchesViewController.h"
 #import "Club.h"
 #import "Player.h"
+#import "League.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -47,25 +48,41 @@
     RLMRealm * realm = [RLMRealm defaultRealm];
     
     
-    for (int i = 0 ; i < 5 ; i ++) {
-        
-        Club * club = [Club new];
-        
-        club.title = [NSString stringWithFormat:@"Club %d", i];
-        club.logoImageName = @"TEST";
-
-        Player * player = [Player new];
-        player.name = [NSString stringWithFormat:@"Player %d", i];
-        player.club = club;
-        
-        [realm beginWriteTransaction];
-        [realm addObject:player];
-        [realm commitWriteTransaction];
-    }
+//    for (int i = 0 ; i < 5 ; i ++) {
+//        
+//        Club * club = [Club new];
+//        
+//        club.title = [NSString stringWithFormat:@"Club %d", i];
+//        club.logoImageName = @"TEST";
+//
+//        Player * player = [Player new];
+//        player.name = [NSString stringWithFormat:@"Player %d", i];
+//        player.club = club;
+//        
+//        [realm beginWriteTransaction];
+//        [realm addObject:player];
+//        [realm commitWriteTransaction];
+//    }
+//    
     
+    League * l = [[League alloc] init];
+    [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy"}],
+                            [[Player alloc] initWithValue: @{@"name": @"Steven"}],
+                            [[Player alloc] initWithValue: @{@"name": @"Clark"}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Michael"}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Andy 2"}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Steven 2"}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Clark 2"}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Michael 2"}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Andy 3"}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Steven 3"}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Clark 3"}],
+//                            [[Player alloc] initWithValue: @{@"name": @"Michael 3"}]
+                            ]];
     
-
+    [l generateMatches];
     
+    NSLog(@"%@",l.weeks);
     
    
 }

@@ -13,7 +13,7 @@
 
 @interface Tournament : RLMObject
 
-@property NSString * id;
+@property NSInteger id;
 @property RLMArray<Player *><Player> * players;
 @property BOOL hasGroupStage;
 @property RLMArray<Group*><Group> * groups;
