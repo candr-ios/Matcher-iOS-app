@@ -167,7 +167,7 @@
 
 - (void) updateStatistics {
     
-    if (self.weeks.count > self.currentWeek) {
+    if (self.weeks.count < self.currentWeek) {
         [self.realm beginWriteTransaction];
         
         self.isCompleted = true;

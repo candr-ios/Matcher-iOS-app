@@ -72,6 +72,7 @@
     for (Player * player in l.players) {
         StatisticsItem * item = [[StatisticsItem alloc] init];
         item.player = player;
+        item.id = [Utils uniqueId];
         
         [l.statistics.items addObject:item];
     }
