@@ -177,7 +177,7 @@
     
     League * league = [League new];
     league.id = [Utils uniqueId];
-    league.twoStages = false;
+    league.twoStages = true;
     competition.league = league;
     
     vc.competition = competition;

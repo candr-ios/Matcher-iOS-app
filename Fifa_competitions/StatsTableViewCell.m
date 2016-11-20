@@ -44,29 +44,29 @@
     for (int i = (int)statisticsItem.matches.count - 1; i >= 0 && count < 5 ;x++, i--,count++ ) {
         
         UIView * box = [UIView new];
-        box.frame = CGRectMake(0, x * 8, 6, 6);
+        box.frame = CGRectMake(0, x * 8 , 6, 6);
         
         Match * m = statisticsItem.matches[i];
         
-        
-        BOOL condition = false;
-        if( m.home.id == statisticsItem.player.id) {
-            condition = m.homeGoals > m.homeGoals;
-        } else {
-            condition = m.homeGoals < m.homeGoals;
-        }
-        
-        
-        
-        if (condition) {
-            box.backgroundColor = [UIColor colorWithRed:0.27 green:0.86 blue:0.37 alpha:1.00];
-        } else if (m.homeGoals == m.homeGoals) {
-            box.backgroundColor = [UIColor colorWithRed:1.00 green:0.16 blue:0.32 alpha:1.00];
+        if (m.homeGoals > m.awayGoals) {
+           
+            if ([m.home.id isEqualToString:statisticsItem.player.id]) {
+                box.backgroundColor = [UIColor colorWithRed:0.27 green:0.86 blue:0.37 alpha:1.00];
+            } else {
+                box.backgroundColor = [UIColor colorWithRed:1.00 green:0.16 blue:0.32 alpha:1.00];
+            }
+        } else if (m.homeGoals < m.awayGoals) {
+           
+            if ([m.away.id isEqualToString:statisticsItem.player.id]) {
+                box.backgroundColor = [UIColor colorWithRed:0.27 green:0.86 blue:0.37 alpha:1.00];
+            } else {
+                box.backgroundColor = [UIColor colorWithRed:1.00 green:0.16 blue:0.32 alpha:1.00];
+            }
         } else {
             box.backgroundColor = [UIColor colorWithRed:1.00 green:0.80 blue:0.00 alpha:1.00];
         }
         
-        
+
         [self.formStatsContrainer addSubview:box];
     }
     

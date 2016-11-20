@@ -42,6 +42,8 @@
                                                                                            [RLMSortDescriptor  sortDescriptorWithProperty:@"goalsFor" ascending:false]
                                                                                            ]
                   ];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

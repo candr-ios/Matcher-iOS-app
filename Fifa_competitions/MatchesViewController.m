@@ -74,7 +74,7 @@
 
 - (void) didTouchStatsButton {
     StatisticsTableViewController * statsVC = [[StatisticsTableViewController alloc] init];
-    
+    statsVC.competition = self.competition;
     
     [self.navigationController pushViewController:statsVC animated:true];
 }
@@ -98,6 +98,15 @@
     cell.match = match;
     cell.homeNameLabel.text = match.home.name;
     cell.awayNameLabel.text = match.away.name;
+    
+    if (match.played) {
+        cell.homeScoreTextField.text = [NSString stringWithFormat:@"%d", match.homeGoals];
+        cell.awayScoreTextField.text = [NSString stringWithFormat:@"%d", match.awayGoals];
+    } else {
+        cell.homeScoreTextField.text = @"";
+        cell.awayScoreTextField.text = @"";
+
+    }
     
     return cell;
 }
@@ -125,7 +134,7 @@
 - (BOOL) tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     Match * m = self.competition.league.weeks[indexPath.section].matches[indexPath.row];
     
-    return !m.played;
+    return !m.played && self.competition.league.currentWeek == indexPath.section + 1;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
