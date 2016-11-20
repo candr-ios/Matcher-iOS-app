@@ -40,7 +40,7 @@
 
 - (NSError *) nextStage
 {
-    self.currentStage.type = self.currentStage.type << 1;
+    self.currentStage.type = self.currentStage.type >> 1;
     return nil;
 }
 

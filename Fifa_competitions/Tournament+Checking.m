@@ -30,7 +30,8 @@
 - (KnockoutStage*) typeOfInitialRound
 {
     KnockoutStage *stage = [KnockoutStage new];
-    NSUInteger numberOfPlayers = [self.players count];
+    int numberOfPlayers = (int)[self.players count];
+    
     BOOL stageIsFound = NO;
     stage.type = Round16;
 
@@ -38,8 +39,7 @@
         if (numberOfPlayers == stage.type) {
             stageIsFound = YES;
         } else {
-            stage.type = stage.type << 1;
-            numberOfPlayers = numberOfPlayers/2;
+            stage.type = stage.type >> 1;
         }
     }
     return stage;

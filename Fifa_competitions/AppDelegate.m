@@ -44,7 +44,6 @@
 
     // create realm singelton
     RLMRealm *realm = [RLMRealm defaultRealm];
-
     
     RLMArray<Player *><Player> *players = @[player1, player2, player3, player4];
     
