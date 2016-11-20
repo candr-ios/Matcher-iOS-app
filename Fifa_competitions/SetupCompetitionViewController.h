@@ -7,7 +7,11 @@
 //
 
 #import "CreateCompetitionBaseViewController.h"
+#import "Competition.h"
+
 
 @interface SetupCompetitionViewController : CreateCompetitionBaseViewController
+
+@property Competition * competition;
 
 @end

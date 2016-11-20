@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Match.h"
 
 @interface MatchTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *homeLogoImageView;
@@ -18,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *homeNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *awayNameLabel;
 
+@property (nonatomic, strong) Match * match;
 
 @end

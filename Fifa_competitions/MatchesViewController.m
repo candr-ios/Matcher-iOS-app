@@ -10,6 +10,10 @@
 #import "MatchTableViewCell.h"
 #import "MatchesHeaderView.h"
 #import "StatisticsTableViewController.h"
+#import "League.h"
+#import "Match.h"
+#import "Competition.h"
+#import "Club.h"
 
 @interface MatchesViewController ()
 
@@ -27,6 +31,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear: animated];
+    
+    
     
      [[self navigationController] setNavigationBarHidden:NO animated:false];
 }
@@ -54,8 +60,11 @@
     
     [center addObserver:self selector:@selector(willShowKeyboard) name:UIKeyboardWillShowNotification object:nil];
     [center addObserver:self selector:@selector(didHideKeyboard) name:UIKeyboardDidHideNotification object:nil];
+    [center addObserver:self selector:@selector(updateStats) name:@"update_stats" object:nil];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Stats" style:UIBarButtonItemStylePlain target:self action:@selector(didTouchStatsButton)];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,23 +79,31 @@
     [self.navigationController pushViewController:statsVC animated:true];
 }
 
+- (void) updateStats {
+    [self.competition.league updateStatistics];
+}
+
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MatchTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.homeLogoImageView.image = [UIImage imageNamed:@"barca"];
-    cell.awayLogoImageView.image = [UIImage imageNamed:@"barca"];
+   
+    Match * match = self.competition.league.weeks[indexPath.section].matches[indexPath.row];
     
-    cell.homeNameLabel.text = @"Martin";
-    cell.awayNameLabel.text = @"Steven";
+    cell.homeLogoImageView.image = [UIImage imageNamed:match.home.club.logoImageName];
+    cell.awayLogoImageView.image = [UIImage imageNamed:match.away.club.logoImageName];
+    
+    cell.match = match;
+    cell.homeNameLabel.text = match.home.name;
+    cell.awayNameLabel.text = match.away.name;
     
     return cell;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return self.competition.league.weeks[0].matches.count;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -94,14 +111,21 @@
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return self.competition.league.weeks.count;
 }
 
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     MatchTableViewCell * matchCell = [self.tableView cellForRowAtIndexPath:self.selectedIndexPath];
     matchCell.homeScoreTextField.userInteractionEnabled = false;
     matchCell.awayScoreTextField.userInteractionEnabled = false;
-   
+    matchCell.homeScoreTextField.text = @"";
+    matchCell.awayScoreTextField.text = @"";
+}
+
+- (BOOL) tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    Match * m = self.competition.league.weeks[indexPath.section].matches[indexPath.row];
+    
+    return !m.played;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

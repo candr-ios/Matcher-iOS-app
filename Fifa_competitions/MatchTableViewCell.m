@@ -84,8 +84,32 @@
 
 - (void) doneClicked: (UIBarButtonItem *) sender {
     //TODO
+    
     [_awayScoreTextField resignFirstResponder];
     _awayScoreTextField.userInteractionEnabled = false;
+    _homeScoreTextField.userInteractionEnabled = false;
+    
+    if (self.homeScoreTextField.text.length == 0 || self.awayScoreTextField.text.length == 0) {
+        _homeScoreTextField.text = @"";
+        _awayScoreTextField.text = @"";
+        return;
+    }
+    
+     [self.match.realm beginWriteTransaction];
+    
+    self.match.homeGoals = _homeScoreTextField.text.intValue;
+    self.match.awayGoals = _awayScoreTextField.text.intValue;
+    self.match.played = true;
+    
+   // [self.match.realm addOrUpdateObject:self.match];
+    
+    [self.match.realm commitWriteTransaction];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"update_stats" object:nil];
+    //TODO: notify object to update statistics
+    
+    
+    
     
 }
 

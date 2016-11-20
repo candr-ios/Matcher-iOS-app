@@ -9,8 +9,13 @@
 #import "StatisticsTableViewController.h"
 #import "StatsHeaderView.h"
 #import "StatsTableViewCell.h"
+#import "Statistics.h"
+#import "StatisticsItem.h"
+#import "League.h"
 
 @interface StatisticsTableViewController ()
+
+@property (nonatomic, strong) RLMResults<StatisticsItem *> * items;
 
 @end
 
@@ -31,6 +36,12 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"StatsHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"header"];
     [self.tableView registerNib:[UINib nibWithNibName:@"StatsTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    
+    self.items = [self.competition.league.statistics.items sortedResultsUsingDescriptors:@[
+                                                                                           [RLMSortDescriptor  sortDescriptorWithProperty:@"score" ascending:false],
+                                                                                           [RLMSortDescriptor  sortDescriptorWithProperty:@"goalsFor" ascending:false]
+                                                                                           ]
+                  ];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,7 +56,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.items.count;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,7 +71,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StatsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.statisticsItem = @"REPLACE THIS!!";
+    cell.statisticsItem = [self.items objectAtIndex:indexPath.row];
+    cell.positionLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
     
     return cell;
 }

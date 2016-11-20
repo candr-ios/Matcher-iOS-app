@@ -11,10 +11,15 @@
 @class League;
 @class Tournament;
 
+typedef enum : int {
+    CompetitionTypeLeague,
+    CompetitionTypeTournament
+} CompetitionType;
+
 @interface Competition : RLMObject
 
 @property NSString * id;
-@property int  type;
+@property CompetitionType  type;
 @property NSString * title;
 @property NSDate * dateCreated;
 @property Player * winner;

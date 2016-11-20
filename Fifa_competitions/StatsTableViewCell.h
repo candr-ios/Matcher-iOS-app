@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StatisticsItem.h"
 
 @interface StatsTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) NSString * statisticsItem; //TODO: replace with real statistics item object
+@property (nonatomic, strong) StatisticsItem * statisticsItem; 
 
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;

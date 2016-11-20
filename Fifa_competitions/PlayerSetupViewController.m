@@ -10,7 +10,11 @@
 #import "UnderlineTextField.h"
 #import "PlayerSetupViewController.h"
 #import "ClubCollectionViewCell.h"
-
+#import "Competition.h"
+#import "Player.h"
+#import "Club.h"
+#import "Utils.h"
+#import "League.h"
 
 @interface PlayerSetupViewController () <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -18,6 +22,7 @@
 @property (nonatomic, strong) UnderlineTextField * playerNameTextField;
 @property (nonatomic, strong) UICollectionView * clubsCollectionView;
 @property (nonatomic, strong) NSIndexPath * selectedIndexPath;
+@property (nonatomic, strong) RLMResults<Club *> * clubs;
 
 @end
 
@@ -31,12 +36,25 @@
         _count = 1;
     }
     
+    
+    
     self.title = [NSString stringWithFormat:@"Player #%ld", self.count];
     
     [super viewDidLoad];
     [self setupViews];
     
+    self.clubs = [Club allObjects];
+    
     [self.nextButton addTarget:self action:@selector(didTapNext:) forControlEvents:UIControlEventTouchUpInside];
+    self.nextButton.hidden = true;
+}
+
+- (void) willResignFirstResponder {
+    if (self.playerNameTextField.text.length > 2) {
+        self.nextButton.hidden = false;
+    } else {
+        self.nextButton.hidden = true;
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -61,7 +79,7 @@
     _playerNameTextField.returnKeyType = UIReturnKeyDone;
     _playerNameTextField.textColor = [UIColor whiteColor];
     _playerNameTextField.font = [UIFont systemFontOfSize:19];
-    _playerNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Noob" attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
+    _playerNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Player" attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
     
     _clubsCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[UICollectionViewFlowLayout new]];
     _clubsCollectionView.delegate = self;
@@ -80,7 +98,7 @@
     
     
     UICollectionViewFlowLayout * layout = _clubsCollectionView.collectionViewLayout;
-    layout.sectionInset = UIEdgeInsetsMake(0, 70, 0, 70);
+    layout.sectionInset = UIEdgeInsetsMake(0, (self.view.frame.size.width - 180) / 2, 0,  (self.view.frame.size.width - 180) / 2);
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
     [self.view addSubview:_playerNameLabel];
@@ -104,6 +122,9 @@
     [self selectItemAtCenter];
 }
 
+- (void) willPopViewController {
+    [self.competition.league.players removeLastObject];
+}
 
 - (void) selectItemAtCenter {
     
@@ -139,7 +160,14 @@
 
 - (void) didTapNext: (UIButton *) sender {
     
-    if (_count == 2) {
+    Player * newPlayer = [Player new];
+    newPlayer.id = [Utils uniqueId];
+    newPlayer.name = self.playerNameTextField.text;
+    newPlayer.club = [self.clubs objectAtIndex:self.selectedIndexPath.item];
+    newPlayer.index = (int)self.count;
+    [self.competition.league.players addObject:newPlayer];
+    
+    if (_count == self.numberOfPlayers) {
         
         UIView * rect = [[UIView alloc] init];
         rect.backgroundColor = [UIColor whiteColor];
@@ -163,7 +191,7 @@
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"X" object:nil userInfo:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"PresentCompetition" object:nil userInfo:@{@"competition": self.competition}];
         });
         
         
@@ -172,12 +200,16 @@
     
     PlayerSetupViewController * vc = [PlayerSetupViewController new];
     vc.count = _count + 1;
+    vc.numberOfPlayers = self.numberOfPlayers;
+    vc.competition = self.competition;
     
+   
     
     [self.navigationController pushViewController:vc animated:true];
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [self willResignFirstResponder];
     [textField resignFirstResponder];
     return true;
 }
@@ -185,14 +217,15 @@
 //MARK: Collection delegate and data source
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.clubs.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ClubCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"club_cell" forIndexPath:indexPath];
+    Club * club = [self.clubs objectAtIndex:indexPath.item];
     
-    cell.logoImageView.image = [UIImage imageNamed:@"barca"];
-    cell.clubTitleLabel.text = @"Barcelona";
+    cell.logoImageView.image = [UIImage imageNamed:club.logoImageName];
+    cell.clubTitleLabel.text = club.title;
     
     return cell;
 }

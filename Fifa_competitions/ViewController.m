@@ -44,71 +44,71 @@
     // Fetch all competitions
     self.competitions = [[Competition allObjects] sortedResultsUsingProperty:@"dateCreated" ascending:true];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveXNotification:) name:@"X" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivePresentCompetitionNotification:) name:@"PresentCompetition" object:nil];
     
     {
-//    
-//    
-//    
-//    NSLog(@"%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
-//    
-//    RLMRealm * realm = [RLMRealm defaultRealm];
-//    
-//    
-//    League * l = [League new];
-//    l.id = [Utils uniqueId];
-//    l.twoStages = true;
-//    
-//    l.statistics = [Statistics new];
-//    
-//    [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Stephan", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Clark", @"id": [Utils uniqueId]}],
-//                            [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}]
-////                            [[Player alloc] initWithValue: @{@"name": @"Poul", @"id": [Utils uniqueId]}],
-////                            [[Player alloc] initWithValue: @{@"name": @"Mark", @"id": [Utils uniqueId]}],
-////                            [[Player alloc] initWithValue: @{@"name": @"John", @"id": [Utils uniqueId]}]
-////                            [[Player alloc] initWithValue: @{@"name": @"Michael 2", @"id": [Utils uniqueId]}],
-////                            [[Player alloc] initWithValue: @{@"name": @"Andy 3", @"id": [Utils uniqueId]}],
-////                            [[Player alloc] initWithValue: @{@"name": @"Steven 3", @"id": [Utils uniqueId]}],
-////                            [[Player alloc] initWithValue: @{@"name": @"Clark 3", @"id": [Utils uniqueId]}],
-////                            [[Player alloc] initWithValue: @{@"name": @"Michael 3", @"id": [Utils uniqueId]}]
-//                            ]];
-//    
-//    for (Player * player in l.players) {
-//        StatisticsItem * item = [[StatisticsItem alloc] init];
-//        item.player = player;
-//        item.id = [Utils uniqueId];
-//        
-//        [l.statistics.items addObject:item];
-//    }
-//    
-//    [l generateMatches];
-//    
-//    NSLog(@"%@",l);
-//    
-//    [realm beginWriteTransaction];
-//    
-//    [realm addOrUpdateObject:l];
-//    
-//    [realm commitWriteTransaction];
-//    
-//    for (int i = 0; i < l.weeks.count ; i++) {
-//        for (Match * match in l.weeks[l.currentWeek - 1].matches) {
-//            [realm beginWriteTransaction];
-//            match.played = true;
-//            int lowerBound = 0;
-//            int upperBound = 5;
-//            match.homeGoals = lowerBound + arc4random() % (upperBound - lowerBound);
-//            match.awayGoals = lowerBound + arc4random() % (upperBound - lowerBound);
-//            
-//            [realm commitWriteTransaction];
-//        }
-//        
-//        [l updateStatistics];
-//    }
+        
+        
+        
+        NSLog(@"%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
+        //
+        //    RLMRealm * realm = [RLMRealm defaultRealm];
+        //
+        //
+        //    League * l = [League new];
+        //    l.id = [Utils uniqueId];
+        //    l.twoStages = true;
+        //
+        //    l.statistics = [Statistics new];
+        //
+        //    [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy", @"id": [Utils uniqueId]}],
+        //                            [[Player alloc] initWithValue: @{@"name": @"Stephan", @"id": [Utils uniqueId]}],
+        //                            [[Player alloc] initWithValue: @{@"name": @"Clark", @"id": [Utils uniqueId]}],
+        //                            [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}]
+        ////                            [[Player alloc] initWithValue: @{@"name": @"Poul", @"id": [Utils uniqueId]}],
+        ////                            [[Player alloc] initWithValue: @{@"name": @"Mark", @"id": [Utils uniqueId]}],
+        ////                            [[Player alloc] initWithValue: @{@"name": @"John", @"id": [Utils uniqueId]}]
+        ////                            [[Player alloc] initWithValue: @{@"name": @"Michael 2", @"id": [Utils uniqueId]}],
+        ////                            [[Player alloc] initWithValue: @{@"name": @"Andy 3", @"id": [Utils uniqueId]}],
+        ////                            [[Player alloc] initWithValue: @{@"name": @"Steven 3", @"id": [Utils uniqueId]}],
+        ////                            [[Player alloc] initWithValue: @{@"name": @"Clark 3", @"id": [Utils uniqueId]}],
+        ////                            [[Player alloc] initWithValue: @{@"name": @"Michael 3", @"id": [Utils uniqueId]}]
+        //                            ]];
+        //
+        //    for (Player * player in l.players) {
+        //        StatisticsItem * item = [[StatisticsItem alloc] init];
+        //        item.player = player;
+        //        item.id = [Utils uniqueId];
+        //
+        //        [l.statistics.items addObject:item];
+        //    }
+        //
+        //    [l generateMatches];
+        //
+        //    NSLog(@"%@",l);
+        //
+        //    [realm beginWriteTransaction];
+        //
+        //    [realm addOrUpdateObject:l];
+        //
+        //    [realm commitWriteTransaction];
+        //
+        //    for (int i = 0; i < l.weeks.count ; i++) {
+        //        for (Match * match in l.weeks[l.currentWeek - 1].matches) {
+        //            [realm beginWriteTransaction];
+        //            match.played = true;
+        //            int lowerBound = 0;
+        //            int upperBound = 5;
+        //            match.homeGoals = lowerBound + arc4random() % (upperBound - lowerBound);
+        //            match.awayGoals = lowerBound + arc4random() % (upperBound - lowerBound);
+        //
+        //            [realm commitWriteTransaction];
+        //        }
+        //
+        //        [l updateStatistics];
+        //    }
     }
-
+    
 }
 
 
@@ -164,16 +164,23 @@
 }
 
 - (void) didTapAddButton: (UIBarButtonItem *) sender {
-    //    if (self.messageLabel.superview) {
-    //        [self hideMessage];
-    //    } else {
-    //        [self showMessage];
-    //    }
+    
     
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     
     SetupCompetitionViewController * vc = [[SetupCompetitionViewController alloc] init];
     vc.title = @"League";
+    Competition * competition = [Competition new];
+    competition.id = [Utils uniqueId];
+    competition.dateCreated = [NSDate date];
+    competition.type = CompetitionTypeLeague;
+    
+    League * league = [League new];
+    league.id = [Utils uniqueId];
+    league.twoStages = false;
+    competition.league = league;
+    
+    vc.competition = competition;
     
     [[self navigationController] pushViewController:vc animated:true];
     
@@ -192,11 +199,42 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) receiveXNotification: (NSNotification *) note {
+- (void) receivePresentCompetitionNotification: (NSNotification *) note {
+    
+    
+    
+    Competition * competition = (Competition *)note.userInfo[@"competition"];
+    
+    
+    League *  l = competition.league;
+    
+    l.statistics = [Statistics new];
+    for (Player * player in l.players) {
+        StatisticsItem * item = [[StatisticsItem alloc] init];
+        item.player = player;
+        item.id = [Utils uniqueId];
+        
+        [l.statistics.items addObject:item];
+    }
+    
+    [l generateMatches];
+    
+    NSLog(@"%@",l);
+    
+    RLMRealm * realm = [RLMRealm defaultRealm];
+
+    
+    [realm beginWriteTransaction];
+    
+    [realm addOrUpdateObject:competition];
+    
+    [realm commitWriteTransaction];
+    
+    MatchesViewController * matchesVC = [[MatchesViewController alloc] init];
+    matchesVC.competition = competition;
     
     [self.navigationController popToRootViewControllerAnimated:false];
-    
-    [self.navigationController pushViewController:[[MatchesViewController alloc] init] animated:false];
+    [self.navigationController pushViewController:matchesVC animated:false];
     
     
 }
@@ -206,7 +244,7 @@
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %ld", self.competitions[indexPath.row] , (long)indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", self.competitions[indexPath.row].title];
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
     
@@ -222,7 +260,11 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //TODO
+    MatchesViewController * matchesVC = [[MatchesViewController alloc] init];
+    matchesVC.competition = self.competitions[indexPath.row];
+    
+    [self.navigationController pushViewController:matchesVC animated:true];
+
 }
 
 

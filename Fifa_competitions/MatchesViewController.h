@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Competition;
 
 @interface MatchesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) Competition * competition;
 
 @end

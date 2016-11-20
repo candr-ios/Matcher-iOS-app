@@ -13,4 +13,7 @@
 @property (nonatomic, strong) UIButton * nextButton;
 @property (nonatomic, strong) UILabel * subTitleLabel;
 
+- (void) willResignFirstResponder;
+- (void) willPopViewController;
+
 @end

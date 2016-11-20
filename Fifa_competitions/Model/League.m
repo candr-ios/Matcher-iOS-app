@@ -97,7 +97,7 @@
         }
         
         Match * firstMatch = [tmpWeek.matches firstObject];
-        tmpWeek.matches[0] = [firstMatch swap];
+        [tmpWeek.matches replaceObjectAtIndex:0 withObject:[firstMatch swap]];
         
         runningWeek = tmpWeek;
         [weeks addObject:tmpWeek];
@@ -155,8 +155,8 @@
         Match * m = [Match new];
         m.id = [Utils uniqueId];
         
-        m.home = top[i];
-        m.away = bottom[i];
+        m.home = bottom[i];
+        m.away = top[i];
         
         [week.matches addObject:m];
         

@@ -101,13 +101,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) willResignFirstResponder {
+    
+}
+
+- (void) willPopViewController {
+    
+}
+
 - (void) didTapBackButton: (UIButton *) sender {
+    [self willPopViewController];
     [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void) didTapView:(UITapGestureRecognizer *) tap {
     for (UIView * view in self.view.subviews) {
         if (view.isFirstResponder) {
+            [self willResignFirstResponder];
             [view resignFirstResponder];
         }
     }

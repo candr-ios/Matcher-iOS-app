@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Competition.h"
 
 @interface StatisticsTableViewController : UITableViewController
+
+@property (nonatomic, strong) Competition * competition;
 
 @end

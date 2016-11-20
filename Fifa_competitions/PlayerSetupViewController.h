@@ -7,9 +7,12 @@
 //
 
 #import "CreateCompetitionBaseViewController.h"
+@class Competition;
 
 @interface PlayerSetupViewController : CreateCompetitionBaseViewController
 
+@property (nonatomic, strong) Competition * competition;
 @property (assign) NSInteger count;
+@property (assign) NSUInteger numberOfPlayers;
 
 @end

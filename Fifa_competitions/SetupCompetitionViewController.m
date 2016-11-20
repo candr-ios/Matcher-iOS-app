@@ -9,6 +9,7 @@
 #import "SetupCompetitionViewController.h"
 #import "UnderlineTextField.h"
 #import "PlayerSetupViewController.h"
+#import "League.h"
 
 @interface SetupCompetitionViewController () <UITextFieldDelegate>
 
@@ -24,7 +25,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    if (self.competition.league.twoStages) {
+        self.subTitleLabel.text = @"two stages";
+    } else {
+       self.subTitleLabel.text = @"one stage";
+    }
+    
     [self setupViews];
+    
+    self.nextButton.hidden = true;
     
     [self.nextButton addTarget:self action:@selector(didTapNext:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -53,7 +62,7 @@
     
     _competitionTitle.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Enter Title" attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
     
-    _numberOfPlayers.text = @"8";
+    _numberOfPlayers.text = @"4";
     
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
     [keyboardDoneButtonView sizeToFit];
@@ -78,7 +87,21 @@
     
 }
 
+- (void) willResignFirstResponder {
+    if (self.competitionTitle.isFirstResponder) {
+        self.competition.title = self.competitionTitle.text;
+    }
+
+    int count = self.numberOfPlayers.text.intValue;
+    if (self.competition.title.length > 3 && count > 1 && count < 65) {
+        self.nextButton.hidden = false;
+    } else {
+        self.nextButton.hidden = true;
+    }
+}
+
 - (void) doneClicked: (UIBarButtonItem *) sender {
+    [self willResignFirstResponder];
     [_numberOfPlayers resignFirstResponder];
 }
 - (void)didReceiveMemoryWarning {
@@ -87,6 +110,7 @@
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [self willResignFirstResponder];
     [textField resignFirstResponder];
     return  true;
 }
@@ -94,7 +118,8 @@
 - (void) didTapNext: (UIButton *) sender {
     PlayerSetupViewController * vc = [PlayerSetupViewController new];
     vc.count = 1;
-    
+    vc.numberOfPlayers = self.numberOfPlayers.text.intValue;
+    vc.competition = self.competition;
     [self.navigationController pushViewController:vc animated:true];
 }
 
