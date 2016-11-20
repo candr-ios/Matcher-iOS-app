@@ -121,6 +121,7 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [self.tableView reloadData];
     
     if (self.competitions.count == 0) {
         [self showMessage];
