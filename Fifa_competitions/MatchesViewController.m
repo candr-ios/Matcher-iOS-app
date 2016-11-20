@@ -127,8 +127,12 @@
     MatchTableViewCell * matchCell = [self.tableView cellForRowAtIndexPath:self.selectedIndexPath];
     matchCell.homeScoreTextField.userInteractionEnabled = false;
     matchCell.awayScoreTextField.userInteractionEnabled = false;
-    matchCell.homeScoreTextField.text = @"";
-    matchCell.awayScoreTextField.text = @"";
+    
+    if (!matchCell.match.played) {
+        matchCell.homeScoreTextField.text = @"";
+        matchCell.awayScoreTextField.text = @"";
+    }
+    
 }
 
 - (BOOL) tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
