@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 @import Realm;
 #import "Club.h"
+#import "Player.h"
+#import "Tournament.h"
 
 @interface AppDelegate ()
 
@@ -26,8 +28,41 @@
     
     [[UITextField appearance] setTintColor:[UIColor whiteColor]];
     [self configureNavBarAppearance];
+    [self testTournament];
     return YES;
 }
+
+- (void) testTournament
+{
+    
+    
+    Player *player1 = [[Player alloc] initWithValue:@{@"id":@"testPlayer1", @"name": @"Stepan"}];
+    Player *player2 = [[Player alloc] initWithValue:@{@"id":@"testPlayer2", @"name": @"Andy"}];
+    Player *player3 = [[Player alloc] initWithValue:@{@"id":@"testPlayer3" ,@"name": @"Tom"}];
+    Player *player4 = [[Player alloc] initWithValue:@{@"id":@"testPlayer4", @"name": @"Sara"}];
+    // Player *palyerWhereOneOfHisAttributeisClub =
+
+    // create realm singelton
+    RLMRealm *realm = [RLMRealm defaultRealm];
+
+    
+    RLMArray<Player *><Player> *players = @[player1, player2, player3, player4];
+    
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObjectsFromArray:players];
+    [realm commitWriteTransaction];
+    
+    Tournament *someTournament = [[Tournament alloc] initWithPlayers:players];
+    someTournament.isCompleted = NO;
+    [someTournament genereteInitialKnockoutStage];
+    
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:someTournament];
+    [realm commitWriteTransaction];
+    
+    
+}
+
 
 - (void) setupClubsIfNeeded {
     NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];

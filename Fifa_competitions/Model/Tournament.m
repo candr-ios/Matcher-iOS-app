@@ -33,11 +33,15 @@
 
 - (NSError *) genereteInitialKnockoutStage
 {
-    NSError *error = nil;
+    self.currentStage = [self typeOfInitialRound];
+    return nil;
     
-    
-    
-    return error;
+}
+
+- (NSError *) nextStage
+{
+    self.currentStage.type = self.currentStage.type << 1;
+    return nil;
 }
 
 

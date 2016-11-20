@@ -27,21 +27,22 @@
 
 /// return StageType of tournament(1/16, 1/8, 1/4, 1/2, final) based on enum KnockoutStageType
 /// using shifted bytes
-- (KnockoutStageType) typeOfInitialRound
+- (KnockoutStage*) typeOfInitialRound
 {
+    KnockoutStage *stage = [KnockoutStage new];
     NSUInteger numberOfPlayers = [self.players count];
     BOOL stageIsFound = NO;
-    KnockoutStageType stageType = Round16;
+    stage.type = Round16;
 
     while (!stageIsFound) {
-        if (numberOfPlayers == stageType) {
+        if (numberOfPlayers == stage.type) {
             stageIsFound = YES;
         } else {
-            stageType = stageType << 1;
+            stage.type = stage.type << 1;
             numberOfPlayers = numberOfPlayers/2;
         }
     }
-    return stageType;
+    return stage;
 }
 
 @end

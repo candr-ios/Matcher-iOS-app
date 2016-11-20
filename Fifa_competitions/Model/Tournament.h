@@ -14,7 +14,7 @@
 @interface Tournament : RLMObject
 
 
-@property KnockoutStageType currentStage;
+@property KnockoutStage *currentStage;
 @property BOOL isInitialized;
 @property NSString * id;
 @property RLMArray<Player *><Player> * players;
@@ -23,6 +23,8 @@
 @property BOOL isGroupStageCompleted;
 @property RLMArray<KnockoutStage*><KnockoutStage> * knockoutStages;
 @property BOOL isCompleted;
+
+- (instancetype)initWithPlayers:(RLMArray<Player*><Player>*)players;
 
 - (NSError *) generateGroups;
 - (NSError *) genereteInitialKnockoutStage;
