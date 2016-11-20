@@ -7,6 +7,7 @@
 //
 
 #import "Tournament.h"
+#import "Tournament+Checking.h"
 
 @implementation Tournament
 
@@ -17,5 +18,27 @@
 + (NSString *)primaryKey {
     return @"id";
 }
+
+- (instancetype)initWithPlayers:(RLMArray<Player*><Player>*)players
+{
+    self = [super init];
+    if (self) {
+        self.players = players;
+        if ([self validNumberOfPlayers]) {
+            [self.players count] <= 16 ? [self genereteInitialKnockoutStage] : [self generateGroups];
+        }
+    }
+    return self;
+}
+
+- (NSError *) genereteInitialKnockoutStage
+{
+    NSError *error = nil;
+    
+    
+    
+    return error;
+}
+
 
 @end

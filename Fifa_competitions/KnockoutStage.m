@@ -15,7 +15,8 @@
 }
 
 + (NSDictionary *) defaultPropertyValues {
-    return  @{@"type": @(FirstRound)};
+    return  @{@"type": @(Round16)};
 }
+
 
 @end

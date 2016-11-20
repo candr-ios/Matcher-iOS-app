@@ -9,13 +9,13 @@
 #import <Realm/Realm.h>
 #import "Match.h"
 
+
 typedef enum : int {
-    FirstRound,
-    Round16,
-    Quarterfinal,
-    Semifinal,
-    Final,
-    ThirdPlace
+    Round16 = 16,
+    Round8 = 8,
+    Round4 = 4,
+    Round2 = 2,
+    RoundForThirdPlace = 1,
 } KnockoutStageType;
 
 @interface KnockoutStage : RLMObject

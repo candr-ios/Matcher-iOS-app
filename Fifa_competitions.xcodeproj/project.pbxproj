@@ -45,6 +45,7 @@
 		4AD5ADCB1DDF9DF800913B54 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCA1DDF9DF800913B54 /* Group.m */; };
 		4AD5ADCE1DDFA0C900913B54 /* KnockoutStage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */; };
 		4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADD01DDFB5EB00913B54 /* Utils.m */; };
+		786A3B8C1DE1F0BB006FC8FB /* Tournament+Checking.m in Sources */ = {isa = PBXBuildFile; fileRef = 786A3B8B1DE1F0BB006FC8FB /* Tournament+Checking.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,8 @@
 		4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnockoutStage.m; sourceTree = "<group>"; };
 		4AD5ADCF1DDFB5EB00913B54 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		4AD5ADD01DDFB5EB00913B54 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		786A3B8A1DE1F0BB006FC8FB /* Tournament+Checking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tournament+Checking.h"; sourceTree = "<group>"; };
+		786A3B8B1DE1F0BB006FC8FB /* Tournament+Checking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tournament+Checking.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +181,8 @@
 				4AD5ADCA1DDF9DF800913B54 /* Group.m */,
 				4AD5ADC61DDF9C7500913B54 /* Tournament.h */,
 				4AD5ADC71DDF9C7500913B54 /* Tournament.m */,
+				786A3B8A1DE1F0BB006FC8FB /* Tournament+Checking.h */,
+				786A3B8B1DE1F0BB006FC8FB /* Tournament+Checking.m */,
 				4AD5ADCC1DDFA0C900913B54 /* KnockoutStage.h */,
 				4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */,
 				4AD5ADBD1DDF942800913B54 /* Statistics.h */,
@@ -413,6 +418,7 @@
 				4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */,
 				4A2B59671DD62FD80032D53D /* PlayerSetupViewController.m in Sources */,
 				4AD5ADC81DDF9C7500913B54 /* Tournament.m in Sources */,
+				786A3B8C1DE1F0BB006FC8FB /* Tournament+Checking.m in Sources */,
 				4A2716371DDB1CAC00A48BDD /* StatsHeaderView.m in Sources */,
 				4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */,
 				4AD5ADBF1DDF942800913B54 /* Statistics.m in Sources */,
