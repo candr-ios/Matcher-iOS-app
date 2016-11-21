@@ -12,14 +12,14 @@
 @implementation Tournament
 
 + (NSDictionary *) defaultPropertyValues {
-    return @{@"isGroupStageCompleted": @(false),@"isCompleted": @(false), @"isInitialized":@(false), @"currentStage": @(-1)};
+    return @{@"isGroupStageCompleted": @(false),@"isCompleted": @(false), @"isInitialized":@(false)};
 }
 
 + (NSString *)primaryKey {
     return @"id";
 }
 
-- (instancetype)initWithPlayers:(RLMArray<Player*><Player>*)players
+- (instancetype)initWithPlayers:(RLMArray<Player *><Player> *)players
 {
     self = [super init];
     if (self) {
@@ -33,16 +33,17 @@
 
 - (NSError *) genereteInitialKnockoutStage
 {
-    self.currentStage = [self typeOfInitialRound];
+    self.currentStage = [[KnockoutStage alloc] initWithValue:@{@"id":@1}];
+    self.currentStage.type = [self typeOfInitialRound];
     return nil;
-    
 }
-
 - (NSError *) nextStage
 {
     self.currentStage.type = self.currentStage.type >> 1;
     return nil;
 }
+
+
 
 
 @end

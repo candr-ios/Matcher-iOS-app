@@ -27,22 +27,21 @@
 
 /// return StageType of tournament(1/16, 1/8, 1/4, 1/2, final) based on enum KnockoutStageType
 /// using shifted bytes
-- (KnockoutStage*) typeOfInitialRound
+- (KnockoutStageType) typeOfInitialRound
 {
-    KnockoutStage *stage = [KnockoutStage new];
     int numberOfPlayers = (int)[self.players count];
     
     BOOL stageIsFound = NO;
-    stage.type = Round16;
+    KnockoutStageType stageType = Round16;
 
     while (!stageIsFound) {
-        if (numberOfPlayers == stage.type) {
+        if (numberOfPlayers == stageType) {
             stageIsFound = YES;
         } else {
-            stage.type = stage.type >> 1;
+            stageType = stageType << 1;
         }
     }
-    return stage;
+    return stageType;
 }
 
 @end

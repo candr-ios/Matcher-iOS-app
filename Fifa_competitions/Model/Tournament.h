@@ -24,7 +24,7 @@
 @property RLMArray<KnockoutStage*><KnockoutStage> * knockoutStages;
 @property BOOL isCompleted;
 
-- (instancetype)initWithPlayers:(RLMArray<Player*><Player>*)players;
+- (instancetype)initWithPlayers:(RLMArray<Player *><Player> *)players;
 
 - (NSError *) generateGroups;
 - (NSError *) genereteInitialKnockoutStage;

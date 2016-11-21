@@ -8,14 +8,15 @@
 
 #import <Realm/Realm.h>
 #import "Match.h"
+#import "Player.h"
 
 
 typedef enum : int {
     Round16 = 16,
-    Round8 = 8,
-    Round4 = 4,
-    Round2 = 2,
-    RoundForThirdPlace = 1,
+    QuaterFinal = 8,
+    SemiFinal = 4,
+    Final = 2,
+    ThirdPlace = 1,
 } KnockoutStageType;
 
 @interface KnockoutStage : RLMObject
@@ -23,8 +24,11 @@ typedef enum : int {
 @property NSString * id;
 @property KnockoutStageType  type;
 @property RLMArray<Match *><Match> * matches;
+@property RLMArray<Player *><Player> *players;
 
+- (instancetype)initWithStageType:(KnockoutStageType)stageType andPlayers:(RLMArray<Player *><Player>*)players;
+
+- (NSError*) generateMathesForCurrenrStage;
 @end
-
 
 RLM_ARRAY_TYPE(KnockoutStage)

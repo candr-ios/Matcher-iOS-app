@@ -11,6 +11,6 @@
 @interface Tournament (Checking)
 
 - (BOOL) validNumberOfPlayers;
-- (KnockoutStage*) typeOfInitialRound;
+- (KnockoutStageType) typeOfInitialRound;
 
 @end
