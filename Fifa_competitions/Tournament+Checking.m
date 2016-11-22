@@ -27,21 +27,25 @@
 
 /// return StageType of tournament(1/16, 1/8, 1/4, 1/2, final) based on enum KnockoutStageType
 /// using shifted bytes
-- (KnockoutStageType) typeOfInitialRound
+- (void) typeOfInitialRound
 {
+    RLMRealm *realm = [RLMRealm defaultRealm];
     int numberOfPlayers = (int)[self.players count];
     
     BOOL stageIsFound = NO;
-    KnockoutStageType stageType = Round16;
 
     while (!stageIsFound) {
-        if (numberOfPlayers == stageType) {
+        if (numberOfPlayers == self.currentStage.type) {
             stageIsFound = YES;
         } else {
-            stageType = stageType << 1;
+            [realm beginWriteTransaction];
+            self.currentStage.type = self.currentStage.type >> 1;
+            [realm commitWriteTransaction];
+            
+
         }
     }
-    return stageType;
+
 }
 
 @end

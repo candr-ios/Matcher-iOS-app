@@ -26,9 +26,9 @@ typedef enum : int {
 @property RLMArray<Match *><Match> * matches;
 @property RLMArray<Player *><Player> *players;
 
-- (instancetype)initWithStageType:(KnockoutStageType)stageType andPlayers:(RLMArray<Player *><Player>*)players;
-
 - (NSError*) generateMathesForCurrenrStage;
+
+
 @end
 
 RLM_ARRAY_TYPE(KnockoutStage)

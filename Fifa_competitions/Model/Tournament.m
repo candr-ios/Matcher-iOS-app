@@ -24,6 +24,11 @@
     self = [super init];
     if (self) {
         self.players = players;
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm addOrUpdateObjectsFromArray:players];
+        [realm commitWriteTransaction];
+        
         if ([self validNumberOfPlayers]) {
             [self.players count] <= 16 ? [self genereteInitialKnockoutStage] : [self generateGroups];
         }
@@ -33,10 +38,24 @@
 
 - (NSError *) genereteInitialKnockoutStage
 {
-    self.currentStage = [[KnockoutStage alloc] initWithValue:@{@"id":@1}];
-    self.currentStage.type = [self typeOfInitialRound];
+    self.currentStage = [[KnockoutStage alloc] init];
+    self.currentStage.players = self.players;
+
+    [self typeOfInitialRound];
+    [self.currentStage generateMathesForCurrenrStage];
+    
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:self.currentStage];
+    [realm commitWriteTransaction];
+    
+    
     return nil;
 }
+
 - (NSError *) nextStage
 {
     self.currentStage.type = self.currentStage.type >> 1;

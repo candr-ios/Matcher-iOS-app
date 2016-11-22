@@ -34,30 +34,23 @@
     return YES;
 }
 
-- (void) testTournament
-{
-    
+
+-(void) testTournament {
     
     Player *player1 = [[Player alloc] initWithValue:@{@"id":@"testPlayer1", @"name": @"Stepan"}];
     Player *player2 = [[Player alloc] initWithValue:@{@"id":@"testPlayer2", @"name": @"Andy"}];
-    Player *player3 = [[Player alloc] initWithValue:@{@"id":@"testPlayer3", @"name": @"Tom"}];
+    Player *player3 = [[Player alloc] initWithValue:@{@"id":@"testPlayer3" ,@"name": @"Tom"}];
     Player *player4 = [[Player alloc] initWithValue:@{@"id":@"testPlayer4", @"name": @"Sara"}];
     
+    Tournament *tournament = [[Tournament alloc] initWithPlayers:@[player1,player2,player3,player4]];
+    
     RLMRealm *realm = [RLMRealm defaultRealm];
-    
-    
-    [realm beginWriteTransaction];
-    [realm addOrUpdateObjectsFromArray:@[player1,player2,player3,player4]];
-    [realm commitWriteTransaction];
-
-    Tournament *tournament = [[Tournament alloc] initWithValue:@{@"id":@"testTournament", @"players": @[player1,player2,player3,player4]}];
-    
     [realm beginWriteTransaction];
     [realm addOrUpdateObject:tournament];
     [realm commitWriteTransaction];
     
-}
 
+}
 
 - (void) setupClubsIfNeeded {
     NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];

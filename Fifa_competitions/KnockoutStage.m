@@ -18,25 +18,23 @@
     return  @{@"type": @(Round16)};
 }
 
-- (instancetype)initWithStageType:(KnockoutStageType)stageType andPlayers:(RLMArray<Player *><Player>*)players
-{
-    self = [super init];
-    if (self) {
-        self.type = stageType;
-        self.players = players;
-    }
-    return self;
-}
-
-- (NSError*) generateMathesForCurrenrStage;
+- (NSError*) generateMathesForCurrenrStage
 {
     NSMutableArray *matches = [NSMutableArray array];
     for (int i = 0; i < [self.players count]; i++) {
-        Match *match = [[Match alloc] init];
-        match.home = self.players[i];
-        match.away = self.players[i-1];
-        [matches addObject:match];
+        if (i%2 == 1) {
+            Match *match = [[Match alloc] init];
+            match.home = self.players[i-1];
+            match.away = self.players[i];
+            [matches addObject:match];
+        }
     }
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObjectsFromArray:matches];
+    [realm commitWriteTransaction];
+    
     self.matches = matches;
     return nil;
 }
