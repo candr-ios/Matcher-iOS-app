@@ -28,7 +28,7 @@
     
     [[UITextField appearance] setTintColor:[UIColor whiteColor]];
     [self configureNavBarAppearance];
-    NSLog(@"FILEPATH%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
+//    NSLog(@"FILEPATH%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
 
     [self testTournament];
     return YES;
@@ -44,11 +44,9 @@
     
     Tournament *tournament = [[Tournament alloc] initWithPlayers:@[player1,player2,player3,player4]];
     
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    [realm beginWriteTransaction];
-    [realm addOrUpdateObject:tournament];
-    [realm commitWriteTransaction];
+    [tournament nextStage];
     
+    [tournament genereteInitialKnockoutStage];
 
 }
 

@@ -11,6 +11,6 @@
 @interface Tournament (Checking)
 
 - (BOOL) validNumberOfPlayers;
-- (void) typeOfInitialRound;
+- (void) setTypeOfInitialRound;
 
 @end

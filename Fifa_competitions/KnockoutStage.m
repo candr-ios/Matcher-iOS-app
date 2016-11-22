@@ -20,22 +20,21 @@
 
 - (NSError*) generateMathesForCurrenrStage
 {
-    NSMutableArray *matches = [NSMutableArray array];
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
     for (int i = 0; i < [self.players count]; i++) {
         if (i%2 == 1) {
             Match *match = [[Match alloc] init];
             match.home = self.players[i-1];
             match.away = self.players[i];
-            [matches addObject:match];
+            [realm beginWriteTransaction];
+            [realm addOrUpdateObject:match];
+            [realm commitWriteTransaction];
+            [self.matches addObject:match];
         }
     }
     
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    [realm beginWriteTransaction];
-    [realm addOrUpdateObjectsFromArray:matches];
-    [realm commitWriteTransaction];
-    
-    self.matches = matches;
     return nil;
 }
 

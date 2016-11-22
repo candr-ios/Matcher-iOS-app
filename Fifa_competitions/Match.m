@@ -19,6 +19,15 @@
     return @"id";
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.id = [Utils uniqueId];
+    }
+    return self;
+}
+
 - (Match *) swap {
     
     Match * newMatch = [[Match alloc] init];

@@ -25,6 +25,7 @@ typedef enum : int {
 @property KnockoutStageType  type;
 @property RLMArray<Match *><Match> * matches;
 @property RLMArray<Player *><Player> *players;
+@property BOOL isComplete;
 
 - (NSError*) generateMathesForCurrenrStage;
 
