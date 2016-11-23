@@ -25,28 +25,4 @@
     }
 }
 
-/// return StageType of tournament(1/16, 1/8, 1/4, 1/2, final) based on enum KnockoutStageType
-/// using shifted bytes
-- (void) setTypeOfInitialRound
-{
-    int numberOfPlayers = (int)[self.players count];
-    
-    BOOL stageIsFound = NO;
-    
-    while (!stageIsFound) {
-        
-        if (numberOfPlayers == self.currentStage.type) {
-            stageIsFound = YES;
-            
-        } else {
-            
-            [self.realm beginWriteTransaction];
-            self.currentStage.type = self.currentStage.type >> 1;
-            [self.realm commitWriteTransaction];
-
-        }
-    }
-
-}
-
 @end

@@ -27,8 +27,11 @@
 - (instancetype)initWithPlayers:(RLMArray<Player *><Player> *)players;
 
 - (NSError *) generateGroups;
+- (NSError *) generateInitialKnockoutStageFromGroups;
+
 - (NSError *) genereteInitialKnockoutStage;
-- (NSError *) nextStage;
+- (NSError *) generateNextKnockoutStage;
+
 - (BOOL) winner;
 
 @end

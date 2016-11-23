@@ -31,6 +31,7 @@ typedef enum : int {
 - (void)setRandomGoalsForMatches;
 - (void) shiftsStage;
 - (BOOL) checkForWinner;
+- (void) setTypeOfCurrentStage;
 
 @end
 

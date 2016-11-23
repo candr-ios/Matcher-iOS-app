@@ -23,18 +23,17 @@
     
 //    [self checkForWinner];
     
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    [realm beginWriteTransaction];
+    [self.realm beginWriteTransaction];
     for (int i = 0; i < [self.players count]; i++) {
         if (i%2 == 1) {
             Match *match = [[Match alloc] init];
             match.home = self.players[i-1];
             match.away = self.players[i];
-            [realm addOrUpdateObject:match];
+            [self.realm addObject:match];
             [self.matches addObject:match];
         }
     }
-    [realm commitWriteTransaction];
+    [self.realm commitWriteTransaction];
     
     return nil;
 }
@@ -61,5 +60,29 @@
     [realm beginWriteTransaction];
     self.type = self.type >> 1;
     [realm commitWriteTransaction];
+}
+
+/// return StageType of tournament(1/16, 1/8, 1/4, 1/2, final) based on enum KnockoutStageType
+/// using shifted bytes
+- (void) setTypeOfCurrentStage
+{
+    int numberOfPlayers = (int)[self.players count];
+    
+    BOOL stageIsFound = NO;
+    
+    while (!stageIsFound) {
+        
+        if (numberOfPlayers == self.type) {
+            stageIsFound = YES;
+            
+        } else {
+            
+            [self.realm beginWriteTransaction];
+            self.type = self.type >> 1;
+            [self.realm commitWriteTransaction];
+            
+        }
+    }
+    
 }
 @end

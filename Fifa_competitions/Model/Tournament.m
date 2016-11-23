@@ -44,18 +44,15 @@
 
 - (NSError *) genereteInitialKnockoutStage
 {
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    
-    self.currentStage = [[KnockoutStage alloc] init];
-    self.currentStage.players = self.players;
-    
-    [self setTypeOfInitialRound];
-    [self.currentStage generateMathesForCurrenrStage];
-    
-    [realm beginWriteTransaction];
-    [realm addOrUpdateObject:self.currentStage];
-    [realm commitWriteTransaction];
-    
+    KnockoutStage *initialStage = [[KnockoutStage alloc] init];
+    initialStage.players = self.players;
+    [initialStage setTypeOfCurrentStage];
+    [initialStage generateMathesForCurrenrStage];
+    self.currentStage = initialStage;
+    [self.realm beginWriteTransaction];
+    [self.realm addObject:self.currentStage];
+    [self.realm commitWriteTransaction];
+    ///TODO: return KnockoutStage
     return nil;
 }
 
