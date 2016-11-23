@@ -28,7 +28,9 @@ typedef enum : int {
 @property BOOL isComplete;
 
 - (NSError*) generateMathesForCurrenrStage;
-
+- (void)setRandomGoalsForMatches;
+- (void) shiftsStage;
+- (BOOL) checkForWinner;
 
 @end
 

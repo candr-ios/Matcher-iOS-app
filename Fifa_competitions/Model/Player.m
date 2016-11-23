@@ -7,6 +7,7 @@
 //
 
 #import "Player.h"
+#import "Utils.h"
 
 @implementation Player
 
@@ -18,4 +19,12 @@
     return @"id";
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.id = [Utils uniqueId];
+    }
+    return self;
+}
 @end

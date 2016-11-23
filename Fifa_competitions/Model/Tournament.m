@@ -64,10 +64,16 @@
 
 - (NSError *) nextStage
 {
-    if (self.currentStage.isComplete) {
-        self.currentStage.type = self.currentStage.type >> 1;
+    if (!self.isCompleted) {
+        [self.currentStage setRandomGoalsForMatches];
+        if (self.currentStage.isComplete) {
+            [self.currentStage shiftsStage];
+        }
+        [self generateMatchesForNextStage];
+        return nil;
+    } else {
+        NSLog(@"Winner: %@", [self.players objectAtIndex:0]);
     }
-    [self generateMatchesForNextStage];
     return nil;
 }
 
@@ -78,15 +84,38 @@
     return nil;
 }
 
+///Optional for remove defeated players from database
+- (void) generatePlayersForNextStageWithRemovingFromDatabase
+{
+//    RLMRealm *realm = [RLMRealm defaultRealm];
+//    
+//    for (Match *match in self.currentStage.matches) {
+//        <#statements#>
+//    }
+}
+
 
 - (void) generatePlayersForNextStage {
-    NSMutableArray *newPlayers = [NSMutableArray array];
-    for (Match *match in self.currentStage.matches) {
-        // pick up matches winners
-        Player *winnerOfTheMatch = [self winerOfMatch:match];
-        [newPlayers addObject:winnerOfTheMatch];
+    
+    if ([self winner]) {
+        NSLog(@"Only 1 player left: %@", [self.players lastObject]);
+    } else {
+        NSMutableArray *newPlayers = [NSMutableArray array];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+
+        for (Match *match in self.currentStage.matches) {
+            [realm beginWriteTransaction];
+            // pick up matches winners
+            Player *winnerOfTheMatch = [self winerOfMatch:match];
+            [newPlayers addObject:winnerOfTheMatch];
+            [realm commitWriteTransaction];
+        }
+        [realm beginWriteTransaction];
+
+        self.currentStage.players = (RLMArray<Player*><Player>*)newPlayers;
+        [realm commitWriteTransaction];
     }
-    self.currentStage.players = (RLMArray<Player*><Player>*)newPlayers;
+
 }
 
 - (Player*) winerOfMatch:(Match*)match {
@@ -99,6 +128,13 @@
         // penalty series
     }
     return winner;
+}
+
+#pragma mark - Checks
+
+- (BOOL) winner
+{
+    return [self.currentStage.players count] == 1 ? YES && self.isCompleted == YES : NO;
 }
 
 @end

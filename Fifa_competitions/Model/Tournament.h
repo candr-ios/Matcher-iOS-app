@@ -29,5 +29,6 @@
 - (NSError *) generateGroups;
 - (NSError *) genereteInitialKnockoutStage;
 - (NSError *) nextStage;
+- (BOOL) winner;
 
 @end

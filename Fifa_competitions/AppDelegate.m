@@ -41,12 +41,14 @@
     Player *player2 = [[Player alloc] initWithValue:@{@"id":@"testPlayer2", @"name": @"Andy"}];
     Player *player3 = [[Player alloc] initWithValue:@{@"id":@"testPlayer3" ,@"name": @"Tom"}];
     Player *player4 = [[Player alloc] initWithValue:@{@"id":@"testPlayer4", @"name": @"Sara"}];
+
+    
     
     Tournament *tournament = [[Tournament alloc] initWithPlayers:@[player1,player2,player3,player4]];
     
     [tournament nextStage];
-    
-    [tournament genereteInitialKnockoutStage];
+    [tournament nextStage];
+    [tournament nextStage];
 
 }
 
