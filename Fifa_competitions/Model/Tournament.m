@@ -8,6 +8,7 @@
 
 #import "Tournament.h"
 #import "Tournament+Checking.h"
+#import "Utils.h"
 
 @implementation Tournament
 
@@ -26,6 +27,7 @@
 {
     self = [super init];
     if (self) {
+        self.id = [Utils uniqueId];
         self.players = players;
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
@@ -61,16 +63,6 @@
 
 - (NSError *) nextStage
 {
-    if (!self.isCompleted) {
-        [self.currentStage setRandomGoalsForMatches];
-        if (self.currentStage.isComplete) {
-            [self.currentStage shiftsStage];
-        }
-        [self generateMatchesForNextStage];
-        return nil;
-    } else {
-        NSLog(@"Winner: %@", [self.players objectAtIndex:0]);
-    }
     return nil;
 }
 
@@ -91,6 +83,13 @@
 //    }
 }
 
+- (NSError *) generateNextKnockoutStage
+{
+    if (![self winner]) {
+        [self.currentStage shiftsStage];
+    }
+    return nil;
+}
 
 - (void) generatePlayersForNextStage {
     
@@ -98,19 +97,18 @@
         NSLog(@"Only 1 player left: %@", [self.players lastObject]);
     } else {
         NSMutableArray *newPlayers = [NSMutableArray array];
-        RLMRealm *realm = [RLMRealm defaultRealm];
-
+        
         for (Match *match in self.currentStage.matches) {
-            [realm beginWriteTransaction];
+            [self.realm beginWriteTransaction];
             // pick up matches winners
             Player *winnerOfTheMatch = [self winerOfMatch:match];
             [newPlayers addObject:winnerOfTheMatch];
-            [realm commitWriteTransaction];
+            [self.realm commitWriteTransaction];
         }
-        [realm beginWriteTransaction];
+        [self.realm beginWriteTransaction];
 
         self.currentStage.players = (RLMArray<Player*><Player>*)newPlayers;
-        [realm commitWriteTransaction];
+        [self.realm commitWriteTransaction];
     }
 
 }
@@ -119,10 +117,8 @@
     Player *winner = nil;
     if (match.homeGoals > match.awayGoals) {
         winner = match.home;
-    } else if (match.homeGoals < match.awayGoals) {
-        winner = match.away;
     } else {
-        // penalty series
+        winner = match.home;
     }
     return winner;
 }
@@ -131,6 +127,7 @@
 
 - (BOOL) winner
 {
+    // check for valid
     return [self.currentStage.players count] == 1 ? YES && self.isCompleted == YES : NO;
 }
 

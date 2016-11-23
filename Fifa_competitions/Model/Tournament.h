@@ -28,7 +28,7 @@
 
 - (NSError *) generateGroups;
 - (NSError *) generateInitialKnockoutStageFromGroups;
-
+- (NSError *) generateMatchesForNextStage;
 - (NSError *) genereteInitialKnockoutStage;
 - (NSError *) generateNextKnockoutStage;
 

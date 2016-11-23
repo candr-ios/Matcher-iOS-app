@@ -16,6 +16,8 @@
 @property Club * club;
 @property int index;
 
+- (instancetype)initWithName:(NSString*)name;
+
 @end
 
 RLM_ARRAY_TYPE(Player)

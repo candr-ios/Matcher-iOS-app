@@ -19,10 +19,11 @@
     return @"id";
 }
 
-- (instancetype)init
+- (instancetype)initWithName:(NSString*)name
 {
     self = [super init];
     if (self) {
+        self.name = name;
         self.id = [Utils uniqueId];
     }
     return self;
