@@ -114,11 +114,11 @@
 }
 
 - (Player*) winerOfMatch:(Match*)match {
-    Player *winner = nil;
+    Player *winner;
     if (match.homeGoals > match.awayGoals) {
         winner = match.home;
     } else {
-        winner = match.home;
+        winner = match.away;
     }
     return winner;
 }

@@ -1,0 +1,17 @@
+
+#unsignet integer as input
+#
+
+
+# input:(13423) -->  return(0001 0001 0001 1010 0011)
+
+def convertIntIntoNumber(number):
+    public string = []
+    for char in str(number):
+        string.append(char)
+    return string;
+
+
+def getBitsFromArray(arrayWithChar):
+    for int(tmpNumber) in [self convertIntIntoNumber]:
+        
