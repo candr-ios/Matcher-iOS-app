@@ -45,9 +45,17 @@
     Player *player6 = [[Player alloc] initWithName:@"Jane"];
     Player *player7 = [[Player alloc] initWithName:@"Lily"];
     Player *player8 = [[Player alloc] initWithName:@"Donald"];
+    Player *player9 = [[Player alloc] initWithName:@"Boris"];
+    Player *player10 = [[Player alloc] initWithName:@"Alex"];
+    Player *player11 = [[Player alloc] initWithName:@"Sandy"];
+    Player *player12 = [[Player alloc] initWithName:@"Bob"];
+    Player *player13 = [[Player alloc] initWithName:@"Jack"];
+    Player *player14 = [[Player alloc] initWithName:@"Ace"];
+    Player *player15 = [[Player alloc] initWithName:@"Billy"];
+    Player *player16 = [[Player alloc] initWithName:@"Clare"];
 
     
-    Tournament *tournament = [[Tournament alloc] initWithPlayers:@[player1,player2,player3,player4,player5,player6,player7,player8]];
+    Tournament *tournament = [[Tournament alloc] initWithPlayers:@[player1,player2,player3,player4,player5,player6,player7,player8,player9,player10,player11,player12,player13,player14,player15,player16]];
     
     RLMRealm *realm = [RLMRealm defaultRealm];
     
@@ -55,6 +63,13 @@
     [realm addObject:tournament];
     [realm commitWriteTransaction];
     
+    [tournament.currentStage setRandomGoalsForMatches];
+    // TODO : create new stage
+    [tournament generateNextKnockoutStage];
+    [tournament.currentStage setRandomGoalsForMatches];
+    [tournament generateNextKnockoutStage];
+    [tournament.currentStage setRandomGoalsForMatches];
+    [tournament generateNextKnockoutStage];
     [tournament.currentStage setRandomGoalsForMatches];
     [tournament generateNextKnockoutStage];
     [tournament.currentStage setRandomGoalsForMatches];

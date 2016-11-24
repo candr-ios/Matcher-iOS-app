@@ -27,13 +27,16 @@ typedef enum : int {
 @property RLMArray<Match *><Match> * matches;
 @property RLMArray<Player *><Player> *players;
 @property BOOL isComplete;
+//new
 
+- (instancetype)initWithPlayers:(id)players;
+
+- (KnockoutStageType) typeOfCurrentStage;
+
+- (NSArray*) winnersOfStage;
 - (NSError*) generateMathesForCurrenrStage;
-- (NSError*) generatePlayersForCurrentStage;
+
 - (void)setRandomGoalsForMatches;
-- (void) shiftsStage;
-- (BOOL) checkForWinner;
-- (void) setTypeOfCurrentStage;
 
 @end
 

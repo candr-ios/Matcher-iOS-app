@@ -40,7 +40,8 @@
         [realm commitWriteTransaction];
         
         if ([self validNumberOfPlayers]) {
-            [self.players count] <= 16 ? [self genereteInitialKnockoutStage] : [self generateGroups];
+            [self.players count] <= 16 ? [self genereteInitialKnockoutStageWithPlayers:players] : [self generateGroups];
+            self.isInitialized = YES;
         }
     }
     return self;
@@ -49,59 +50,48 @@
 
 #pragma mark - For Initial Stage
 
-
-/// Create KnockotStage add there players from tournament
-/// Decide what round corresponds to this stage, generate matches for stage
-/// Add Stage in Realm model db
-- (NSError *) genereteInitialKnockoutStage
-{
+///new
+- (NSError*) genereteInitialKnockoutStageWithPlayers:(RLMArray<Player*><Player>*)players {
     
-    
-    KnockoutStage *initialStage = [[KnockoutStage alloc] init];
     RLMRealm *realm = [RLMRealm defaultRealm];
-    
-    [self.realm beginWriteTransaction];
-    initialStage.players = self.players;
-    [self.realm beginWriteTransaction];
-    
-    
-    [initialStage setTypeOfCurrentStage];
+    KnockoutStage *initialStage = [[KnockoutStage alloc] initWithPlayers:players];
+    [initialStage typeOfCurrentStage];
     [initialStage generateMathesForCurrenrStage];
     
+    [realm beginWriteTransaction];
+    [self.knockoutStages addObject:initialStage];
     self.currentStage = initialStage;
+    [realm commitWriteTransaction];
+    [initialStage setRandomGoalsForMatches];
     
-    [self.realm beginWriteTransaction];
-    [self.realm addOrUpdateObject:self.currentStage];
-    [self.realm commitWriteTransaction];
-
     return nil;
 }
 
 
-#pragma mark - Next Stages
-
-/// Call's out of this class scope for prepape
-/// Create new kcockout stage {
-///     generate next type of stage
-///     setUp Players
-///     setUpMatches
-/// }
-- (NSError *) generateNextKnockoutStage
+- (NSError*) generateNextKnockoutStage
 {
-    if (![self winner] && [self.currentStage isComplete]) {
-        [self.currentStage shiftsStage];
-        [self.currentStage generatePlayersForCurrentStage];
-        [self.currentStage generateMathesForCurrenrStage];
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    if ([self.currentStage isComplete] && [self.currentStage.matches count] == 1) {
+        if (!self.isCompleted) {
+            [realm beginWriteTransaction];
+            self.winner = [[self.currentStage winnersOfStage] objectAtIndex:0];
+            self.isCompleted = YES;
+            [realm commitWriteTransaction];
+        }
+    } else {
+        
+        KnockoutStage *newStage = [[KnockoutStage alloc] initWithPlayers:[self.currentStage winnersOfStage]];
+        
+        newStage.type = [newStage typeOfCurrentStage];
+        [newStage generateMathesForCurrenrStage];
+
+        [realm beginWriteTransaction];
+        [self.knockoutStages addObject:newStage];
+        self.currentStage = newStage;
+        [realm commitWriteTransaction];
     }
     return nil;
-}
-
-#pragma mark - Checks
-
-// If 1 players left in Stage --> YES
-- (BOOL) winner
-{
-    return [self.currentStage.players count] == 1 ? YES && self.isCompleted == YES : NO;
 }
 
 @end

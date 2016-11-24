@@ -24,16 +24,14 @@
 @property BOOL isGroupStageCompleted;
 @property RLMArray<KnockoutStage*><KnockoutStage> * knockoutStages;
 @property BOOL isCompleted;
+@property Player *winner;
 
 - (instancetype)initWithPlayers:(RLMArray<Player *><Player> *)players;
 
 - (NSError *) generateGroups;
 - (NSError *) generateInitialKnockoutStageFromGroups;
 
-
-- (NSError *) genereteInitialKnockoutStage;
+- (NSError*) genereteInitialKnockoutStageWithPlayers:(RLMArray<Player*><Player>*)players;
 - (NSError *) generateNextKnockoutStage;
-
-- (BOOL) winner;
 
 @end

@@ -19,42 +19,38 @@
     return  @{@"type": @(Round16)};
 }
 
-- (instancetype)init
+- (instancetype)initWithPlayers:(id)players
 {
     self = [super init];
     if (self) {
         self.id = [Utils uniqueId];
+        self.players = players;
     }
     return self;
 }
 
-#pragma mark - Initial
+#pragma mark - Stage Methods
 
 /// return StageType of tournament(1/16, 1/8, 1/4, 1/2, final) based on enum KnockoutStageType
 /// using shifted bytes
-- (void) setTypeOfCurrentStage
+- (KnockoutStageType) typeOfCurrentStage
 {
     int numberOfPlayers = (int)[self.players count];
     
     BOOL stageIsFound = NO;
     
     while (!stageIsFound) {
-        
         if (numberOfPlayers == self.type) {
             stageIsFound = YES;
-            
         } else {
-            
             [self.realm beginWriteTransaction];
             self.type = self.type >> 1;
             [self.realm commitWriteTransaction];
-            
         }
     }
-    
+    return self.type;
 }
 
-#pragma mark -
 
 - (NSError*) generateMathesForCurrenrStage
 {
@@ -78,46 +74,20 @@
     return nil;
 }
 
-
-/// Get winners of currentstage matches
-/// Creates temp array with winners and => self.players
-- (void) generatePlayersForCurrentStage {
+- (NSArray<Player>*) winnersOfStage {
+    NSMutableArray *winners = [[NSMutableArray alloc] init];
     
-    NSMutableArray *newPlayers = [NSMutableArray array];
-
     for (Match *match in self.matches) {
-        // get matches winners
-        Player *winnerOfTheMatch = [self winerOfMatch:match];
-        [newPlayers addObject:winnerOfTheMatch];
+        if (match.homeGoals > match.awayGoals) {
+            [winners addObject:match.home];
+        } else {
+            [winners addObject:match.away];
+        }
     }
-    [self.realm beginWriteTransaction];     /// TODO: self.realm
     
-    self.players = (RLMArray<Player*><Player>*)newPlayers;
-    [self.realm commitWriteTransaction];    /// TODO: self.realm
-
+    return winners;
 }
 
-
-
-/// If round 16 is played >> round8(QuaterFinal) AND SO ON
-- (void) shiftsStage
-{
-    [self.realm beginWriteTransaction];
-    self.type = self.type >> 1;
-    [self.realm commitWriteTransaction];
-}
-
-/// Takes as arg. a singme Match
-/// Return -> winners of that Match
-- (Player*) winerOfMatch:(Match*)match {
-    Player *winner;
-    if (match.homeGoals > match.awayGoals) {
-        winner = match.home;
-    } else {
-        winner = match.away;
-    }
-    return winner;
-}
 
 #pragma mark - Test
 
@@ -136,5 +106,8 @@
     self.isComplete = YES;
     [self.realm commitWriteTransaction];
 }
+
+
+
 
 @end
