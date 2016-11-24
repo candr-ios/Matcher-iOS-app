@@ -9,6 +9,7 @@
 #import <Realm/Realm.h>
 #import "Match.h"
 #import "Player.h"
+#import "Utils.h"
 
 
 typedef enum : int {
@@ -28,6 +29,7 @@ typedef enum : int {
 @property BOOL isComplete;
 
 - (NSError*) generateMathesForCurrenrStage;
+- (NSError*) generatePlayersForCurrentStage;
 - (void)setRandomGoalsForMatches;
 - (void) shiftsStage;
 - (BOOL) checkForWinner;

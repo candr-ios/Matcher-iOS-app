@@ -8,7 +8,7 @@
 
 #import "Tournament.h"
 #import "Tournament+Checking.h"
-#import "Utils.h"
+
 
 @implementation Tournament
 
@@ -23,11 +23,16 @@
 
 #pragma mark - Initialization
 
+
+/// Make initialization for Tournament object with players and reakm
+/// Choose to generate Knockout stage OR Groups based on players count
 - (instancetype)initWithPlayers:(RLMArray<Player *><Player> *)players
 {
     self = [super init];
     if (self) {
+        // id
         self.id = [Utils uniqueId];
+        //
         self.players = players;
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
@@ -44,90 +49,58 @@
 
 #pragma mark - For Initial Stage
 
+
+/// Create KnockotStage add there players from tournament
+/// Decide what round corresponds to this stage, generate matches for stage
+/// Add Stage in Realm model db
 - (NSError *) genereteInitialKnockoutStage
 {
+    
+    
     KnockoutStage *initialStage = [[KnockoutStage alloc] init];
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    [self.realm beginWriteTransaction];
     initialStage.players = self.players;
+    [self.realm beginWriteTransaction];
+    
+    
     [initialStage setTypeOfCurrentStage];
     [initialStage generateMathesForCurrenrStage];
+    
     self.currentStage = initialStage;
+    
     [self.realm beginWriteTransaction];
-    [self.realm addObject:self.currentStage];
+    [self.realm addOrUpdateObject:self.currentStage];
     [self.realm commitWriteTransaction];
-    ///TODO: return KnockoutStage
+
     return nil;
 }
 
 
 #pragma mark - Next Stages
 
-- (NSError *) nextStage
-{
-    return nil;
-}
-
-
-- (NSError *) generateMatchesForNextStage {
-    [self generatePlayersForNextStage];
-    [self.currentStage generateMathesForCurrenrStage];
-    return nil;
-}
-
-///Optional for remove defeated players from database
-- (void) generatePlayersForNextStageWithRemovingFromDatabase
-{
-//    RLMRealm *realm = [RLMRealm defaultRealm];
-//    
-//    for (Match *match in self.currentStage.matches) {
-//        <#statements#>
-//    }
-}
-
+/// Call's out of this class scope for prepape
+/// Create new kcockout stage {
+///     generate next type of stage
+///     setUp Players
+///     setUpMatches
+/// }
 - (NSError *) generateNextKnockoutStage
 {
-    if (![self winner]) {
+    if (![self winner] && [self.currentStage isComplete]) {
         [self.currentStage shiftsStage];
+        [self.currentStage generatePlayersForCurrentStage];
+        [self.currentStage generateMathesForCurrenrStage];
     }
     return nil;
-}
-
-- (void) generatePlayersForNextStage {
-    
-    if ([self winner]) {
-        NSLog(@"Only 1 player left: %@", [self.players lastObject]);
-    } else {
-        NSMutableArray *newPlayers = [NSMutableArray array];
-        
-        for (Match *match in self.currentStage.matches) {
-            [self.realm beginWriteTransaction];
-            // pick up matches winners
-            Player *winnerOfTheMatch = [self winerOfMatch:match];
-            [newPlayers addObject:winnerOfTheMatch];
-            [self.realm commitWriteTransaction];
-        }
-        [self.realm beginWriteTransaction];
-
-        self.currentStage.players = (RLMArray<Player*><Player>*)newPlayers;
-        [self.realm commitWriteTransaction];
-    }
-
-}
-
-- (Player*) winerOfMatch:(Match*)match {
-    Player *winner;
-    if (match.homeGoals > match.awayGoals) {
-        winner = match.home;
-    } else {
-        winner = match.away;
-    }
-    return winner;
 }
 
 #pragma mark - Checks
 
+// If 1 players left in Stage --> YES
 - (BOOL) winner
 {
-    // check for valid
     return [self.currentStage.players count] == 1 ? YES && self.isCompleted == YES : NO;
 }
 

@@ -57,10 +57,6 @@
     
     [tournament.currentStage setRandomGoalsForMatches];
     [tournament generateNextKnockoutStage];
-    [tournament generateMatchesForNextStage];
-    [tournament.currentStage setRandomGoalsForMatches];
-    [tournament generateNextKnockoutStage];
-    [tournament generateMatchesForNextStage];
     [tournament.currentStage setRandomGoalsForMatches];
 
 }

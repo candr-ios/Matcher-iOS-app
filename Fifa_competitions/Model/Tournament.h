@@ -10,6 +10,7 @@
 #import "Player.h"
 #import "Group.h"
 #import "KnockoutStage.h"
+#import "Utils.h"
 
 @interface Tournament : RLMObject
 
@@ -28,7 +29,8 @@
 
 - (NSError *) generateGroups;
 - (NSError *) generateInitialKnockoutStageFromGroups;
-- (NSError *) generateMatchesForNextStage;
+
+
 - (NSError *) genereteInitialKnockoutStage;
 - (NSError *) generateNextKnockoutStage;
 

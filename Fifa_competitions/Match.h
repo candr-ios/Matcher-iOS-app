@@ -7,6 +7,7 @@
 //
 
 #import <Realm/Realm.h>
+#import "Utils.h"
 @class Player;
 
 @interface Match : RLMObject
