@@ -58,27 +58,30 @@
     Tournament *tournament = [[Tournament alloc] initWithPlayers:@[player1,player2,player3,player4,player5,player6,player7,player8,player9,player10,player11,player12,player13,player14,player15,player16]];
     
    
-    
-//    [tournament.currentStage setRandomGoalsForMatches];
-//    // TODO : create new stage
-//    [tournament generateNextKnockoutStage];
-//    [tournament.currentStage setRandomGoalsForMatches];
-//    [tournament generateNextKnockoutStage];
-//    [tournament.currentStage setRandomGoalsForMatches];
-//    [tournament generateNextKnockoutStage];
-//    [tournament.currentStage setRandomGoalsForMatches];
-//    [tournament generateNextKnockoutStage];
-//    [tournament.currentStage setRandomGoalsForMatches];
-    
-    [tournament generateGroups];
-    
     NSLog(@"%@", tournament);
     
     RLMRealm *realm = [RLMRealm defaultRealm];
     
     [realm beginWriteTransaction];
     [realm addObject:tournament];
+    // suppose all matched played
+    tournament.isGroupStageCompleted = YES;
     [realm commitWriteTransaction];
+    
+    
+    
+    if (tournament.isGroupStageCompleted) {
+        
+        [tournament generateKnockoutStagesFromGroups];
+        
+        [tournament.currentStage setRandomGoalsForMatches];
+        [tournament generateNextKnockoutStage];
+        [tournament.currentStage setRandomGoalsForMatches];
+        [tournament generateNextKnockoutStage];
+        [tournament.currentStage setRandomGoalsForMatches];
+        [tournament generateNextKnockoutStage];
+
+    }
 
 }
 

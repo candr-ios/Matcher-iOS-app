@@ -28,7 +28,7 @@ typedef enum : int {
 @property RLMArray<Player *><Player> *players;
 @property BOOL isComplete;
 //new
-
+- (KnockoutStageType) typeOfInitialStage;
 - (instancetype)initWithPlayers:(id)players;
 
 - (NSArray*) winnersOfStage;

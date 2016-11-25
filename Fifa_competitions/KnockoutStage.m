@@ -33,7 +33,7 @@
 
 /// return StageType of tournament(1/16, 1/8, 1/4, 1/2, final) based on enum KnockoutStageType
 /// using shifted bytes
-- (KnockoutStageType) typeOfCurrentStage
+- (KnockoutStageType) typeOfInitialStage
 {
     int numberOfPlayers = (int)[self.players count];
     

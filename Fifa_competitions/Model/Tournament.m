@@ -45,13 +45,52 @@
         //
         self.players = players;
     }
-    if (![self isTournamentSetupValid]) {
-        return nil;
+    if ([self isTournamentSetupValid] && !self.isInitialized) {
+        if ([players count] >= 16) {
+            [self generateGroups];
+        } else if ([players count] <= 8) {
+            [self generateInitialKnockoutStage];
+        }
+        self.isInitialized = YES;
+        
+//    } else if (self.isGroupStageCompleted) {
+//        [self generateKnockoutStagesFromGroups];
     }
     
     return self;
 }
 
+
+/// group stage -> tournament stage
+#pragma mark - Transition
+
+- (void) generateKnockoutStagesFromGroups {
+    RLMArray<Player *><Player> *groupWinners = [self getGroupsWinners];
+    [self.realm beginWriteTransaction];
+    self.players = groupWinners;
+    [self.realm commitWriteTransaction];
+    [self generateInitialKnockoutStage];
+}
+
+
+/// return players on 1st & 2nd place of each group
+- (RLMArray<Player *><Player> *) getGroupsWinners
+{
+    NSMutableArray *winners = [NSMutableArray array];
+    for (Group *group in self.groups) {
+        for (int i = 0; i < 2; i++) {
+            [winners addObject:group.players[i]];
+        }
+    }
+    
+    
+    return (RLMArray<Player *><Player> *)winners;
+}
+
+
+- (NSArray*) shufflePlayers {
+    return nil;
+}
 
 #pragma mark - For Initial Stage
 
@@ -107,15 +146,14 @@
 
 - (KnockoutStage *) generateInitialKnockoutStage {
     
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    KnockoutStage *initialStage = [[KnockoutStage alloc] initWithPlayers:_players];
-    [initialStage typeOfCurrentStage];
+    KnockoutStage *initialStage = [[KnockoutStage alloc] initWithPlayers:self.players];
+    [initialStage typeOfInitialStage];
     [initialStage generateMathesForCurrenrStage];
     
-    [realm beginWriteTransaction];
+    [self.realm beginWriteTransaction];
     [self.knockoutStages addObject:initialStage];
     self.currentStage = initialStage;
-    [realm commitWriteTransaction];
+    [self.realm commitWriteTransaction];
     [initialStage setRandomGoalsForMatches];
     
     return nil;
@@ -137,7 +175,7 @@
         
         KnockoutStage *newStage = [[KnockoutStage alloc] initWithPlayers:[self.currentStage winnersOfStage]];
         
-        newStage.type = [newStage typeOfCurrentStage];
+        newStage.type = self.currentStage.type >> 1;
         [newStage generateMathesForCurrenrStage];
 
         [realm beginWriteTransaction];

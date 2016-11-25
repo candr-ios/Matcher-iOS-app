@@ -61,4 +61,6 @@
 /// Returns current knockout stage or nil on error
 - (KnockoutStage *) generateNextKnockoutStage;
 
+- (RLMArray<Player *><Player> *) getGroupsWinners;
+- (void) generateKnockoutStagesFromGroups;
 @end
