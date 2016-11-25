@@ -162,7 +162,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A2716621DDD2A9200A48BDD /* Model */ = {
+		4A2716621DDD2A9200A48BDD /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				4AD5ADAE1DDF309E00913B54 /* Club.h */,
@@ -190,7 +190,7 @@
 				4AD5ADC01DDF944800913B54 /* StatisticsItem.h */,
 				4AD5ADC11DDF944800913B54 /* StatisticsItem.m */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		4A2B59291DD5F8750032D53D = {
@@ -215,45 +215,12 @@
 		4A2B59341DD5F8750032D53D /* Fifa_competitions */ = {
 			isa = PBXGroup;
 			children = (
-				4A2716621DDD2A9200A48BDD /* Model */,
 				4A2B59381DD5F8750032D53D /* AppDelegate.h */,
 				4A2B59391DD5F8750032D53D /* AppDelegate.m */,
-				4AD5ADCF1DDFB5EB00913B54 /* Utils.h */,
-				4AD5ADD01DDFB5EB00913B54 /* Utils.m */,
-				4A2B593B1DD5F8750032D53D /* ViewController.h */,
-				4A2B593C1DD5F8750032D53D /* ViewController.m */,
-				4A2B595A1DD607A60032D53D /* CreateCompetitionBaseViewController.h */,
-				4A2B595B1DD607A60032D53D /* CreateCompetitionBaseViewController.m */,
-				4A2B595F1DD610720032D53D /* UnderlineTextField.h */,
-				4A2B59601DD610720032D53D /* UnderlineTextField.m */,
-				4A2B59621DD612740032D53D /* SetupCompetitionViewController.h */,
-				4A2B59631DD612740032D53D /* SetupCompetitionViewController.m */,
-				4A2B59651DD62FD80032D53D /* PlayerSetupViewController.h */,
-				4A2B59661DD62FD80032D53D /* PlayerSetupViewController.m */,
-				4A95A9961DD92BEC000F7CF6 /* MatchTableViewCell.h */,
-				4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */,
-				4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */,
-				4A95A99B1DD92CD6000F7CF6 /* MatchesViewController.h */,
-				4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */,
-				4A0BB2D81DDB05BC0036E6B2 /* StatsTableViewCell.h */,
-				4A0BB2D91DDB05BC0036E6B2 /* StatsTableViewCell.m */,
-				4A0BB2DA1DDB05BC0036E6B2 /* StatsTableViewCell.xib */,
-				4A2716351DDB1CAC00A48BDD /* StatsHeaderView.h */,
-				4A2716361DDB1CAC00A48BDD /* StatsHeaderView.m */,
-				4A2716381DDB1CBF00A48BDD /* StatsHeaderView.xib */,
-				4A0BB2D51DDB01A10036E6B2 /* StatisticsTableViewController.h */,
-				4A0BB2D61DDB01A10036E6B2 /* StatisticsTableViewController.m */,
-				4A0BB2D21DDAE0210036E6B2 /* MatchesHeaderView.h */,
-				4A0BB2D31DDAE0210036E6B2 /* MatchesHeaderView.m */,
-				4A2B59681DD63EC30032D53D /* ClubCollectionViewCell.h */,
-				4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */,
-				4A4B043F1DE0ECA500581C0C /* clubs.plist */,
-				4A4B04411DE0ECB700581C0C /* Logos.xcassets */,
-				4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */,
-				4A2B593E1DD5F8750032D53D /* Main.storyboard */,
-				4A2B59411DD5F8750032D53D /* Assets.xcassets */,
-				4A2B59431DD5F8750032D53D /* LaunchScreen.storyboard */,
-				4A2B59461DD5F8750032D53D /* Info.plist */,
+				4ADD28EF1DE857E0004C646B /* Utils */,
+				4A2716621DDD2A9200A48BDD /* Models */,
+				4ADD28EC1DE8570A004C646B /* Controllers */,
+				4ADD28EE1DE85795004C646B /* Views */,
 				4A2B59351DD5F8750032D53D /* Supporting Files */,
 			);
 			path = Fifa_competitions;
@@ -262,6 +229,12 @@
 		4A2B59351DD5F8750032D53D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4A4B043F1DE0ECA500581C0C /* clubs.plist */,
+				4A2B593E1DD5F8750032D53D /* Main.storyboard */,
+				4A4B04411DE0ECB700581C0C /* Logos.xcassets */,
+				4A2B59411DD5F8750032D53D /* Assets.xcassets */,
+				4A2B59431DD5F8750032D53D /* LaunchScreen.storyboard */,
+				4A2B59461DD5F8750032D53D /* Info.plist */,
 				4A2B59361DD5F8750032D53D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -282,6 +255,65 @@
 				4AD5ADA81DDE1B7D00913B54 /* Realm.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4ADD28EC1DE8570A004C646B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A2B59621DD612740032D53D /* SetupCompetitionViewController.h */,
+				4A2B59631DD612740032D53D /* SetupCompetitionViewController.m */,
+				4A2B59651DD62FD80032D53D /* PlayerSetupViewController.h */,
+				4A2B59661DD62FD80032D53D /* PlayerSetupViewController.m */,
+				4A2B593B1DD5F8750032D53D /* ViewController.h */,
+				4A2B593C1DD5F8750032D53D /* ViewController.m */,
+				4A2B595A1DD607A60032D53D /* CreateCompetitionBaseViewController.h */,
+				4A2B595B1DD607A60032D53D /* CreateCompetitionBaseViewController.m */,
+				4A95A99B1DD92CD6000F7CF6 /* MatchesViewController.h */,
+				4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */,
+				4A0BB2D51DDB01A10036E6B2 /* StatisticsTableViewController.h */,
+				4A0BB2D61DDB01A10036E6B2 /* StatisticsTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4ADD28ED1DE8573B004C646B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4A2B59681DD63EC30032D53D /* ClubCollectionViewCell.h */,
+				4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */,
+				4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */,
+				4A95A9961DD92BEC000F7CF6 /* MatchTableViewCell.h */,
+				4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */,
+				4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */,
+				4A0BB2D81DDB05BC0036E6B2 /* StatsTableViewCell.h */,
+				4A0BB2D91DDB05BC0036E6B2 /* StatsTableViewCell.m */,
+				4A0BB2DA1DDB05BC0036E6B2 /* StatsTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		4ADD28EE1DE85795004C646B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD28ED1DE8573B004C646B /* Cells */,
+				4A2B595F1DD610720032D53D /* UnderlineTextField.h */,
+				4A2B59601DD610720032D53D /* UnderlineTextField.m */,
+				4A2716351DDB1CAC00A48BDD /* StatsHeaderView.h */,
+				4A2716361DDB1CAC00A48BDD /* StatsHeaderView.m */,
+				4A2716381DDB1CBF00A48BDD /* StatsHeaderView.xib */,
+				4A0BB2D21DDAE0210036E6B2 /* MatchesHeaderView.h */,
+				4A0BB2D31DDAE0210036E6B2 /* MatchesHeaderView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4ADD28EF1DE857E0004C646B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4AD5ADCF1DDFB5EB00913B54 /* Utils.h */,
+				4AD5ADD01DDFB5EB00913B54 /* Utils.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

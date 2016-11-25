@@ -24,7 +24,7 @@
 @property BOOL isGroupStageCompleted;
 @property RLMArray<KnockoutStage*><KnockoutStage> * knockoutStages;
 @property BOOL isCompleted;
-@property Player *winner;
+@property Player * winner;
 
 - (instancetype)initWithPlayers:(RLMArray<Player *><Player> *)players;
 
