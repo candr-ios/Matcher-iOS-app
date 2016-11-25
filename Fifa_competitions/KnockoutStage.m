@@ -64,7 +64,7 @@
             Player *homePlayer = self.players[i-1];
             match.home = homePlayer;
             Player *awayPlayer = self.players[i];
-            match.away =awayPlayer;
+            match.away = awayPlayer;
             [self.realm addObject:match];
             [self.matches addObject:match];
         }

@@ -7,7 +7,6 @@
 //
 
 #import "Tournament.h"
-#import "Tournament+Checking.h"
 #import "League.h"
 #import "NSMutableArray+Shuffling.h"
 
@@ -106,7 +105,6 @@
     }
 }
 
-///new
 - (KnockoutStage *) generateInitialKnockoutStage {
     
     RLMRealm *realm = [RLMRealm defaultRealm];

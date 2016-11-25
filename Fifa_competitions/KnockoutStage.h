@@ -23,15 +23,13 @@ typedef enum : int {
 @interface KnockoutStage : RLMObject
 
 @property NSString * id;
-@property KnockoutStageType  type;
+@property KnockoutStageType type;
 @property RLMArray<Match *><Match> * matches;
 @property RLMArray<Player *><Player> *players;
 @property BOOL isComplete;
 //new
 
 - (instancetype)initWithPlayers:(id)players;
-
-- (KnockoutStageType) typeOfCurrentStage;
 
 - (NSArray*) winnersOfStage;
 - (NSError*) generateMathesForCurrenrStage;
