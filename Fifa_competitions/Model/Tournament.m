@@ -67,7 +67,7 @@
 - (void) generateKnockoutStagesFromGroups {
     RLMArray<Player *><Player> *groupWinners = [self getGroupsWinners];
     [self.realm beginWriteTransaction];
-    self.players = groupWinners;
+    self.groupWinners = groupWinners;
     [self.realm commitWriteTransaction];
     [self generateInitialKnockoutStage];
 }
@@ -82,8 +82,6 @@
             [winners addObject:group.players[i]];
         }
     }
-    
-    
     return (RLMArray<Player *><Player> *)winners;
 }
 
@@ -146,7 +144,13 @@
 
 - (KnockoutStage *) generateInitialKnockoutStage {
     
-    KnockoutStage *initialStage = [[KnockoutStage alloc] initWithPlayers:self.players];
+    KnockoutStage *initialStage;
+    
+    if (self.isGroupStageCompleted) {
+        initialStage = [[KnockoutStage alloc] initWithPlayers:self.groupWinners];
+    } else {
+        initialStage = [[KnockoutStage alloc] initWithPlayers:self.players];
+    }
     [initialStage typeOfInitialStage];
     [initialStage generateMathesForCurrenrStage];
     
@@ -155,13 +159,15 @@
     self.currentStage = initialStage;
     [self.realm commitWriteTransaction];
     [initialStage setRandomGoalsForMatches];
-    
     return nil;
 }
 
 
 - (KnockoutStage *) generateNextKnockoutStage
 {
+    
+    /// if all matches in previous stage is completed -> can generate
+    
     RLMRealm *realm = [RLMRealm defaultRealm];
     
     if ([self.currentStage isComplete] && [self.currentStage.matches count] == 1) {

@@ -32,6 +32,7 @@
 @property BOOL isCompleted;
 
 @property Player * winner;
+@property RLMArray<Player*><Player>* groupWinners;
 
 - (BOOL) canCreateGroups;
 

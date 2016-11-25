@@ -28,6 +28,7 @@ typedef enum : int {
 @property RLMArray<Match *><Match> * matches;
 @property RLMArray<Player *><Player> *players;
 @property BOOL isComplete;
+@property RLMArray<PenaltySeries*><PenaltySeries>* penaltySeries;
 //new
 - (KnockoutStageType) typeOfInitialStage;
 - (instancetype)initWithPlayers:(id)players;

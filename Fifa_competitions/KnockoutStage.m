@@ -74,7 +74,7 @@
     return nil;
 }
 
-- (NSArray<Player>*) winnersOfStage {
+- (RLMArray<Player*><Player>*) winnersOfStage {
     NSMutableArray *winners = [[NSMutableArray alloc] init];
     
     for (Match *match in self.matches) {
@@ -84,8 +84,8 @@
             [winners addObject:match.away];
         } else if(match.homeGoals == match.awayGoals) {
             
-            
             PenaltySeries *penalty = [[PenaltySeries alloc] initWithFirstPlayer:match.home andSecondPlayer:match.away];
+            
             /// for test
             [self setRandomGoalsForPenaltySeries:penalty];
             ///
@@ -93,11 +93,15 @@
             
             [self.realm beginWriteTransaction];
             match.penalty = penalty;
+            [self.penaltySeries addObject:penalty];
             [self.realm commitWriteTransaction];
         }
     }
-    
-    return winners;
+    if (![self checkAllPenaltyPlayed]) {
+        return nil;
+    } else {
+        return (RLMArray<Player*><Player>*)winners;
+    }
 }
 
 
@@ -127,7 +131,9 @@
     [self.realm commitWriteTransaction];
 }
 
-- (Player*) getWinnerOfPenaltySeries:(PenaltySeries*)penalty{
+
+- (Player*) getWinnerOfPenaltySeries:(PenaltySeries*)penalty
+{
     Player* penaltyWinner = nil;
     
     if (penalty.homeGoals > penalty.awayGoals) {
@@ -137,6 +143,19 @@
     }
     penalty.played = YES;
     return penaltyWinner;
+}
+
+- (BOOL) checkAllPenaltyPlayed {
+    BOOL result = nil;
+    for (PenaltySeries *penalty in self.penaltySeries) {
+        if (penalty.played) {
+            result = YES;
+        } else {
+            result = NO;
+            NSLog(@"Penalty series: %@, not played", penalty);
+        }
+    }
+    return result;
 }
 
 
