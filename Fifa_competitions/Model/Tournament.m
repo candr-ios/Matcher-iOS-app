@@ -44,36 +44,36 @@
         self.id = [Utils uniqueId];
         //
         self.players = players;
-    }
-    if ([self isTournamentSetupValid] && !self.isInitialized) {
-        if ([players count] >= 16) {
-            [self generateGroups];
-        } else if ([players count] <= 8) {
-            [self generateInitialKnockoutStage];
+        if ([self isTournamentSetupValid] && !self.isInitialized) {
+            if ([players count] >= 16) {
+                [self generateGroups];
+            } else if ([players count] <= 8) {
+                [self generateInitialKnockoutStage];
+            }
         }
-        self.isInitialized = YES;
-        
-//    } else if (self.isGroupStageCompleted) {
-//        [self generateKnockoutStagesFromGroups];
     }
-    
     return self;
 }
 
 
-/// group stage -> tournament stage
-#pragma mark - Transition
 
+#pragma mark - Transition GroupStage -> KnockoutStage
+
+/// Generate Knockout Stage(initial) when Players in all groups played all matches
 - (void) generateKnockoutStagesFromGroups {
-    RLMArray<Player *><Player> *groupWinners = [self getGroupsWinners];
-    [self.realm beginWriteTransaction];
-    self.groupWinners = groupWinners;
-    [self.realm commitWriteTransaction];
-    [self generateInitialKnockoutStage];
+    if (self.isGroupStageCompleted) {
+        RLMArray<Player *><Player> *groupWinners = [self getGroupsWinners];
+        [self.realm beginWriteTransaction];
+        self.groupWinners = groupWinners;
+        [self.realm commitWriteTransaction];
+        [self generateInitialKnockoutStage];
+    } else {
+        NSLog(@"Not completed group stage");
+    }
 }
 
 
-/// return players on 1st & 2nd place of each group
+/// return players on 1st & 2nd place on each group
 - (RLMArray<Player *><Player> *) getGroupsWinners
 {
     NSMutableArray *winners = [NSMutableArray array];
@@ -85,7 +85,7 @@
     return (RLMArray<Player *><Player> *)winners;
 }
 
-
+//// must shuffle players in accordance with regulation
 - (NSArray*) shufflePlayers {
     return nil;
 }
@@ -141,6 +141,8 @@
         [group updateStatistics];
     }
 }
+
+#pragma mark - KnockoutStage
 
 - (KnockoutStage *) generateInitialKnockoutStage {
     
