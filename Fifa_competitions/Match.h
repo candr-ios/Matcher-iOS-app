@@ -8,6 +8,7 @@
 
 #import <Realm/Realm.h>
 #import "Utils.h"
+#import "PenaltySeries.h"
 @class Player;
 
 @interface Match : RLMObject
@@ -21,6 +22,7 @@
 @property int awayGoals;
 
 @property BOOL played;
+@property PenaltySeries *penalty;
 
 @property BOOL statsFlag; // if already in statistics;
 

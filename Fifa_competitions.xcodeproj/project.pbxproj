@@ -46,6 +46,7 @@
 		4AD5ADCE1DDFA0C900913B54 /* KnockoutStage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */; };
 		4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADD01DDFB5EB00913B54 /* Utils.m */; };
 		4ADD28F21DE88317004C646B /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */; };
+		78D3093B1DE8C8DC00075921 /* PenaltySeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D3093A1DE8C8DC00075921 /* PenaltySeries.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,8 @@
 		4AD5ADD01DDFB5EB00913B54 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		4ADD28F01DE88317004C646B /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
 		4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
+		78D309391DE8C8DC00075921 /* PenaltySeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenaltySeries.h; sourceTree = "<group>"; };
+		78D3093A1DE8C8DC00075921 /* PenaltySeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PenaltySeries.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,8 @@
 				4AD5ADB51DDF8FD500913B54 /* Week.m */,
 				4AD5ADB71DDF8FF400913B54 /* Match.h */,
 				4AD5ADB81DDF8FF400913B54 /* Match.m */,
+				78D309391DE8C8DC00075921 /* PenaltySeries.h */,
+				78D3093A1DE8C8DC00075921 /* PenaltySeries.m */,
 				4AD5ADBA1DDF938C00913B54 /* Competition.h */,
 				4AD5ADBB1DDF938C00913B54 /* Competition.m */,
 				4AD5ADC31DDF976E00913B54 /* League.h */,
@@ -470,6 +475,7 @@
 				4AD5ADC51DDF976E00913B54 /* League.m in Sources */,
 				4AD5ADB91DDF8FF400913B54 /* Match.m in Sources */,
 				4A2B593A1DD5F8750032D53D /* AppDelegate.m in Sources */,
+				78D3093B1DE8C8DC00075921 /* PenaltySeries.m in Sources */,
 				4A2B59371DD5F8750032D53D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

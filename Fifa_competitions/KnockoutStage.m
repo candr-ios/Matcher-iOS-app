@@ -80,8 +80,20 @@
     for (Match *match in self.matches) {
         if (match.homeGoals > match.awayGoals) {
             [winners addObject:match.home];
-        } else {
+        } else if(match.homeGoals < match.awayGoals) {
             [winners addObject:match.away];
+        } else if(match.homeGoals == match.awayGoals) {
+            
+            
+            PenaltySeries *penalty = [[PenaltySeries alloc] initWithFirstPlayer:match.home andSecondPlayer:match.away];
+            /// for test
+            [self setRandomGoalsForPenaltySeries:penalty];
+            ///
+            [winners addObject:[self getWinnerOfPenaltySeries:penalty]];
+            
+            [self.realm beginWriteTransaction];
+            match.penalty = penalty;
+            [self.realm commitWriteTransaction];
         }
     }
     
@@ -99,15 +111,33 @@
     for (Match *match in self.matches) {
         match.homeGoals = arc4random() % 5;
         match.awayGoals = arc4random() % 5;
-        if (match.homeGoals == match.awayGoals) {
-            match.homeGoals = match.homeGoals+1;
-        }
     }
     self.isComplete = YES;
     [self.realm commitWriteTransaction];
 }
 
+- (void)setRandomGoalsForPenaltySeries:(PenaltySeries*)penalty
+{
+    [self.realm beginWriteTransaction];
+    penalty.homeGoals = arc4random() % 5;
+    penalty.awayGoals = arc4random() % 5;
+    if (penalty.homeGoals == penalty.awayGoals) {
+        penalty.awayGoals = penalty.awayGoals + 1;
+    }
+    [self.realm commitWriteTransaction];
+}
 
+- (Player*) getWinnerOfPenaltySeries:(PenaltySeries*)penalty{
+    Player* penaltyWinner = nil;
+    
+    if (penalty.homeGoals > penalty.awayGoals) {
+        penaltyWinner =  penalty.home;
+    } else {
+        penaltyWinner = penalty.away;
+    }
+    penalty.played = YES;
+    return penaltyWinner;
+}
 
 
 @end
