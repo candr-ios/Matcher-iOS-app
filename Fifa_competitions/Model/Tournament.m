@@ -14,7 +14,7 @@
 @implementation Tournament
 
 + (NSDictionary *) defaultPropertyValues {
-    return @{@"isGroupStageCompleted": @(false),@"isCompleted": @(false), @"isInitialized":@(false)};
+    return @{@"isGroupStageCompleted": @(false),@"isCompleted": @(false), @"isInitialized":@(false), @"hasGroupStage" : @(false)};
 }
 
 + (NSString *)primaryKey {
@@ -63,7 +63,8 @@
     }
     
     self.isInitialized = true;
-    
+    self.hasGroupStage = true;
+
     NSMutableArray<Player *> * players = [[League convertPlayersToNSArray:self.players] mutableCopy];
     
     [players shuffle];
@@ -76,6 +77,7 @@
     for (int i = 0; i < numberOfGroups; i++) {
         
         Group * group = [Group new];
+        group.id = [Utils uniqueId];
         group.name = groupLetters[i];
         
         NSArray<Player *> * groupPlayers = [players subarrayWithRange:NSMakeRange(i * 4, 4)];
