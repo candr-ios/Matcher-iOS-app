@@ -31,21 +31,20 @@
     return nil;
 }
 
-- (NSArray<Week *> *) generateSchedule {
++ (NSArray<Week *> *) generateScheduleFrom:(NSArray<Player *> *) _players hasTwoStages: (BOOL) twoStages {
     
-    NSUInteger count = self.players.count;
+    NSUInteger count = _players.count;
     BOOL addDummy = count % 2 == 1;
     NSUInteger n = count;
     
     if (addDummy) {
         n += 1;
-    } 
+    }
     
     NSUInteger limit = n - 1;
     NSUInteger factor = n / 2;
     
-    // convert RLMArray of Players to NSArray (add Dummy if n % 2 == 1)
-    NSArray<Player *> * players = [self convertPlayersToNSArray];
+    NSArray<Player *> * players = _players;
     
     // Separate players into 2 equal arrays
     NSArray<Player*> * top = [players subarrayWithRange:NSMakeRange(0, factor)];
@@ -110,7 +109,7 @@
     }
     
     //TODO: Implement Issue #1
-    if (self.twoStages) {
+    if (twoStages) {
         [weeks addObjectsFromArray:[self reversedWeeksFrom:weeks]];
     }
     
@@ -118,7 +117,7 @@
     return weeks;
 }
 
-- (NSArray<Week *> *) reversedWeeksFrom: (NSArray<Week *> *) weeks {
++ (NSArray<Week *> *) reversedWeeksFrom: (NSArray<Week *> *) weeks {
     NSMutableArray<Week *> * weeksRes = [[NSMutableArray alloc] initWithCapacity:weeks.count];
     int number = (int)weeks.count;
     for (Week * week in weeks) {
@@ -134,19 +133,23 @@
     }
     
     return weeksRes;
+    
 }
 
-- (void) removeDummyGames: (NSArray<Week*> *) weeks  {
+- (NSArray<Week *> *) generateSchedule {
+    return  [League generateScheduleFrom:[League convertPlayersToNSArray:self.players] hasTwoStages:self.twoStages];
+}
+
++ (void) removeDummyGames: (NSArray<Week*> *) weeks  {
     
     for (Week * week in weeks) {
         [week.matches removeObjectAtIndex:0];
     }
     
     
-    
 }
 
-- (Week *) generateFirstWeekWithTop: (NSArray<Player *> *) top bottom: (NSArray<Player *> *) bottom {
++ (Week *) generateFirstWeekWithTop: (NSArray<Player *> *) top bottom: (NSArray<Player *> *) bottom {
     Week * week = [Week new];
     week.number = 1;
     NSInteger count = top.count;
@@ -166,12 +169,12 @@
     
 }
 
-- (NSArray<Player *> *) convertPlayersToNSArray {
-    NSUInteger count = self.players.count;
++ (NSArray<Player *> *) convertPlayersToNSArray: (RLMArray<Player *><Player> *) players {
+    NSUInteger count = players.count;
     NSMutableArray * array = [[NSMutableArray alloc] initWithCapacity:(count % 2 == 1)? count + 1: count];
     
     int i = 1;
-    for (Player * player in self.players) {
+    for (Player * player in players) {
         player.index = i;
         [array addObject:player];
         i++;
@@ -185,6 +188,7 @@
     return array;
     
 }
+
 
 - (void) updateStatistics {
     

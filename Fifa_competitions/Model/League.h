@@ -21,6 +21,10 @@
 @property BOOL isCompleted;
 @property int currentWeek;
 
++ (NSArray<Week *> *) generateScheduleFrom:(NSArray<Player *> *) _players hasTwoStages:(BOOL) twoStages;
++ (NSArray<Player *> *) convertPlayersToNSArray: (RLMArray<Player *><Player> *) players;
+
+
 - (NSError *) generateMatches;
 - (void) updateStatistics;
 

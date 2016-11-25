@@ -45,6 +45,7 @@
 		4AD5ADCB1DDF9DF800913B54 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCA1DDF9DF800913B54 /* Group.m */; };
 		4AD5ADCE1DDFA0C900913B54 /* KnockoutStage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */; };
 		4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADD01DDFB5EB00913B54 /* Utils.m */; };
+		4ADD28F21DE88317004C646B /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */; };
 		786A3B8C1DE1F0BB006FC8FB /* Tournament+Checking.m in Sources */ = {isa = PBXBuildFile; fileRef = 786A3B8B1DE1F0BB006FC8FB /* Tournament+Checking.m */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +140,8 @@
 		4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnockoutStage.m; sourceTree = "<group>"; };
 		4AD5ADCF1DDFB5EB00913B54 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		4AD5ADD01DDFB5EB00913B54 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		4ADD28F01DE88317004C646B /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
+		4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
 		786A3B8A1DE1F0BB006FC8FB /* Tournament+Checking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tournament+Checking.h"; sourceTree = "<group>"; };
 		786A3B8B1DE1F0BB006FC8FB /* Tournament+Checking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tournament+Checking.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +184,8 @@
 				4AD5ADCA1DDF9DF800913B54 /* Group.m */,
 				4AD5ADC61DDF9C7500913B54 /* Tournament.h */,
 				4AD5ADC71DDF9C7500913B54 /* Tournament.m */,
+				4ADD28F01DE88317004C646B /* NSMutableArray+Shuffling.h */,
+				4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */,
 				786A3B8A1DE1F0BB006FC8FB /* Tournament+Checking.h */,
 				786A3B8B1DE1F0BB006FC8FB /* Tournament+Checking.m */,
 				4AD5ADCC1DDFA0C900913B54 /* KnockoutStage.h */,
@@ -456,6 +461,7 @@
 				4AD5ADBF1DDF942800913B54 /* Statistics.m in Sources */,
 				4AD5ADB01DDF309E00913B54 /* Club.m in Sources */,
 				4AD5ADB61DDF8FD500913B54 /* Week.m in Sources */,
+				4ADD28F21DE88317004C646B /* NSMutableArray+Shuffling.m in Sources */,
 				4A2B59641DD612740032D53D /* SetupCompetitionViewController.m in Sources */,
 				4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */,
 				4AD5ADBC1DDF938C00913B54 /* Competition.m in Sources */,
