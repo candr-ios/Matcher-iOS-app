@@ -69,6 +69,8 @@
     
     if (self.competitions.count == 0) {
         [self showMessage];
+    } else {
+        [self hideMessage];
     }
 }
 
@@ -203,10 +205,12 @@
 
 - (void) receivePresentCompetitionNotification: (NSNotification *) note {
     
-    
-    
     Competition * competition = (Competition *)note.userInfo[@"competition"];
     
+    if (competition.type == CompetitionTypeTournament) {
+        assert(false);
+        return;
+    }
     
     League *  l = competition.league;
     
@@ -237,7 +241,6 @@
     
     [self.navigationController popToRootViewControllerAnimated:false];
     [self.navigationController pushViewController:matchesVC animated:false];
-    
     
 }
 

@@ -15,6 +15,7 @@
 #import "Club.h"
 #import "Utils.h"
 #import "League.h"
+#import "Tournament.h"
 
 @interface PlayerSetupViewController () <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -165,7 +166,13 @@
     newPlayer.name = self.playerNameTextField.text;
     newPlayer.club = [self.clubs objectAtIndex:self.selectedIndexPath.item];
     newPlayer.index = (int)self.count;
-    [self.competition.league.players addObject:newPlayer];
+    
+    if (self.competition.type == CompetitionTypeTournament) {
+        [self.competition.tournament.players addObject:newPlayer];
+    } else {
+        [self.competition.league.players addObject:newPlayer];
+    }
+    
     
     if (_count == self.numberOfPlayers) {
         
