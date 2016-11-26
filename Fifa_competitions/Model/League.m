@@ -34,7 +34,13 @@
 + (NSArray<Week *> *) generateScheduleFrom:(NSArray<Player *> *) _players hasTwoStages: (BOOL) twoStages {
     
     NSUInteger count = _players.count;
-    BOOL addDummy = count % 2 == 1;
+    BOOL addDummy = [_players indexOfObjectPassingTest:^BOOL(Player * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if( [obj.name isEqualToString:@"Dummy"]) {
+            *stop = true;
+            return true;
+        }
+        return false;
+    }] != NSNotFound;
     NSUInteger n = count;
     
     if (addDummy) {
