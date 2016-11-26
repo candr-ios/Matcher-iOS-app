@@ -10,6 +10,7 @@
 #import "UnderlineTextField.h"
 #import "PlayerSetupViewController.h"
 #import "League.h"
+#import "Tournament.h"
 
 @interface SetupCompetitionViewController () <UITextFieldDelegate>
 
@@ -25,13 +26,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    if (self.competition.league.twoStages) {
-        self.subTitleLabel.text = @"two stages";
-    } else {
-       self.subTitleLabel.text = @"one stage";
-    }
     
-    [self setupViews];
+    
+    if (self.competition.type == CompetitionTypeTournament){
+        self.subTitleLabel.text = @"";
+        if (self.competition.tournament.shouldHaveGroups) {
+            self.subTitleLabel.text = (self.competition.tournament.has2stages) ? @"2 Stages Groups" : @"Groups";
+        }
+        self.title= @"Tournament";
+    } else {
+        self.title = @"League";
+        self.subTitleLabel.text = (self.competition.league.twoStages) ?  @"2 Stages" : @"";
+    }
+
+ [self setupViews];
+    
     
     self.nextButton.hidden = true;
     

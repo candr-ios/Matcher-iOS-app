@@ -13,7 +13,7 @@
 @implementation Tournament
 
 + (NSDictionary *) defaultPropertyValues {
-    return @{@"isGroupStageCompleted": @(false),@"isCompleted": @(false), @"isInitialized":@(false), @"hasGroupStage" : @(false)};
+    return @{@"isGroupStageCompleted": @(false),@"isCompleted": @(false), @"isInitialized":@(false), @"hasGroupStage" : @(false), @"has2stages": @(false),@"shouldHaveGroups": @(false)};
 }
 
 + (NSString *)primaryKey {
@@ -135,7 +135,7 @@
         }
         
         [group.players addObjects:groupPlayers] ;
-        [group.weeks addObjects:[League generateScheduleFrom:groupPlayers hasTwoStages:true]];
+        [group.weeks addObjects:[League generateScheduleFrom:groupPlayers hasTwoStages:self.has2stages]];
         group.statistics = [Statistics new];
         [groups addObject:group];
     }

@@ -24,8 +24,7 @@
     
     [self configureViews];
     
-    self.titleLabel.text = self.title;
-    self.subTitleLabel.text = @"two stages";
+    self.subTitleLabel.text = @"";
     self.view.backgroundColor = [UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:1.00];
     
     
@@ -99,6 +98,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.titleLabel.text = self.title;
 }
 
 - (void) willResignFirstResponder {

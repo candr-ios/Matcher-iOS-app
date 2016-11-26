@@ -17,6 +17,7 @@
 #import "Competition.h"
 #import "Tournament.h"
 #import "TournamentMatchesViewController.h"
+#import "CompetitionTypeViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -108,7 +109,12 @@
 }
 
 - (void) didTapAddButton: (UIBarButtonItem *) sender {
-    [self presentTournament];
+    //[self presentTournament];
+    
+    CompetitionTypeViewController * vc = [CompetitionTypeViewController new];
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    [self.navigationController pushViewController:vc animated:true];
+    
     
 //    [[self navigationController] setNavigationBarHidden:YES animated:YES];
 //    

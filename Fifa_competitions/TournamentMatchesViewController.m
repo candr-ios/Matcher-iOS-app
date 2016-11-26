@@ -185,7 +185,7 @@
     
     match = self.tournament.groups[group].weeks[week].matches[matchIndex];
 
-    NSLog(@"%d == %d", self.tournament.groups[group].currentWeek, week + 1);
+    NSLog(@"%d == %ld", self.tournament.groups[group].currentWeek, week + 1);
     
     return !match.played && self.tournament.groups[group].currentWeek == week + 1;
 }

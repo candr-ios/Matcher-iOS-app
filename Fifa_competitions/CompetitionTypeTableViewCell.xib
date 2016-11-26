@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="180" id="KGk-i7-Jjw" customClass="CompetitionTypeTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="179.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBM-TO-eW5">
+                        <rect key="frame" x="6" y="4" width="308" height="171"/>
+                        <color key="backgroundColor" red="0.21568627450980393" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fu5-PJ-eZV">
+                        <rect key="frame" x="93" y="35" width="134" height="137"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="137" id="BAT-tY-ktH"/>
+                            <constraint firstAttribute="width" constant="134" id="pBL-XQ-aF2"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPp-g1-yw6">
+                        <rect key="frame" x="8" y="8" width="304" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LBM-TO-eW5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="DA1-Jm-9FJ"/>
+                    <constraint firstAttribute="bottom" secondItem="LBM-TO-eW5" secondAttribute="bottom" constant="4" id="ICc-V0-Dzc"/>
+                    <constraint firstItem="Fu5-PJ-eZV" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="LNE-cQ-nAM"/>
+                    <constraint firstItem="HPp-g1-yw6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="N0a-vu-QbQ"/>
+                    <constraint firstItem="Fu5-PJ-eZV" firstAttribute="top" secondItem="HPp-g1-yw6" secondAttribute="bottom" constant="6" id="Zjv-G7-Kww"/>
+                    <constraint firstAttribute="trailing" secondItem="LBM-TO-eW5" secondAttribute="trailing" constant="6" id="gPn-Wp-rBz"/>
+                    <constraint firstAttribute="trailing" secondItem="HPp-g1-yw6" secondAttribute="trailing" constant="8" id="ikX-UI-eeD"/>
+                    <constraint firstItem="HPp-g1-yw6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="ji6-1y-n4o"/>
+                    <constraint firstItem="LBM-TO-eW5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="yEh-WJ-8Qo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="competitionImageView" destination="Fu5-PJ-eZV" id="V6g-Dm-LSG"/>
+                <outlet property="titleLabel" destination="HPp-g1-yw6" id="Gpi-52-V5S"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="122"/>
+        </tableViewCell>
+    </objects>
+</document>

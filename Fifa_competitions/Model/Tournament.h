@@ -14,8 +14,7 @@
 
 @interface Tournament : RLMObject
 
-
-
+@property BOOL shouldHaveGroups;
 @property BOOL isInitialized;
 @property NSString * id;
 
@@ -23,6 +22,7 @@
 
 // Groups stage
 @property BOOL hasGroupStage;
+@property BOOL has2stages;
 @property RLMArray<Group*><Group> * groups;
 @property BOOL isGroupStageCompleted;
 

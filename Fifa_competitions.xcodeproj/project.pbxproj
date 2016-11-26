@@ -32,6 +32,8 @@
 		4A95A99A1DD92BEC000F7CF6 /* MatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */; };
 		4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */; };
 		4A95E5741DE9F7F000B48BEA /* CompetitionTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95E5731DE9F7F000B48BEA /* CompetitionTypeViewController.m */; };
+		4A95E5781DEA033600B48BEA /* CompetitionTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95E5761DEA033600B48BEA /* CompetitionTypeTableViewCell.m */; };
+		4A95E5791DEA033600B48BEA /* CompetitionTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A95E5771DEA033600B48BEA /* CompetitionTypeTableViewCell.xib */; };
 		4AD5ADA91DDE1B7D00913B54 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; };
 		4AD5ADAA1DDE1B7D00913B54 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AD5ADB01DDF309E00913B54 /* Club.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADAF1DDF309E00913B54 /* Club.m */; };
@@ -119,6 +121,9 @@
 		4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesViewController.m; sourceTree = "<group>"; };
 		4A95E5721DE9F7F000B48BEA /* CompetitionTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitionTypeViewController.h; sourceTree = "<group>"; };
 		4A95E5731DE9F7F000B48BEA /* CompetitionTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitionTypeViewController.m; sourceTree = "<group>"; };
+		4A95E5751DEA033600B48BEA /* CompetitionTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitionTypeTableViewCell.h; sourceTree = "<group>"; };
+		4A95E5761DEA033600B48BEA /* CompetitionTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitionTypeTableViewCell.m; sourceTree = "<group>"; };
+		4A95E5771DEA033600B48BEA /* CompetitionTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompetitionTypeTableViewCell.xib; sourceTree = "<group>"; };
 		4AD5ADA81DDE1B7D00913B54 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		4AD5ADAE1DDF309E00913B54 /* Club.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Club.h; path = Model/Club.h; sourceTree = "<group>"; };
 		4AD5ADAF1DDF309E00913B54 /* Club.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Club.m; path = Model/Club.m; sourceTree = "<group>"; };
@@ -303,6 +308,9 @@
 				4A0BB2D81DDB05BC0036E6B2 /* StatsTableViewCell.h */,
 				4A0BB2D91DDB05BC0036E6B2 /* StatsTableViewCell.m */,
 				4A0BB2DA1DDB05BC0036E6B2 /* StatsTableViewCell.xib */,
+				4A95E5751DEA033600B48BEA /* CompetitionTypeTableViewCell.h */,
+				4A95E5761DEA033600B48BEA /* CompetitionTypeTableViewCell.m */,
+				4A95E5771DEA033600B48BEA /* CompetitionTypeTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -423,6 +431,7 @@
 				4A0BB2DC1DDB05BC0036E6B2 /* StatsTableViewCell.xib in Resources */,
 				4A2B59421DD5F8750032D53D /* Assets.xcassets in Resources */,
 				4A2716391DDB1CBF00A48BDD /* StatsHeaderView.xib in Resources */,
+				4A95E5791DEA033600B48BEA /* CompetitionTypeTableViewCell.xib in Resources */,
 				4A4B04401DE0ECA500581C0C /* clubs.plist in Resources */,
 				4A4B04421DE0ECB700581C0C /* Logos.xcassets in Resources */,
 				4A2B59401DD5F8750032D53D /* Main.storyboard in Resources */,
@@ -461,6 +470,7 @@
 			files = (
 				4AD5ADB31DDF347B00913B54 /* Player.m in Sources */,
 				4A0BB2D71DDB01A10036E6B2 /* StatisticsTableViewController.m in Sources */,
+				4A95E5781DEA033600B48BEA /* CompetitionTypeTableViewCell.m in Sources */,
 				4A2B596B1DD63EC30032D53D /* ClubCollectionViewCell.m in Sources */,
 				4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */,
 				4A2B59671DD62FD80032D53D /* PlayerSetupViewController.m in Sources */,
