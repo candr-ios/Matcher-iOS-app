@@ -29,7 +29,7 @@
     [[UITextField appearance] setTintColor:[UIColor whiteColor]];
     [self configureNavBarAppearance];
     NSLog(@"FILEPATH%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
-
+    
     [self testTournament];
     return YES;
 }
@@ -60,28 +60,30 @@
    
     NSLog(@"%@", tournament);
     
+    [tournament generateGroups];
+    
     RLMRealm *realm = [RLMRealm defaultRealm];
     
     [realm beginWriteTransaction];
     [realm addObject:tournament];
     // suppose all matched played
-    tournament.isGroupStageCompleted = YES;
+    //tournament.isGroupStageCompleted = YES;
     [realm commitWriteTransaction];
     
     
-    
-    if (tournament.isGroupStageCompleted) {
-        
-        [tournament generateKnockoutStagesFromGroups];
-        
-        [tournament.currentStage setRandomGoalsForMatches];
-        [tournament generateNextKnockoutStage];
-        [tournament.currentStage setRandomGoalsForMatches];
-        [tournament generateNextKnockoutStage];
-        [tournament.currentStage setRandomGoalsForMatches];
-        [tournament generateNextKnockoutStage];
-
-    }
+//    
+//    if (tournament.isGroupStageCompleted) {
+//        
+//        [tournament generateKnockoutStagesFromGroups];
+//        
+//        [tournament.currentStage setRandomGoalsForMatches];
+//        [tournament generateNextKnockoutStage];
+//        [tournament.currentStage setRandomGoalsForMatches];
+//        [tournament generateNextKnockoutStage];
+//        [tournament.currentStage setRandomGoalsForMatches];
+//        [tournament generateNextKnockoutStage];
+//
+//    }
 
     
     

@@ -31,6 +31,29 @@
 
 #pragma mark - Stage Methods
 
+- (NSString *) typeString {
+    switch (self.type) {
+        case ThirdPlace:
+            return  @"Third Place";
+            break;
+        case Final:
+            return  @"Final";
+            break;
+        case SemiFinal:
+            return  @"SemiFinal";
+            break;
+        case QuaterFinal:
+            return  @"Quater Final";
+            break;
+        case Round16:
+            return  @"First Round";
+            break;
+            
+        default:
+            return @"Unknown";
+    }
+}
+
 /// return StageType of tournament(1/16, 1/8, 1/4, 1/2, final) based on enum KnockoutStageType
 /// using shifted bytes
 - (KnockoutStageType) typeOfInitialStage

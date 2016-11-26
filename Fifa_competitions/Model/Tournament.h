@@ -38,6 +38,7 @@
 
 - (instancetype)initWithPlayers:(RLMArray<Player *><Player> *)players;
 
+- (int) currentWeek;
 
 /// Generates group stage if [self canCreateGroup] == true
 ///

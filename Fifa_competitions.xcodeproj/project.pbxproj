@@ -31,6 +31,7 @@
 		4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */; };
 		4A95A99A1DD92BEC000F7CF6 /* MatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */; };
 		4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */; };
+		4A95E5741DE9F7F000B48BEA /* CompetitionTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95E5731DE9F7F000B48BEA /* CompetitionTypeViewController.m */; };
 		4AD5ADA91DDE1B7D00913B54 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; };
 		4AD5ADAA1DDE1B7D00913B54 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AD5ADB01DDF309E00913B54 /* Club.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADAF1DDF309E00913B54 /* Club.m */; };
@@ -46,6 +47,7 @@
 		4AD5ADCE1DDFA0C900913B54 /* KnockoutStage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */; };
 		4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADD01DDFB5EB00913B54 /* Utils.m */; };
 		4ADD28F21DE88317004C646B /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */; };
+		4ADD28F51DE8DA2D004C646B /* TournamentMatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD28F41DE8DA2D004C646B /* TournamentMatchesViewController.m */; };
 		78D3093B1DE8C8DC00075921 /* PenaltySeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D3093A1DE8C8DC00075921 /* PenaltySeries.m */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +117,8 @@
 		4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchTableViewCell.xib; sourceTree = "<group>"; };
 		4A95A99B1DD92CD6000F7CF6 /* MatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesViewController.h; sourceTree = "<group>"; };
 		4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesViewController.m; sourceTree = "<group>"; };
+		4A95E5721DE9F7F000B48BEA /* CompetitionTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitionTypeViewController.h; sourceTree = "<group>"; };
+		4A95E5731DE9F7F000B48BEA /* CompetitionTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitionTypeViewController.m; sourceTree = "<group>"; };
 		4AD5ADA81DDE1B7D00913B54 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		4AD5ADAE1DDF309E00913B54 /* Club.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Club.h; path = Model/Club.h; sourceTree = "<group>"; };
 		4AD5ADAF1DDF309E00913B54 /* Club.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Club.m; path = Model/Club.m; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 		4AD5ADD01DDFB5EB00913B54 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		4ADD28F01DE88317004C646B /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
 		4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
+		4ADD28F31DE8DA2D004C646B /* TournamentMatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TournamentMatchesViewController.h; sourceTree = "<group>"; };
+		4ADD28F41DE8DA2D004C646B /* TournamentMatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TournamentMatchesViewController.m; sourceTree = "<group>"; };
 		78D309391DE8C8DC00075921 /* PenaltySeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenaltySeries.h; sourceTree = "<group>"; };
 		78D3093A1DE8C8DC00075921 /* PenaltySeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PenaltySeries.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -265,6 +271,8 @@
 		4ADD28EC1DE8570A004C646B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4A95E5721DE9F7F000B48BEA /* CompetitionTypeViewController.h */,
+				4A95E5731DE9F7F000B48BEA /* CompetitionTypeViewController.m */,
 				4A2B59621DD612740032D53D /* SetupCompetitionViewController.h */,
 				4A2B59631DD612740032D53D /* SetupCompetitionViewController.m */,
 				4A2B59651DD62FD80032D53D /* PlayerSetupViewController.h */,
@@ -277,6 +285,8 @@
 				4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */,
 				4A0BB2D51DDB01A10036E6B2 /* StatisticsTableViewController.h */,
 				4A0BB2D61DDB01A10036E6B2 /* StatisticsTableViewController.m */,
+				4ADD28F31DE8DA2D004C646B /* TournamentMatchesViewController.h */,
+				4ADD28F41DE8DA2D004C646B /* TournamentMatchesViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -459,11 +469,13 @@
 				4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */,
 				4AD5ADBF1DDF942800913B54 /* Statistics.m in Sources */,
 				4AD5ADB01DDF309E00913B54 /* Club.m in Sources */,
+				4ADD28F51DE8DA2D004C646B /* TournamentMatchesViewController.m in Sources */,
 				4AD5ADB61DDF8FD500913B54 /* Week.m in Sources */,
 				4ADD28F21DE88317004C646B /* NSMutableArray+Shuffling.m in Sources */,
 				4A2B59641DD612740032D53D /* SetupCompetitionViewController.m in Sources */,
 				4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */,
 				4AD5ADBC1DDF938C00913B54 /* Competition.m in Sources */,
+				4A95E5741DE9F7F000B48BEA /* CompetitionTypeViewController.m in Sources */,
 				4A2B593D1DD5F8750032D53D /* ViewController.m in Sources */,
 				4A2B59611DD610720032D53D /* UnderlineTextField.m in Sources */,
 				4AD5ADCB1DDF9DF800913B54 /* Group.m in Sources */,

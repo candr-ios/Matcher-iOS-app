@@ -32,7 +32,6 @@
 
 #pragma mark - Initialization
 
-
 /// Make initialization for Tournament object with players and reakm
 /// Choose to generate Knockout stage OR Groups based on players count
 - (instancetype)initWithPlayers:(RLMArray<Player *><Player> *)players
@@ -54,7 +53,6 @@
     }
     return self;
 }
-
 
 
 #pragma mark - Transition GroupStage -> KnockoutStage
@@ -85,7 +83,19 @@
     return (RLMArray<Player *><Player> *)winners;
 }
 
-//// must shuffle players in accordance with regulation
+
+- (int) currentWeek {
+    int minWeek = 1;
+    if (self.hasGroupStage) {
+        for (Group * group in self.groups) {
+            minWeek =  MIN(group.currentWeek, minWeek);
+        }
+        return minWeek;
+    }
+    
+    return -1;
+}
+
 - (NSArray*) shufflePlayers {
     return nil;
 }
@@ -137,9 +147,13 @@
 
 
 - (void) updateStatistics {
+    BOOL isGroupStageCompleted = true;
     for (Group * group in self.groups) {
         [group updateStatistics];
+        isGroupStageCompleted = group.isCompleted && isGroupStageCompleted;
     }
+    self.isGroupStageCompleted = isGroupStageCompleted;
+    
 }
 
 #pragma mark - KnockoutStage

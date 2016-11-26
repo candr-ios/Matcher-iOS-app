@@ -30,6 +30,8 @@ typedef enum : int {
 @property BOOL isComplete;
 @property RLMArray<PenaltySeries*><PenaltySeries>* penaltySeries;
 //new
+- (NSString *) typeString;
+
 - (KnockoutStageType) typeOfInitialStage;
 - (instancetype)initWithPlayers:(id)players;
 

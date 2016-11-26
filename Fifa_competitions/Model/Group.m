@@ -10,6 +10,10 @@
 
 @implementation Group
 
++ (NSDictionary *) defaultPropertyValues {
+    return @{@"currentWeek": @(1)};
+}
+
 + (NSString *)primaryKey {
     return @"id";
 }
