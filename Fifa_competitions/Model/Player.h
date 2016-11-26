@@ -7,6 +7,7 @@
 //
 
 #import <Realm/Realm.h>
+#import "Utils.h"
 @class Club;
 
 @interface Player : RLMObject
@@ -15,6 +16,8 @@
 @property NSString * name;
 @property Club * club;
 @property int index;
+
+- (instancetype)initWithName:(NSString*)name;
 
 @end
 

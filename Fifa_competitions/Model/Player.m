@@ -8,6 +8,7 @@
 
 #import "Player.h"
 
+
 @implementation Player
 
 + (NSArray<NSString *> *) indexedProperties {
@@ -18,4 +19,13 @@
     return @"id";
 }
 
+- (instancetype)initWithName:(NSString*)name
+{
+    self = [super init];
+    if (self) {
+        self.name = name;
+        self.id = [Utils uniqueId];
+    }
+    return self;
+}
 @end

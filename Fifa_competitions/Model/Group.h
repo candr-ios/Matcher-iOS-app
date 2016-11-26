@@ -19,6 +19,10 @@
 @property RLMArray<Player *><Player> * players;
 @property RLMArray<Week *><Week> * weeks;
 @property Statistics * statistics;
+@property BOOL isCompleted;
+@property int currentWeek;
+
+- (void) updateStatistics;
 
 @end
 

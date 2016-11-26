@@ -31,6 +31,9 @@
 		4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */; };
 		4A95A99A1DD92BEC000F7CF6 /* MatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */; };
 		4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */; };
+		4A95E5741DE9F7F000B48BEA /* CompetitionTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95E5731DE9F7F000B48BEA /* CompetitionTypeViewController.m */; };
+		4A95E5781DEA033600B48BEA /* CompetitionTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95E5761DEA033600B48BEA /* CompetitionTypeTableViewCell.m */; };
+		4A95E5791DEA033600B48BEA /* CompetitionTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A95E5771DEA033600B48BEA /* CompetitionTypeTableViewCell.xib */; };
 		4AD5ADA91DDE1B7D00913B54 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; };
 		4AD5ADAA1DDE1B7D00913B54 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AD5ADB01DDF309E00913B54 /* Club.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADAF1DDF309E00913B54 /* Club.m */; };
@@ -45,6 +48,9 @@
 		4AD5ADCB1DDF9DF800913B54 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCA1DDF9DF800913B54 /* Group.m */; };
 		4AD5ADCE1DDFA0C900913B54 /* KnockoutStage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */; };
 		4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADD01DDFB5EB00913B54 /* Utils.m */; };
+		4ADD28F21DE88317004C646B /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */; };
+		4ADD28F51DE8DA2D004C646B /* TournamentMatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD28F41DE8DA2D004C646B /* TournamentMatchesViewController.m */; };
+		78D3093B1DE8C8DC00075921 /* PenaltySeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D3093A1DE8C8DC00075921 /* PenaltySeries.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +119,11 @@
 		4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchTableViewCell.xib; sourceTree = "<group>"; };
 		4A95A99B1DD92CD6000F7CF6 /* MatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesViewController.h; sourceTree = "<group>"; };
 		4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesViewController.m; sourceTree = "<group>"; };
+		4A95E5721DE9F7F000B48BEA /* CompetitionTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitionTypeViewController.h; sourceTree = "<group>"; };
+		4A95E5731DE9F7F000B48BEA /* CompetitionTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitionTypeViewController.m; sourceTree = "<group>"; };
+		4A95E5751DEA033600B48BEA /* CompetitionTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitionTypeTableViewCell.h; sourceTree = "<group>"; };
+		4A95E5761DEA033600B48BEA /* CompetitionTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitionTypeTableViewCell.m; sourceTree = "<group>"; };
+		4A95E5771DEA033600B48BEA /* CompetitionTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompetitionTypeTableViewCell.xib; sourceTree = "<group>"; };
 		4AD5ADA81DDE1B7D00913B54 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		4AD5ADAE1DDF309E00913B54 /* Club.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Club.h; path = Model/Club.h; sourceTree = "<group>"; };
 		4AD5ADAF1DDF309E00913B54 /* Club.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Club.m; path = Model/Club.m; sourceTree = "<group>"; };
@@ -138,6 +149,12 @@
 		4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnockoutStage.m; sourceTree = "<group>"; };
 		4AD5ADCF1DDFB5EB00913B54 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		4AD5ADD01DDFB5EB00913B54 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		4ADD28F01DE88317004C646B /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
+		4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
+		4ADD28F31DE8DA2D004C646B /* TournamentMatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TournamentMatchesViewController.h; sourceTree = "<group>"; };
+		4ADD28F41DE8DA2D004C646B /* TournamentMatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TournamentMatchesViewController.m; sourceTree = "<group>"; };
+		78D309391DE8C8DC00075921 /* PenaltySeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenaltySeries.h; sourceTree = "<group>"; };
+		78D3093A1DE8C8DC00075921 /* PenaltySeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PenaltySeries.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +176,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A2716621DDD2A9200A48BDD /* Model */ = {
+		4A2716621DDD2A9200A48BDD /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				4AD5ADAE1DDF309E00913B54 /* Club.h */,
@@ -170,6 +187,8 @@
 				4AD5ADB51DDF8FD500913B54 /* Week.m */,
 				4AD5ADB71DDF8FF400913B54 /* Match.h */,
 				4AD5ADB81DDF8FF400913B54 /* Match.m */,
+				78D309391DE8C8DC00075921 /* PenaltySeries.h */,
+				78D3093A1DE8C8DC00075921 /* PenaltySeries.m */,
 				4AD5ADBA1DDF938C00913B54 /* Competition.h */,
 				4AD5ADBB1DDF938C00913B54 /* Competition.m */,
 				4AD5ADC31DDF976E00913B54 /* League.h */,
@@ -178,6 +197,8 @@
 				4AD5ADCA1DDF9DF800913B54 /* Group.m */,
 				4AD5ADC61DDF9C7500913B54 /* Tournament.h */,
 				4AD5ADC71DDF9C7500913B54 /* Tournament.m */,
+				4ADD28F01DE88317004C646B /* NSMutableArray+Shuffling.h */,
+				4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */,
 				4AD5ADCC1DDFA0C900913B54 /* KnockoutStage.h */,
 				4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */,
 				4AD5ADBD1DDF942800913B54 /* Statistics.h */,
@@ -185,7 +206,7 @@
 				4AD5ADC01DDF944800913B54 /* StatisticsItem.h */,
 				4AD5ADC11DDF944800913B54 /* StatisticsItem.m */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		4A2B59291DD5F8750032D53D = {
@@ -210,45 +231,12 @@
 		4A2B59341DD5F8750032D53D /* Fifa_competitions */ = {
 			isa = PBXGroup;
 			children = (
-				4A2716621DDD2A9200A48BDD /* Model */,
 				4A2B59381DD5F8750032D53D /* AppDelegate.h */,
 				4A2B59391DD5F8750032D53D /* AppDelegate.m */,
-				4AD5ADCF1DDFB5EB00913B54 /* Utils.h */,
-				4AD5ADD01DDFB5EB00913B54 /* Utils.m */,
-				4A2B593B1DD5F8750032D53D /* ViewController.h */,
-				4A2B593C1DD5F8750032D53D /* ViewController.m */,
-				4A2B595A1DD607A60032D53D /* CreateCompetitionBaseViewController.h */,
-				4A2B595B1DD607A60032D53D /* CreateCompetitionBaseViewController.m */,
-				4A2B595F1DD610720032D53D /* UnderlineTextField.h */,
-				4A2B59601DD610720032D53D /* UnderlineTextField.m */,
-				4A2B59621DD612740032D53D /* SetupCompetitionViewController.h */,
-				4A2B59631DD612740032D53D /* SetupCompetitionViewController.m */,
-				4A2B59651DD62FD80032D53D /* PlayerSetupViewController.h */,
-				4A2B59661DD62FD80032D53D /* PlayerSetupViewController.m */,
-				4A95A9961DD92BEC000F7CF6 /* MatchTableViewCell.h */,
-				4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */,
-				4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */,
-				4A95A99B1DD92CD6000F7CF6 /* MatchesViewController.h */,
-				4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */,
-				4A0BB2D81DDB05BC0036E6B2 /* StatsTableViewCell.h */,
-				4A0BB2D91DDB05BC0036E6B2 /* StatsTableViewCell.m */,
-				4A0BB2DA1DDB05BC0036E6B2 /* StatsTableViewCell.xib */,
-				4A2716351DDB1CAC00A48BDD /* StatsHeaderView.h */,
-				4A2716361DDB1CAC00A48BDD /* StatsHeaderView.m */,
-				4A2716381DDB1CBF00A48BDD /* StatsHeaderView.xib */,
-				4A0BB2D51DDB01A10036E6B2 /* StatisticsTableViewController.h */,
-				4A0BB2D61DDB01A10036E6B2 /* StatisticsTableViewController.m */,
-				4A0BB2D21DDAE0210036E6B2 /* MatchesHeaderView.h */,
-				4A0BB2D31DDAE0210036E6B2 /* MatchesHeaderView.m */,
-				4A2B59681DD63EC30032D53D /* ClubCollectionViewCell.h */,
-				4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */,
-				4A4B043F1DE0ECA500581C0C /* clubs.plist */,
-				4A4B04411DE0ECB700581C0C /* Logos.xcassets */,
-				4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */,
-				4A2B593E1DD5F8750032D53D /* Main.storyboard */,
-				4A2B59411DD5F8750032D53D /* Assets.xcassets */,
-				4A2B59431DD5F8750032D53D /* LaunchScreen.storyboard */,
-				4A2B59461DD5F8750032D53D /* Info.plist */,
+				4ADD28EF1DE857E0004C646B /* Utils */,
+				4A2716621DDD2A9200A48BDD /* Models */,
+				4ADD28EC1DE8570A004C646B /* Controllers */,
+				4ADD28EE1DE85795004C646B /* Views */,
 				4A2B59351DD5F8750032D53D /* Supporting Files */,
 			);
 			path = Fifa_competitions;
@@ -257,6 +245,12 @@
 		4A2B59351DD5F8750032D53D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4A4B043F1DE0ECA500581C0C /* clubs.plist */,
+				4A2B593E1DD5F8750032D53D /* Main.storyboard */,
+				4A4B04411DE0ECB700581C0C /* Logos.xcassets */,
+				4A2B59411DD5F8750032D53D /* Assets.xcassets */,
+				4A2B59431DD5F8750032D53D /* LaunchScreen.storyboard */,
+				4A2B59461DD5F8750032D53D /* Info.plist */,
 				4A2B59361DD5F8750032D53D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -277,6 +271,72 @@
 				4AD5ADA81DDE1B7D00913B54 /* Realm.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4ADD28EC1DE8570A004C646B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A95E5721DE9F7F000B48BEA /* CompetitionTypeViewController.h */,
+				4A95E5731DE9F7F000B48BEA /* CompetitionTypeViewController.m */,
+				4A2B59621DD612740032D53D /* SetupCompetitionViewController.h */,
+				4A2B59631DD612740032D53D /* SetupCompetitionViewController.m */,
+				4A2B59651DD62FD80032D53D /* PlayerSetupViewController.h */,
+				4A2B59661DD62FD80032D53D /* PlayerSetupViewController.m */,
+				4A2B593B1DD5F8750032D53D /* ViewController.h */,
+				4A2B593C1DD5F8750032D53D /* ViewController.m */,
+				4A2B595A1DD607A60032D53D /* CreateCompetitionBaseViewController.h */,
+				4A2B595B1DD607A60032D53D /* CreateCompetitionBaseViewController.m */,
+				4A95A99B1DD92CD6000F7CF6 /* MatchesViewController.h */,
+				4A95A99C1DD92CD6000F7CF6 /* MatchesViewController.m */,
+				4A0BB2D51DDB01A10036E6B2 /* StatisticsTableViewController.h */,
+				4A0BB2D61DDB01A10036E6B2 /* StatisticsTableViewController.m */,
+				4ADD28F31DE8DA2D004C646B /* TournamentMatchesViewController.h */,
+				4ADD28F41DE8DA2D004C646B /* TournamentMatchesViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4ADD28ED1DE8573B004C646B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4A2B59681DD63EC30032D53D /* ClubCollectionViewCell.h */,
+				4A2B59691DD63EC30032D53D /* ClubCollectionViewCell.m */,
+				4A2B596A1DD63EC30032D53D /* ClubCollectionViewCell.xib */,
+				4A95A9961DD92BEC000F7CF6 /* MatchTableViewCell.h */,
+				4A95A9971DD92BEC000F7CF6 /* MatchTableViewCell.m */,
+				4A95A9981DD92BEC000F7CF6 /* MatchTableViewCell.xib */,
+				4A0BB2D81DDB05BC0036E6B2 /* StatsTableViewCell.h */,
+				4A0BB2D91DDB05BC0036E6B2 /* StatsTableViewCell.m */,
+				4A0BB2DA1DDB05BC0036E6B2 /* StatsTableViewCell.xib */,
+				4A95E5751DEA033600B48BEA /* CompetitionTypeTableViewCell.h */,
+				4A95E5761DEA033600B48BEA /* CompetitionTypeTableViewCell.m */,
+				4A95E5771DEA033600B48BEA /* CompetitionTypeTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		4ADD28EE1DE85795004C646B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD28ED1DE8573B004C646B /* Cells */,
+				4A2B595F1DD610720032D53D /* UnderlineTextField.h */,
+				4A2B59601DD610720032D53D /* UnderlineTextField.m */,
+				4A2716351DDB1CAC00A48BDD /* StatsHeaderView.h */,
+				4A2716361DDB1CAC00A48BDD /* StatsHeaderView.m */,
+				4A2716381DDB1CBF00A48BDD /* StatsHeaderView.xib */,
+				4A0BB2D21DDAE0210036E6B2 /* MatchesHeaderView.h */,
+				4A0BB2D31DDAE0210036E6B2 /* MatchesHeaderView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4ADD28EF1DE857E0004C646B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4AD5ADCF1DDFB5EB00913B54 /* Utils.h */,
+				4AD5ADD01DDFB5EB00913B54 /* Utils.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,7 +390,7 @@
 				TargetAttributes = {
 					4A2B59311DD5F8750032D53D = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = ZFT39P4T94;
+						DevelopmentTeam = ZW9JWEU2NM;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -371,6 +431,7 @@
 				4A0BB2DC1DDB05BC0036E6B2 /* StatsTableViewCell.xib in Resources */,
 				4A2B59421DD5F8750032D53D /* Assets.xcassets in Resources */,
 				4A2716391DDB1CBF00A48BDD /* StatsHeaderView.xib in Resources */,
+				4A95E5791DEA033600B48BEA /* CompetitionTypeTableViewCell.xib in Resources */,
 				4A4B04401DE0ECA500581C0C /* clubs.plist in Resources */,
 				4A4B04421DE0ECB700581C0C /* Logos.xcassets in Resources */,
 				4A2B59401DD5F8750032D53D /* Main.storyboard in Resources */,
@@ -409,6 +470,7 @@
 			files = (
 				4AD5ADB31DDF347B00913B54 /* Player.m in Sources */,
 				4A0BB2D71DDB01A10036E6B2 /* StatisticsTableViewController.m in Sources */,
+				4A95E5781DEA033600B48BEA /* CompetitionTypeTableViewCell.m in Sources */,
 				4A2B596B1DD63EC30032D53D /* ClubCollectionViewCell.m in Sources */,
 				4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */,
 				4A2B59671DD62FD80032D53D /* PlayerSetupViewController.m in Sources */,
@@ -417,10 +479,13 @@
 				4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */,
 				4AD5ADBF1DDF942800913B54 /* Statistics.m in Sources */,
 				4AD5ADB01DDF309E00913B54 /* Club.m in Sources */,
+				4ADD28F51DE8DA2D004C646B /* TournamentMatchesViewController.m in Sources */,
 				4AD5ADB61DDF8FD500913B54 /* Week.m in Sources */,
+				4ADD28F21DE88317004C646B /* NSMutableArray+Shuffling.m in Sources */,
 				4A2B59641DD612740032D53D /* SetupCompetitionViewController.m in Sources */,
 				4A95A99D1DD92CD6000F7CF6 /* MatchesViewController.m in Sources */,
 				4AD5ADBC1DDF938C00913B54 /* Competition.m in Sources */,
+				4A95E5741DE9F7F000B48BEA /* CompetitionTypeViewController.m in Sources */,
 				4A2B593D1DD5F8750032D53D /* ViewController.m in Sources */,
 				4A2B59611DD610720032D53D /* UnderlineTextField.m in Sources */,
 				4AD5ADCB1DDF9DF800913B54 /* Group.m in Sources */,
@@ -432,6 +497,7 @@
 				4AD5ADC51DDF976E00913B54 /* League.m in Sources */,
 				4AD5ADB91DDF8FF400913B54 /* Match.m in Sources */,
 				4A2B593A1DD5F8750032D53D /* AppDelegate.m in Sources */,
+				78D3093B1DE8C8DC00075921 /* PenaltySeries.m in Sources */,
 				4A2B59371DD5F8750032D53D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +558,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -515,7 +582,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -540,6 +607,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -557,7 +625,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -569,7 +637,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = ZFT39P4T94;
+				DEVELOPMENT_TEAM = ZW9JWEU2NM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -590,7 +658,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = ZFT39P4T94;
+				DEVELOPMENT_TEAM = ZW9JWEU2NM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

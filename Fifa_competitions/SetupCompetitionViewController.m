@@ -10,6 +10,7 @@
 #import "UnderlineTextField.h"
 #import "PlayerSetupViewController.h"
 #import "League.h"
+#import "Tournament.h"
 
 @interface SetupCompetitionViewController () <UITextFieldDelegate>
 
@@ -25,13 +26,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    if (self.competition.league.twoStages) {
-        self.subTitleLabel.text = @"two stages";
-    } else {
-       self.subTitleLabel.text = @"one stage";
-    }
     
+    
+    if (self.competition.type == CompetitionTypeTournament){
+        self.subTitleLabel.text = @"";
+        if (self.competition.tournament.shouldHaveGroups) {
+            self.subTitleLabel.text = (self.competition.tournament.has2stages) ? @"2 Stages Groups" : @"Groups";
+        }
+        self.title= @"Tournament";
+    } else {
+        self.title = @"League";
+        self.subTitleLabel.text = (self.competition.league.twoStages) ?  @"2 Stages" : @"";
+    }
+
     [self setupViews];
+    
     
     self.nextButton.hidden = true;
     
@@ -62,7 +71,11 @@
     
     _competitionTitle.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Enter Title" attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
     
-    _numberOfPlayers.text = @"4";
+    if (self.competition.type == CompetitionTypeTournament) {
+        _numberOfPlayers.text = @"8";
+    } else {
+        _numberOfPlayers.text = @"4";
+    }
     
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
     [keyboardDoneButtonView sizeToFit];
@@ -91,11 +104,26 @@
     if (self.competitionTitle.isFirstResponder) {
         self.competition.title = self.competitionTitle.text;
     }
+    self.nextButton.hidden = true;
 
     int count = self.numberOfPlayers.text.intValue;
-    if (self.competition.title.length > 3 && count > 1 && count < 65) {
-        self.nextButton.hidden = false;
+    
+    if (self.competition.type == CompetitionTypeTournament && self.competition.tournament.shouldHaveGroups) {
+        
+        // is power of 2 and >= 8
+        if ((count != 0) && ((count & (count - 1)) == 0) && count >= 8 && count <= 32) {
+            self.nextButton.hidden = false;
+        }
+    } else if (self.competition.type == CompetitionTypeTournament) {
+        if ((count != 0) && ((count & (count - 1)) == 0) && count >= 2 && count <= 32) {
+            self.nextButton.hidden = false;
+        }
     } else {
+        
+        self.nextButton.hidden = (count >= 2 && count <= 32) ? false : true;
+    }
+    
+    if (self.competition.title.length < 1) {
         self.nextButton.hidden = true;
     }
 }

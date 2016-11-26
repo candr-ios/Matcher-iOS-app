@@ -15,6 +15,9 @@
 #import "Utils.h"
 #import "Statistics.h"
 #import "Competition.h"
+#import "Tournament.h"
+#import "TournamentMatchesViewController.h"
+#import "CompetitionTypeViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -46,68 +49,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivePresentCompetitionNotification:) name:@"PresentCompetition" object:nil];
     
-    {
-        
-        
-        
-        NSLog(@"%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
-        //
-        //    RLMRealm * realm = [RLMRealm defaultRealm];
-        //
-        //
-        //    League * l = [League new];
-        //    l.id = [Utils uniqueId];
-        //    l.twoStages = true;
-        //
-        //    l.statistics = [Statistics new];
-        //
-        //    [l.players addObjects:@[[[Player alloc] initWithValue: @{@"name": @"Andy", @"id": [Utils uniqueId]}],
-        //                            [[Player alloc] initWithValue: @{@"name": @"Stephan", @"id": [Utils uniqueId]}],
-        //                            [[Player alloc] initWithValue: @{@"name": @"Clark", @"id": [Utils uniqueId]}],
-        //                            [[Player alloc] initWithValue: @{@"name": @"Michael", @"id": [Utils uniqueId]}]
-        ////                            [[Player alloc] initWithValue: @{@"name": @"Poul", @"id": [Utils uniqueId]}],
-        ////                            [[Player alloc] initWithValue: @{@"name": @"Mark", @"id": [Utils uniqueId]}],
-        ////                            [[Player alloc] initWithValue: @{@"name": @"John", @"id": [Utils uniqueId]}]
-        ////                            [[Player alloc] initWithValue: @{@"name": @"Michael 2", @"id": [Utils uniqueId]}],
-        ////                            [[Player alloc] initWithValue: @{@"name": @"Andy 3", @"id": [Utils uniqueId]}],
-        ////                            [[Player alloc] initWithValue: @{@"name": @"Steven 3", @"id": [Utils uniqueId]}],
-        ////                            [[Player alloc] initWithValue: @{@"name": @"Clark 3", @"id": [Utils uniqueId]}],
-        ////                            [[Player alloc] initWithValue: @{@"name": @"Michael 3", @"id": [Utils uniqueId]}]
-        //                            ]];
-        //
-        //    for (Player * player in l.players) {
-        //        StatisticsItem * item = [[StatisticsItem alloc] init];
-        //        item.player = player;
-        //        item.id = [Utils uniqueId];
-        //
-        //        [l.statistics.items addObject:item];
-        //    }
-        //
-        //    [l generateMatches];
-        //
-        //    NSLog(@"%@",l);
-        //
-        //    [realm beginWriteTransaction];
-        //
-        //    [realm addOrUpdateObject:l];
-        //
-        //    [realm commitWriteTransaction];
-        //
-        //    for (int i = 0; i < l.weeks.count ; i++) {
-        //        for (Match * match in l.weeks[l.currentWeek - 1].matches) {
-        //            [realm beginWriteTransaction];
-        //            match.played = true;
-        //            int lowerBound = 0;
-        //            int upperBound = 5;
-        //            match.homeGoals = lowerBound + arc4random() % (upperBound - lowerBound);
-        //            match.awayGoals = lowerBound + arc4random() % (upperBound - lowerBound);
-        //
-        //            [realm commitWriteTransaction];
-        //        }
-        //
-        //        [l updateStatistics];
-        //    }
-    }
+    
+    NSLog(@"%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
+    
     
 }
 
@@ -125,6 +69,8 @@
     
     if (self.competitions.count == 0) {
         [self showMessage];
+    } else {
+        [self hideMessage];
     }
 }
 
@@ -165,25 +111,82 @@
 }
 
 - (void) didTapAddButton: (UIBarButtonItem *) sender {
+    //[self presentTournament];
     
-    
+    CompetitionTypeViewController * vc = [CompetitionTypeViewController new];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    [self.navigationController pushViewController:vc animated:true];
     
-    SetupCompetitionViewController * vc = [[SetupCompetitionViewController alloc] init];
-    vc.title = @"League";
-    Competition * competition = [Competition new];
-    competition.id = [Utils uniqueId];
-    competition.dateCreated = [NSDate date];
-    competition.type = CompetitionTypeLeague;
     
-    League * league = [League new];
-    league.id = [Utils uniqueId];
-    league.twoStages = true;
-    competition.league = league;
+//    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+//    
+//    SetupCompetitionViewController * vc = [[SetupCompetitionViewController alloc] init];
+//    vc.title = @"League";
+//    Competition * competition = [Competition new];
+//    competition.id = [Utils uniqueId];
+//    competition.dateCreated = [NSDate date];
+//    competition.type = CompetitionTypeLeague;
+//    
+//    League * league = [League new];
+//    league.id = [Utils uniqueId];
+//    league.twoStages = true;
+//    competition.league = league;
+//    
+//    vc.competition = competition;
+//    
+//    [[self navigationController] pushViewController:vc animated:true];
+//    
+}
+
+- (void) presentTournament {
+    Player *player1 = [[Player alloc] initWithName:@"Adam"];
+    Player *player2 = [[Player alloc] initWithName:@"Andy"];
+    Player *player3 = [[Player alloc] initWithName:@"Tom"];
+    Player *player4 = [[Player alloc] initWithName:@"Sara"];
+    Player *player5 = [[Player alloc] initWithName:@"Steve"];
+    Player *player6 = [[Player alloc] initWithName:@"Jane"];
+    Player *player7 = [[Player alloc] initWithName:@"Lily"];
+    Player *player8 = [[Player alloc] initWithName:@"Donald"];
+    Player *player9 = [[Player alloc] initWithName:@"Boris"];
+    Player *player10 = [[Player alloc] initWithName:@"Alex"];
+    Player *player11 = [[Player alloc] initWithName:@"Sandy"];
+    Player *player12 = [[Player alloc] initWithName:@"Bob"];
+    Player *player13 = [[Player alloc] initWithName:@"Jack"];
+    Player *player14 = [[Player alloc] initWithName:@"Ace"];
+    Player *player15 = [[Player alloc] initWithName:@"Billy"];
+    Player *player16 = [[Player alloc] initWithName:@"Clare"];
     
-    vc.competition = competition;
     
-    [[self navigationController] pushViewController:vc animated:true];
+    Tournament *tournament = [[Tournament alloc] initWithPlayers:@[player1,player2,player3,player4,player5,player6,player7,player8,player9,player10,player11,player12,player13,player14,player15,player16]];
+    
+    
+    NSLog(@"%@", tournament);
+    
+    [tournament generateGroups];
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    
+    
+    TournamentMatchesViewController * vc = [TournamentMatchesViewController new];
+    
+    Competition * com = [Competition new];
+    com.tournament = tournament;
+    com.id = [Utils uniqueId];
+    com.type = CompetitionTypeTournament;
+    com.title = @"Tour 122";
+    com.dateCreated = [NSDate date];
+    
+    
+    [realm beginWriteTransaction];
+    [realm addObject:com];
+    // suppose all matched played
+    //tournament.isGroupStageCompleted = YES;
+    [realm commitWriteTransaction];
+    
+    vc.competition = com;
+    
+    [self.navigationController pushViewController:vc animated:true];
     
 }
 
@@ -202,10 +205,12 @@
 
 - (void) receivePresentCompetitionNotification: (NSNotification *) note {
     
-    
-    
     Competition * competition = (Competition *)note.userInfo[@"competition"];
     
+    if (competition.type == CompetitionTypeTournament) {
+        assert(false);
+        return;
+    }
     
     League *  l = competition.league;
     
@@ -236,7 +241,6 @@
     
     [self.navigationController popToRootViewControllerAnimated:false];
     [self.navigationController pushViewController:matchesVC animated:false];
-    
     
 }
 

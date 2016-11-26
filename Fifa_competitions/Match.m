@@ -7,7 +7,7 @@
 //
 
 #import "Match.h"
-#import "Utils.h"
+
 
 @implementation Match
 
@@ -17,6 +17,15 @@
 
 + (NSString *) primaryKey {
     return @"id";
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.id = [Utils uniqueId];
+    }
+    return self;
 }
 
 - (Match *) swap {

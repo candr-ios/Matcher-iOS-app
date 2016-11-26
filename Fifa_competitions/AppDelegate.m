@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 @import Realm;
 #import "Club.h"
+#import "Player.h"
+#import "Tournament.h"
 
 @interface AppDelegate ()
 
@@ -26,7 +28,65 @@
     
     [[UITextField appearance] setTintColor:[UIColor whiteColor]];
     [self configureNavBarAppearance];
+    NSLog(@"FILEPATH%@", [RLMRealmConfiguration defaultConfiguration].fileURL);
+    
+    [self testTournament];
     return YES;
+}
+
+
+-(void) testTournament {
+    
+    Player *player1 = [[Player alloc] initWithName:@"Adam"];
+    Player *player2 = [[Player alloc] initWithName:@"Andy"];
+    Player *player3 = [[Player alloc] initWithName:@"Tom"];
+    Player *player4 = [[Player alloc] initWithName:@"Sara"];
+    Player *player5 = [[Player alloc] initWithName:@"Steve"];
+    Player *player6 = [[Player alloc] initWithName:@"Jane"];
+    Player *player7 = [[Player alloc] initWithName:@"Lily"];
+    Player *player8 = [[Player alloc] initWithName:@"Donald"];
+    Player *player9 = [[Player alloc] initWithName:@"Boris"];
+    Player *player10 = [[Player alloc] initWithName:@"Alex"];
+    Player *player11 = [[Player alloc] initWithName:@"Sandy"];
+    Player *player12 = [[Player alloc] initWithName:@"Bob"];
+    Player *player13 = [[Player alloc] initWithName:@"Jack"];
+    Player *player14 = [[Player alloc] initWithName:@"Ace"];
+    Player *player15 = [[Player alloc] initWithName:@"Billy"];
+    Player *player16 = [[Player alloc] initWithName:@"Clare"];
+
+    
+    Tournament *tournament = [[Tournament alloc] initWithPlayers:@[player1,player2,player3,player4,player5,player6,player7,player8,player9,player10,player11,player12,player13,player14,player15,player16]];
+    
+   
+    NSLog(@"%@", tournament);
+    
+    [tournament generateGroups];
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    [realm beginWriteTransaction];
+    [realm addObject:tournament];
+    // suppose all matched played
+    //tournament.isGroupStageCompleted = YES;
+    [realm commitWriteTransaction];
+    
+    
+//    
+//    if (tournament.isGroupStageCompleted) {
+//        
+//        [tournament generateKnockoutStagesFromGroups];
+//        
+//        [tournament.currentStage setRandomGoalsForMatches];
+//        [tournament generateNextKnockoutStage];
+//        [tournament.currentStage setRandomGoalsForMatches];
+//        [tournament generateNextKnockoutStage];
+//        [tournament.currentStage setRandomGoalsForMatches];
+//        [tournament generateNextKnockoutStage];
+//
+//    }
+
+    
+    
 }
 
 - (void) setupClubsIfNeeded {
