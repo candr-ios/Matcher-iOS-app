@@ -38,8 +38,6 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear: animated];
     
-    
-    
     [[self navigationController] setNavigationBarHidden:NO animated:false];
 }
 
@@ -90,7 +88,18 @@
 }
 
 - (void) updateStats {
-    [self.tournament updateStatistics];
+    if (self.tournament.hasGroupStage && !self.tournament.isGroupStageCompleted) {
+        [self.tournament updateStatistics];
+        return;
+    } else if (self.tournament.isGroupStageCompleted && self.tournament.currentStage == nil) {
+        // init knockout stage
+        [self.tournament generateKnockoutStagesFromGroups];
+    } else {
+        // next
+        [self.tournament generateNextKnockoutStage];
+    }
+    
+    [self.tableView reloadData];
 }
 
 
@@ -176,7 +185,7 @@
     if (indexPath.section < self.tournament.knockoutStages.count) {
         match = self.tournament.knockoutStages[indexPath.section].matches[indexPath.row];
         
-        return !match.played && (self.tournament.currentStage == self.tournament.knockoutStages[indexPath.section]);
+        return !match.played && (self.tournament.currentStage.type == self.tournament.knockoutStages[indexPath.section].type);
     }
     
     long group = indexPath.section - self.tournament.knockoutStages.count;

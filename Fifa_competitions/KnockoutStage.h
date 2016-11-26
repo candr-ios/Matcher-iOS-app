@@ -17,8 +17,8 @@ typedef enum : int {
     Round16 = 16,
     QuaterFinal = 8,
     SemiFinal = 4,
-    Final = 2,
-    ThirdPlace = 1,
+    ThirdPlace = 2,
+    Final = 1
 } KnockoutStageType;
 
 @interface KnockoutStage : RLMObject
@@ -32,12 +32,15 @@ typedef enum : int {
 //new
 - (NSString *) typeString;
 
-- (KnockoutStageType) typeOfInitialStage;
-- (instancetype)initWithPlayers:(id)players;
+- (BOOL) isAllMatchesPlayed;
 
-- (NSArray*) winnersOfStage;
+- (KnockoutStageType) typeOfInitialStage;
+- (instancetype)initWithPlayers:(NSArray<Player *> *)players;
+
+- (NSArray<Player*>*) winnersOfStage;
 - (NSError*) generateMathesForCurrenrStage;
 
+- (NSArray<Player*>*) losersOfStage;
 - (void)setRandomGoalsForMatches;
 
 @end

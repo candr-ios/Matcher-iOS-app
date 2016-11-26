@@ -16,15 +16,15 @@
 }
 
 + (NSDictionary *) defaultPropertyValues {
-    return  @{@"type": @(Round16)};
+    return  @{@"type": @(Round16), @"isComplete": @(false)};
 }
 
-- (instancetype)initWithPlayers:(id)players
+- (instancetype)initWithPlayers:(NSArray<Player*>*)players
 {
     self = [super init];
     if (self) {
         self.id = [Utils uniqueId];
-        self.players = players;
+        [self.players addObjects:players];
     }
     return self;
 }
@@ -79,8 +79,8 @@
 {
     
 //    [self checkForWinner];
+    NSMutableArray<Match *> * matches = [[NSMutableArray alloc] init];
     
-    [self.realm beginWriteTransaction];
     for (int i = 0; i < [self.players count]; i++) {
         if (i%2 == 1) {
             Match *match = [[Match alloc] init];
@@ -88,16 +88,18 @@
             match.home = homePlayer;
             Player *awayPlayer = self.players[i];
             match.away = awayPlayer;
-            [self.realm addObject:match];
-            [self.matches addObject:match];
+            
+            [matches addObject:match];
         }
     }
-    [self.realm commitWriteTransaction];
     
+    
+    [self.matches addObjects:matches];
+   
     return nil;
 }
 
-- (RLMArray<Player*><Player>*) winnersOfStage {
+- (NSArray<Player*>*) winnersOfStage {
     NSMutableArray *winners = [[NSMutableArray alloc] init];
     
     for (Match *match in self.matches) {
@@ -120,11 +122,52 @@
             [self.realm commitWriteTransaction];
         }
     }
-    if (![self checkAllPenaltyPlayed]) {
-        return nil;
-    } else {
-        return (RLMArray<Player*><Player>*)winners;
+//    if (![self checkAllPenaltyPlayed]) {
+//        return nil;
+//    } else {
+        return winners;
+//    }
+}
+
+- (BOOL) isAllMatchesPlayed {
+    BOOL completed = true;
+    for (Match * match in self.matches) {
+        completed = match.played && completed;
     }
+    
+    return completed;
+}
+
+
+
+- (NSArray<Player*>*) losersOfStage {
+    NSMutableArray *losers = [[NSMutableArray alloc] init];
+    
+    for (Match *match in self.matches) {
+        if (match.homeGoals < match.awayGoals) {
+            [losers addObject:match.home];
+        } else if(match.homeGoals > match.awayGoals) {
+            [losers addObject:match.away];
+        } else if(match.homeGoals == match.awayGoals) {
+            
+            PenaltySeries *penalty = [[PenaltySeries alloc] initWithFirstPlayer:match.home andSecondPlayer:match.away];
+            
+            /// for test
+            [self setRandomGoalsForPenaltySeries:penalty];
+            ///
+            [losers addObject:[self getWinnerOfPenaltySeries:penalty]];
+            
+            [self.realm beginWriteTransaction];
+            match.penalty = penalty;
+            [self.penaltySeries addObject:penalty];
+            [self.realm commitWriteTransaction];
+        }
+    }
+//    if (![self checkAllPenaltyPlayed]) {
+//        return nil;
+//    } else {
+        return losers;
+ //   }
 }
 
 

@@ -204,11 +204,43 @@
 }
 
 - (void) receivePresentCompetitionNotification: (NSNotification *) note {
-    
+    RLMRealm * realm = [RLMRealm defaultRealm];
     Competition * competition = (Competition *)note.userInfo[@"competition"];
     
     if (competition.type == CompetitionTypeTournament) {
-        assert(false);
+        Tournament * t = competition.tournament;
+        
+        if (t.shouldHaveGroups) {
+            [t generateGroups];
+            
+            for (Group * group in t.groups) {
+                group.statistics = [Statistics new];
+                for (Player * player in group.players) {
+                    StatisticsItem * item = [[StatisticsItem alloc] init];
+                    item.player = player;
+                    item.id = [Utils uniqueId];
+
+                    [group.statistics.items addObject:item];
+                }
+            }
+            
+            
+        } else {
+            [t generateInitialKnockoutStage];
+        }
+        
+        
+        [realm beginWriteTransaction];
+        
+        [realm addOrUpdateObject:competition];
+        
+        [realm commitWriteTransaction];
+        
+        TournamentMatchesViewController * matchesVC = [[TournamentMatchesViewController alloc] init];
+        matchesVC.competition = competition;
+        
+        [self.navigationController popToRootViewControllerAnimated:false];
+        [self.navigationController pushViewController:matchesVC animated:false];
         return;
     }
     
@@ -227,7 +259,7 @@
     
     NSLog(@"%@",l);
     
-    RLMRealm * realm = [RLMRealm defaultRealm];
+    
 
     
     [realm beginWriteTransaction];
@@ -265,8 +297,18 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Competition * selectedCompetition = self.competitions[indexPath.row];
+    
+    if (selectedCompetition.type == CompetitionTypeTournament) {
+        TournamentMatchesViewController * matchesVC = [[TournamentMatchesViewController alloc] init];
+        matchesVC.competition = selectedCompetition;
+        [self.navigationController pushViewController:matchesVC animated:true];
+        return;
+    }
+    
     MatchesViewController * matchesVC = [[MatchesViewController alloc] init];
-    matchesVC.competition = self.competitions[indexPath.row];
+    matchesVC.competition = selectedCompetition;
     
     [self.navigationController pushViewController:matchesVC animated:true];
 

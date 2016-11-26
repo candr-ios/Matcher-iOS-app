@@ -180,18 +180,21 @@
         case 2:
             comp.type = CompetitionTypeTournament;
             comp.tournament = [Tournament new];
+            comp.tournament.id = [Utils uniqueId];
             comp.tournament.shouldHaveGroups = false;
             comp.tournament.has2stages = false;
             break;
         case 3:
             comp.type = CompetitionTypeTournament;
             comp.tournament = [Tournament new];
+            comp.tournament.id = [Utils uniqueId];
             comp.tournament.shouldHaveGroups = true;
             comp.tournament.has2stages = false;
             break;
         case 4:
             comp.type = CompetitionTypeTournament;
             comp.tournament = [Tournament new];
+            comp.tournament.id = [Utils uniqueId];
             comp.tournament.shouldHaveGroups = true;
             comp.tournament.has2stages = true;
             break;
