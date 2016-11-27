@@ -174,7 +174,7 @@
     [self.knockoutStages addObject:initialStage];
     self.currentStage = initialStage;
     [self.realm commitWriteTransaction];
-    [initialStage setRandomGoalsForMatches];
+    //[initialStage setRandomGoalsForMatches];
     return nil;
 }
 
@@ -189,7 +189,6 @@
     RLMRealm *realm = [RLMRealm defaultRealm];
 
     if([self.currentStage isAllMatchesPlayed] && self.currentStage.type == SemiFinal) {
-        
         KnockoutStage * thirdStage = [[KnockoutStage alloc] initWithPlayers:[self.currentStage losersOfStage]];
         thirdStage.type = ThirdPlace;
         [thirdStage generateMathesForCurrenrStage];
@@ -200,6 +199,7 @@
         
         
         [realm beginWriteTransaction];
+        self.currentStage.isComplete = YES;
         [self.knockoutStages addObjects:@[thirdStage, finalStage]];
         self.currentStage = thirdStage;
         [realm commitWriteTransaction];
@@ -208,13 +208,16 @@
     
     if([self.currentStage isAllMatchesPlayed]  && self.currentStage.type == ThirdPlace) {
         [realm beginWriteTransaction];
+        self.currentStage.isComplete = YES;
         self.currentStage = [KnockoutStage objectsWhere:@"type == 1"].firstObject;
         [realm commitWriteTransaction];
         return self.currentStage;
     }
     
     if ([self.currentStage isAllMatchesPlayed]  && self.currentStage.type == Final) {
+
         [realm beginWriteTransaction];
+        self.currentStage.isComplete = YES;
         self.winner = [[self.currentStage winnersOfStage] objectAtIndex:0];
         self.isCompleted = YES;
         [realm commitWriteTransaction];
@@ -222,13 +225,15 @@
     }
 
     if ([self.currentStage isAllMatchesPlayed]) {
+        
+        
         KnockoutStage *newStage = [[KnockoutStage alloc] initWithPlayers:[self.currentStage winnersOfStage]];
         
         newStage.type = self.currentStage.type >> 1;
         [newStage generateMathesForCurrenrStage];
         
         [realm beginWriteTransaction];
-        
+        self.currentStage.isComplete = YES;
         [self.knockoutStages addObject:newStage];
         self.currentStage = newStage;
         [realm commitWriteTransaction];
