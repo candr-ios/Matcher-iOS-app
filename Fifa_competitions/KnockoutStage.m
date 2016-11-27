@@ -77,8 +77,7 @@
 
 - (NSError*) generateMathesForCurrenrStage
 {
-    
-//    [self checkForWinner];
+
     NSMutableArray<Match *> * matches = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < [self.players count]; i++) {
@@ -107,7 +106,13 @@
             [winners addObject:match.home];
         } else if(match.homeGoals < match.awayGoals) {
             [winners addObject:match.away];
-        } else if(match.homeGoals == match.awayGoals) {
+        }
+    }
+    return winners;
+}
+
+/*
+         else if(match.homeGoals == match.awayGoals) {
             
             PenaltySeries *penalty = [[PenaltySeries alloc] initWithFirstPlayer:match.home andSecondPlayer:match.away];
             
@@ -121,13 +126,15 @@
             [self.penaltySeries addObject:penalty];
             [self.realm commitWriteTransaction];
         }
+    
     }
-//    if (![self checkAllPenaltyPlayed]) {
-//        return nil;
-//    } else {
-        return winners;
-//    }
+    if (![self checkAllPenaltyPlayed]) {
+        return nil;
+    } else {
+    return winners;
+    }
 }
+*/
 
 - (BOOL) isAllMatchesPlayed {
     BOOL completed = true;
@@ -148,7 +155,13 @@
             [losers addObject:match.home];
         } else if(match.homeGoals > match.awayGoals) {
             [losers addObject:match.away];
-        } else if(match.homeGoals == match.awayGoals) {
+        }
+        
+    }
+    return losers;
+}
+/*
+        else if(match.homeGoals == match.awayGoals) {
             
             PenaltySeries *penalty = [[PenaltySeries alloc] initWithFirstPlayer:match.home andSecondPlayer:match.away];
             
@@ -163,12 +176,13 @@
             [self.realm commitWriteTransaction];
         }
     }
-//    if (![self checkAllPenaltyPlayed]) {
-//        return nil;
-//    } else {
-        return losers;
- //   }
+    if (![self checkAllPenaltyPlayed]) {
+        return nil;
+    } else {
+ 
+    }
 }
+*/
 
 
 #pragma mark - Test

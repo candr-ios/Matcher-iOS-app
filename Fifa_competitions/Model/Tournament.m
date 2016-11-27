@@ -189,15 +189,15 @@
     RLMRealm *realm = [RLMRealm defaultRealm];
 
     if([self.currentStage isAllMatchesPlayed] && self.currentStage.type == SemiFinal) {
+        
         KnockoutStage * thirdStage = [[KnockoutStage alloc] initWithPlayers:[self.currentStage losersOfStage]];
-        //[thirdStage.players addObjects:[self.currentStage losersOfStage]];
         thirdStage.type = ThirdPlace;
         [thirdStage generateMathesForCurrenrStage];
         
         KnockoutStage * finalStage = [[KnockoutStage alloc] initWithPlayers:[self.currentStage winnersOfStage]];
-        ///[finalStage.players addObjects:[self.currentStage winnersOfStage]];
         finalStage.type = Final;
         [finalStage generateMathesForCurrenrStage];
+        
         
         [realm beginWriteTransaction];
         [self.knockoutStages addObjects:@[thirdStage, finalStage]];
@@ -234,27 +234,7 @@
         [realm commitWriteTransaction];
         return self.currentStage;
     }
-    
-    
-//    if ([self.currentStage isComplete] && [self.currentStage.matches count] == 1) {
-//        if (!self.isCompleted) {
-//            [realm beginWriteTransaction];
-//            self.winner = [[self.currentStage winnersOfStage] objectAtIndex:0];
-//            self.isCompleted = YES;
-//            [realm commitWriteTransaction];
-//        }
-//    } else {
-//        
-//        KnockoutStage *newStage = [[KnockoutStage alloc] initWithPlayers:[self.currentStage winnersOfStage]];
-//        
-//        newStage.type = self.currentStage.type >> 1;
-//        [newStage generateMathesForCurrenrStage];
-//
-//        [realm beginWriteTransaction];
-//        [self.knockoutStages addObject:newStage];
-//        self.currentStage = newStage;
-//        [realm commitWriteTransaction];
-//    }
+
     return nil;
 }
 
