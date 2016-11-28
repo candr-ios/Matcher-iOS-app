@@ -152,8 +152,10 @@
         [group updateStatistics];
         isGroupStageCompleted = group.isCompleted && isGroupStageCompleted;
     }
-    self.isGroupStageCompleted = isGroupStageCompleted;
     
+    [self.realm beginWriteTransaction];
+    self.isGroupStageCompleted = isGroupStageCompleted;
+    [self.realm commitWriteTransaction];
 }
 
 #pragma mark - KnockoutStage

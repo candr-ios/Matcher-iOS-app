@@ -88,8 +88,12 @@
 }
 
 - (void) updateStats {
+    
     if (self.tournament.hasGroupStage && !self.tournament.isGroupStageCompleted) {
         [self.tournament updateStatistics];
+        if (self.tournament.isGroupStageCompleted) {
+            [self updateStats];
+        }
         return;
     } else if (self.tournament.isGroupStageCompleted && self.tournament.currentStage == nil) {
         // init knockout stage
