@@ -45,10 +45,12 @@
         case QuaterFinal:
             return  @"Quater Final";
             break;
-        case Round16:
-            return  @"First Round";
+        case Round8:
+            return  @"Round 8";
             break;
-            
+        case Round16:
+            return @"Round 16";
+            break;
         default:
             return @"Unknown";
     }

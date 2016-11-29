@@ -50,6 +50,8 @@
 		4AD5ADD11DDFB5EB00913B54 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADD01DDFB5EB00913B54 /* Utils.m */; };
 		4ADD28F21DE88317004C646B /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */; };
 		4ADD28F51DE8DA2D004C646B /* TournamentMatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD28F41DE8DA2D004C646B /* TournamentMatchesViewController.m */; };
+		7870DE101DECDBF7005680ED /* CongratulationWinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870DE0E1DECDBF7005680ED /* CongratulationWinnerViewController.m */; };
+		7870DE111DECDBF7005680ED /* CongratulationWinnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7870DE0F1DECDBF7005680ED /* CongratulationWinnerViewController.xib */; };
 		78D3093B1DE8C8DC00075921 /* PenaltySeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D3093A1DE8C8DC00075921 /* PenaltySeries.m */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +155,9 @@
 		4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
 		4ADD28F31DE8DA2D004C646B /* TournamentMatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TournamentMatchesViewController.h; sourceTree = "<group>"; };
 		4ADD28F41DE8DA2D004C646B /* TournamentMatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TournamentMatchesViewController.m; sourceTree = "<group>"; };
+		7870DE0D1DECDBF7005680ED /* CongratulationWinnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CongratulationWinnerViewController.h; sourceTree = "<group>"; };
+		7870DE0E1DECDBF7005680ED /* CongratulationWinnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CongratulationWinnerViewController.m; sourceTree = "<group>"; };
+		7870DE0F1DECDBF7005680ED /* CongratulationWinnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CongratulationWinnerViewController.xib; sourceTree = "<group>"; };
 		78D309391DE8C8DC00075921 /* PenaltySeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenaltySeries.h; sourceTree = "<group>"; };
 		78D3093A1DE8C8DC00075921 /* PenaltySeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PenaltySeries.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,8 +281,11 @@
 		4ADD28EC1DE8570A004C646B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4A95E5721DE9F7F000B48BEA /* CompetitionTypeViewController.h */,
+				7870DE0E1DECDBF7005680ED /* CongratulationWinnerViewController.m */,
+				7870DE0D1DECDBF7005680ED /* CongratulationWinnerViewController.h */,
+				7870DE0F1DECDBF7005680ED /* CongratulationWinnerViewController.xib */,
 				4A95E5731DE9F7F000B48BEA /* CompetitionTypeViewController.m */,
+				4A95E5721DE9F7F000B48BEA /* CompetitionTypeViewController.h */,
 				4A2B59621DD612740032D53D /* SetupCompetitionViewController.h */,
 				4A2B59631DD612740032D53D /* SetupCompetitionViewController.m */,
 				4A2B59651DD62FD80032D53D /* PlayerSetupViewController.h */,
@@ -426,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A95A99A1DD92BEC000F7CF6 /* MatchTableViewCell.xib in Resources */,
+				7870DE111DECDBF7005680ED /* CongratulationWinnerViewController.xib in Resources */,
 				4A2B596C1DD63EC30032D53D /* ClubCollectionViewCell.xib in Resources */,
 				4A2B59451DD5F8750032D53D /* LaunchScreen.storyboard in Resources */,
 				4A0BB2DC1DDB05BC0036E6B2 /* StatsTableViewCell.xib in Resources */,
@@ -479,6 +488,7 @@
 				4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */,
 				4AD5ADBF1DDF942800913B54 /* Statistics.m in Sources */,
 				4AD5ADB01DDF309E00913B54 /* Club.m in Sources */,
+				7870DE101DECDBF7005680ED /* CongratulationWinnerViewController.m in Sources */,
 				4ADD28F51DE8DA2D004C646B /* TournamentMatchesViewController.m in Sources */,
 				4AD5ADB61DDF8FD500913B54 /* Week.m in Sources */,
 				4ADD28F21DE88317004C646B /* NSMutableArray+Shuffling.m in Sources */,

@@ -49,13 +49,16 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:1.00];
     
+    /// ???
     [self.tableView registerNib:[UINib nibWithNibName:@"MatchTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    /// ?
     [self.tableView registerClass:[MatchesHeaderView class] forHeaderFooterViewReuseIdentifier:@"header"];
+    
     
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     

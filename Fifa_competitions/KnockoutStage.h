@@ -14,7 +14,8 @@
 
 
 typedef enum : int {
-    Round16 = 16,
+    Round16 = 32,
+    Round8 = 16,
     QuaterFinal = 8,
     SemiFinal = 4,
     ThirdPlace = 2,

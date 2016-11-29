@@ -314,6 +314,14 @@
 
 }
 
+#pragma mark Feature Actions
+
+- (void) showCongratulationForPlayer:(Player*)winner {
+    
+    
+    
+}
+
 
 - (void)dealloc {
     

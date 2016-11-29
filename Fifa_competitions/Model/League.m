@@ -195,7 +195,7 @@
     
 }
 
-
+/// 
 - (void) updateStatistics {
     
     if (self.weeks.count < self.currentWeek) {
