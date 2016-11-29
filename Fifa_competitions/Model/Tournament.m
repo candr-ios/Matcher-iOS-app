@@ -9,6 +9,7 @@
 #import "Tournament.h"
 #import "League.h"
 #import "NSMutableArray+Shuffling.h"
+#import "Statistics.h"
 
 @implementation Tournament
 
@@ -71,16 +72,22 @@
 }
 
 
+
 /// return players on 1st & 2nd place on each group
-- (RLMArray<Player *><Player> *) getGroupsWinners
+- (NSArray<Player>*) getGroupsWinners
 {
-    NSMutableArray *winners = [NSMutableArray array];
+
+    NSMutableArray<Player *> *winners = [NSMutableArray array];
     for (Group *group in self.groups) {
-        for (int i = 0; i < 2; i++) {
-            [winners addObject:group.players[i]];
-        }
+        RLMResults<StatisticsItem *> * table = [group.statistics.items sortedResultsUsingDescriptors:@[
+                                                                [RLMSortDescriptor  sortDescriptorWithProperty:@"score" ascending:false],
+                                                                [RLMSortDescriptor  sortDescriptorWithProperty:@"goalsFor" ascending:false],
+                                                                [RLMSortDescriptor sortDescriptorWithProperty:@"goalsDiff" ascending:false]]];
+        
+        [winners addObject:table[0].player];
+        [winners addObject:table[1].player];
     }
-    return (RLMArray<Player *><Player> *)winners;
+    return [winners copy];
 }
 
 
@@ -165,9 +172,11 @@
     KnockoutStage *initialStage;
     
     if (self.isGroupStageCompleted) {
-        initialStage = [[KnockoutStage alloc] initWithPlayers:self.groupWinners];
+        initialStage = [[KnockoutStage alloc] init];
+        [initialStage.players addObjects:self.groupWinners];
     } else {
-        initialStage = [[KnockoutStage alloc] initWithPlayers:self.players];
+        initialStage = [[KnockoutStage alloc] init];
+        [initialStage.players addObjects:self.players];
     }
     [initialStage typeOfInitialStage];
     [initialStage generateMathesForCurrenrStage];
@@ -191,11 +200,13 @@
     RLMRealm *realm = [RLMRealm defaultRealm];
 
     if([self.currentStage isAllMatchesPlayed] && self.currentStage.type == SemiFinal) {
-        KnockoutStage * thirdStage = [[KnockoutStage alloc] initWithPlayers:[self.currentStage losersOfStage]];
+        KnockoutStage * thirdStage = [[KnockoutStage alloc] init];
+        [thirdStage.players addObjects:[self.currentStage losersOfStage]];
         thirdStage.type = ThirdPlace;
         [thirdStage generateMathesForCurrenrStage];
         
-        KnockoutStage * finalStage = [[KnockoutStage alloc] initWithPlayers:[self.currentStage winnersOfStage]];
+        KnockoutStage * finalStage = [[KnockoutStage alloc] init];
+        [finalStage.players addObjects:[self.currentStage winnersOfStage]];
         finalStage.type = Final;
         [finalStage generateMathesForCurrenrStage];
         
@@ -229,7 +240,8 @@
     if ([self.currentStage isAllMatchesPlayed]) {
         
         
-        KnockoutStage *newStage = [[KnockoutStage alloc] initWithPlayers:[self.currentStage winnersOfStage]];
+        KnockoutStage *newStage = [[KnockoutStage alloc] init];
+        [newStage.players addObjects:[self.currentStage winnersOfStage]];
         
         newStage.type = self.currentStage.type >> 1;
         [newStage generateMathesForCurrenrStage];

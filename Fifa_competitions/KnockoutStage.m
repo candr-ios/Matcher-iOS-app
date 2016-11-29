@@ -19,12 +19,11 @@
     return  @{@"type": @(Round16), @"isComplete": @(false)};
 }
 
-- (instancetype)initWithPlayers:(NSArray<Player*>*)players
+- (instancetype)init
 {
     self = [super init];
     if (self) {
         self.id = [Utils uniqueId];
-        [self.players addObjects:players];
     }
     return self;
 }

@@ -36,7 +36,7 @@ typedef enum : int {
 - (BOOL) isAllMatchesPlayed;
 
 - (KnockoutStageType) typeOfInitialStage;
-- (instancetype)initWithPlayers:(NSArray<Player *> *)players;
+- (instancetype)init;
 
 - (NSArray<Player*>*) winnersOfStage;
 - (NSError*) generateMathesForCurrenrStage;

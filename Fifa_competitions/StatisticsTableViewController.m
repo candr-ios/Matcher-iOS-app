@@ -39,8 +39,9 @@
     
     self.items = [self.competition.league.statistics.items sortedResultsUsingDescriptors:@[
                                                                                            [RLMSortDescriptor  sortDescriptorWithProperty:@"score" ascending:false],
-                                                                                           [RLMSortDescriptor  sortDescriptorWithProperty:@"goalsFor" ascending:false]
-                                                                                           ]
+                                                                                           [RLMSortDescriptor  sortDescriptorWithProperty:@"goalsFor" ascending:false],
+                                                                                           [RLMSortDescriptor sortDescriptorWithProperty:@"goalsDiff" ascending:false]]
+                                                                                            
                   ];
     
     [self.tableView reloadData];
