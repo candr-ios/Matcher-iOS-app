@@ -90,7 +90,7 @@
 		4A2716351DDB1CAC00A48BDD /* StatsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsHeaderView.h; sourceTree = "<group>"; };
 		4A2716361DDB1CAC00A48BDD /* StatsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsHeaderView.m; sourceTree = "<group>"; };
 		4A2716381DDB1CBF00A48BDD /* StatsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsHeaderView.xib; sourceTree = "<group>"; };
-		4A2B59321DD5F8750032D53D /* Fifa_competitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifa_competitions.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A2B59321DD5F8750032D53D /* Matcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A2B59361DD5F8750032D53D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4A2B59381DD5F8750032D53D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4A2B59391DD5F8750032D53D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 		4A2B59331DD5F8750032D53D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4A2B59321DD5F8750032D53D /* Fifa_competitions.app */,
+				4A2B59321DD5F8750032D53D /* Matcher.app */,
 				4A2B594B1DD5F8750032D53D /* Fifa_competitionsTests.xctest */,
 			);
 			name = Products;
@@ -366,7 +366,7 @@
 			);
 			name = Fifa_competitions;
 			productName = Fifa_competitions;
-			productReference = 4A2B59321DD5F8750032D53D /* Fifa_competitions.app */;
+			productReference = 4A2B59321DD5F8750032D53D /* Matcher.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4A2B594A1DD5F8750032D53D /* Fifa_competitionsTests */ = {
@@ -398,7 +398,7 @@
 				TargetAttributes = {
 					4A2B59311DD5F8750032D53D = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = ZW9JWEU2NM;
+						DevelopmentTeam = ZFT39P4T94;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -647,7 +647,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = ZW9JWEU2NM;
+				DEVELOPMENT_TEAM = ZFT39P4T94;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -657,7 +657,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dev.ios.Fifa-competitions";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Matcher;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -668,7 +668,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = ZW9JWEU2NM;
+				DEVELOPMENT_TEAM = ZFT39P4T94;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -678,7 +678,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dev.ios.Fifa-competitions";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Matcher;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
