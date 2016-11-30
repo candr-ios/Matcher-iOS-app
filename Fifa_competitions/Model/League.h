@@ -24,7 +24,7 @@
 + (NSArray<Week *> *) generateScheduleFrom:(NSArray<Player *> *) _players hasTwoStages:(BOOL) twoStages;
 + (NSArray<Player *> *) convertPlayersToNSArray: (RLMArray<Player *><Player> *) players;
 
-
++ (Week *) generateFirstWeekWithTop: (NSArray<Player *> *) top bottom: (NSArray<Player *> *) bottom;
 - (NSError *) generateMatches;
 - (void) updateStatistics;
 

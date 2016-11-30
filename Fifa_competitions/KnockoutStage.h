@@ -39,7 +39,7 @@ typedef enum : int {
 - (instancetype)init;
 
 - (NSArray<Player*>*) winnersOfStage;
-- (NSError*) generateMathesForCurrenrStage;
+- (NSError*) generateMathesForCurrenrStage: (BOOL) fromGroups;
 
 - (NSArray<Player*>*) losersOfStage;
 - (void)setRandomGoalsForMatches;

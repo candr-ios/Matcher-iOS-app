@@ -179,7 +179,7 @@
         [initialStage.players addObjects:self.players];
     }
     [initialStage typeOfInitialStage];
-    [initialStage generateMathesForCurrenrStage];
+    [initialStage generateMathesForCurrenrStage:self.isGroupStageCompleted];
     
     [self.realm beginWriteTransaction];
     [self.knockoutStages addObject:initialStage];
@@ -203,12 +203,12 @@
         KnockoutStage * thirdStage = [[KnockoutStage alloc] init];
         [thirdStage.players addObjects:[self.currentStage losersOfStage]];
         thirdStage.type = ThirdPlace;
-        [thirdStage generateMathesForCurrenrStage];
+        [thirdStage generateMathesForCurrenrStage: false];
         
         KnockoutStage * finalStage = [[KnockoutStage alloc] init];
         [finalStage.players addObjects:[self.currentStage winnersOfStage]];
         finalStage.type = Final;
-        [finalStage generateMathesForCurrenrStage];
+        [finalStage generateMathesForCurrenrStage: false];
         
         
         [realm beginWriteTransaction];
@@ -244,7 +244,7 @@
         [newStage.players addObjects:[self.currentStage winnersOfStage]];
         
         newStage.type = self.currentStage.type >> 1;
-        [newStage generateMathesForCurrenrStage];
+        [newStage generateMathesForCurrenrStage: false];
         
         [realm beginWriteTransaction];
         self.currentStage.isComplete = YES;

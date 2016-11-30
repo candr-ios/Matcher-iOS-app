@@ -7,7 +7,8 @@
 //
 
 #import "KnockoutStage.h"
-
+#import "League.h"
+#import "Utils.h"
 
 @implementation KnockoutStage
 
@@ -76,9 +77,14 @@
 }
 
 
-- (NSError*) generateMathesForCurrenrStage
+- (NSError*) generateMathesForCurrenrStage: (BOOL) fromGroups
 {
-
+    
+    if (fromGroups) {
+       [self.matches addObjects: [self generateMatchesForCurrentStageFromGroupsWinners]];
+        return nil;
+    }
+    
     NSMutableArray<Match *> * matches = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < [self.players count]; i++) {
@@ -93,10 +99,23 @@
         }
     }
     
-    
     [self.matches addObjects:matches];
    
     return nil;
+}
+
+- (RLMArray<Match *><Match> *) generateMatchesForCurrentStageFromGroupsWinners {
+    
+    long factor = self.players.count / 2;
+    
+    NSArray<Player *> * players = [self.players valueForKey:@"self"];
+    
+    NSArray<Player*> * top = [players subarrayWithRange:NSMakeRange(0, factor)];
+    NSArray<Player*> * bottom = [[players subarrayWithRange:NSMakeRange(factor, factor)] reversedArray];
+    
+    
+    Week * week = [League generateFirstWeekWithTop:top bottom:bottom];
+    return week.matches;
 }
 
 - (NSArray<Player*>*) winnersOfStage {
