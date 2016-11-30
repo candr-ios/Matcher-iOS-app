@@ -113,7 +113,7 @@
     
     Match * match;
     if (indexPath.section < self.tournament.knockoutStages.count) {
-        match = self.tournament.knockoutStages[indexPath.section].matches[indexPath.row];
+        match = self.tournament.knockoutStages[(self.tournament.knockoutStages.count - indexPath.section) - 1].matches[indexPath.row];
     } else {
         long group = indexPath.section - self.tournament.knockoutStages.count;
         long week = indexPath.row / 2;
@@ -153,7 +153,7 @@
     else if (self.tournament.hasGroupStage && self.tournament.isGroupStageCompleted) {
         
         if (section < self.tournament.knockoutStages.count) {
-            return self.tournament.knockoutStages[section].matches.count;
+            return self.tournament.knockoutStages[(self.tournament.knockoutStages.count - section) - 1].matches.count;
         } else {
             return self.tournament.groups[0].weeks[0].matches.count * self.tournament.groups[0].weeks.count;
         }
@@ -187,7 +187,7 @@
     
     Match * match;
     if (indexPath.section < self.tournament.knockoutStages.count) {
-        match = self.tournament.knockoutStages[indexPath.section].matches[indexPath.row];
+        match = self.tournament.knockoutStages[(self.tournament.knockoutStages.count - indexPath.section) - 1].matches[indexPath.row];
         
         return !match.played && (self.tournament.currentStage.type == self.tournament.knockoutStages[indexPath.section].type);
     }
@@ -225,7 +225,7 @@
     MatchesHeaderView * header =  [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"header"];
     
     if (section < self.tournament.knockoutStages.count) {
-        header.title.text =  [self.tournament.knockoutStages[section] typeString];
+        header.title.text =  [self.tournament.knockoutStages[(self.tournament.knockoutStages.count - section) - 1] typeString];
     } else {
         long group = section - self.tournament.knockoutStages.count;
         
