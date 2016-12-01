@@ -65,11 +65,19 @@
     
     RLMRealm * realm = [RLMRealm defaultRealm];
     
-    [realm beginWriteTransaction];
-    
-    self.type = numberOfPlayers;
-    
-    [realm commitWriteTransaction];
+    if (numberOfPlayers == 2) {
+        [realm beginWriteTransaction];
+        
+        self.type = Final;
+        
+        [realm commitWriteTransaction];
+    } else {
+        [realm beginWriteTransaction];
+        
+        self.type = numberOfPlayers;
+        
+        [realm commitWriteTransaction];
+    }
     
     return self.type;
 }

@@ -111,8 +111,10 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    BOOL isKnokoutMatch = false;
     Match * match;
     if (indexPath.section < self.tournament.knockoutStages.count) {
+        isKnokoutMatch = true;
         match = self.tournament.knockoutStages[(self.tournament.knockoutStages.count - indexPath.section) - 1].matches[indexPath.row];
     } else {
         long group = indexPath.section - self.tournament.knockoutStages.count;
@@ -126,7 +128,7 @@
     
     cell.homeLogoImageView.image = [UIImage imageNamed:match.home.club.logoImageName];
     cell.awayLogoImageView.image = [UIImage imageNamed:match.away.club.logoImageName];
-    
+    cell.knockoutMatch = isKnokoutMatch;
     cell.match = match;
     cell.homeNameLabel.text = match.home.name;
     cell.awayNameLabel.text = match.away.name;

@@ -20,5 +20,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *awayNameLabel;
 
 @property (nonatomic, strong) Match * match;
-
+@property (assign) BOOL knockoutMatch;
 @end

@@ -89,6 +89,12 @@
     _awayScoreTextField.userInteractionEnabled = false;
     _homeScoreTextField.userInteractionEnabled = false;
     
+    if (_knockoutMatch && _homeScoreTextField.text.intValue == _awayScoreTextField.text.intValue) {
+        _homeScoreTextField.text = @"";
+        _awayScoreTextField.text = @"";
+        return;
+    }
+    
     if (self.homeScoreTextField.text.length == 0 || self.awayScoreTextField.text.length == 0) {
         _homeScoreTextField.text = @"";
         _awayScoreTextField.text = @"";
