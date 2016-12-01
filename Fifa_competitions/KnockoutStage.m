@@ -63,25 +63,14 @@
 {
     int numberOfPlayers = (int)[self.players count];
     
-    if (numberOfPlayers == 2) {
-        [self.realm beginWriteTransaction];
-        self.type = Final;
-        [self.realm commitWriteTransaction];
-        return self.type;
-    }
-
+    RLMRealm * realm = [RLMRealm defaultRealm];
     
-    BOOL stageIsFound = NO;
+    [realm beginWriteTransaction];
     
-    while (!stageIsFound) {
-        if (numberOfPlayers == self.type) {
-            stageIsFound = YES;
-        } else {
-            [self.realm beginWriteTransaction];
-            self.type = self.type >> 1;
-            [self.realm commitWriteTransaction];
-        }
-    }
+    self.type = numberOfPlayers;
+    
+    [realm commitWriteTransaction];
+    
     return self.type;
 }
 
