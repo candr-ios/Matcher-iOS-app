@@ -9,6 +9,7 @@
 #import "KnockoutStage.h"
 #import "League.h"
 #import "Utils.h"
+#import "NSMutableArray+Shuffling.h"
 
 @implementation KnockoutStage
 
@@ -46,10 +47,10 @@
             return  @"Quater Final";
             break;
         case Round8:
-            return  @"Round 8";
+            return  @"1/16";
             break;
         case Round16:
-            return @"Round 16";
+            return @"First Round";
             break;
         default:
             return @"Unknown";
@@ -61,6 +62,14 @@
 - (KnockoutStageType) typeOfInitialStage
 {
     int numberOfPlayers = (int)[self.players count];
+    
+    if (numberOfPlayers == 2) {
+        [self.realm beginWriteTransaction];
+        self.type = Final;
+        [self.realm commitWriteTransaction];
+        return self.type;
+    }
+
     
     BOOL stageIsFound = NO;
     
@@ -81,34 +90,26 @@
 {
     
     if (fromGroups) {
-       [self.matches addObjects: [self generateMatchesForCurrentStageFromGroupsWinners]];
+        [self.matches addObjects: [self _generateMatchesForCurrentStage: false]];
         return nil;
     }
     
-    NSMutableArray<Match *> * matches = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < [self.players count]; i++) {
-        if (i%2 == 1) {
-            Match *match = [[Match alloc] init];
-            Player *homePlayer = self.players[i-1];
-            match.home = homePlayer;
-            Player *awayPlayer = self.players[i];
-            match.away = awayPlayer;
-            
-            [matches addObject:match];
-        }
-    }
+    RLMArray<Match *><Match> * matches = [self _generateMatchesForCurrentStage:true];
     
     [self.matches addObjects:matches];
    
     return nil;
 }
 
-- (RLMArray<Match *><Match> *) generateMatchesForCurrentStageFromGroupsWinners {
+- (RLMArray<Match *><Match> *) _generateMatchesForCurrentStage: (BOOL) shuffle {
     
     long factor = self.players.count / 2;
     
-    NSArray<Player *> * players = [self.players valueForKey:@"self"];
+    NSMutableArray<Player *> * players = [[self.players valueForKey:@"self"] mutableCopy];
+
+    if (shuffle) {
+      [players shuffle];
+    }
     
     NSArray<Player*> * top = [players subarrayWithRange:NSMakeRange(0, factor)];
     NSArray<Player*> * bottom = [[players subarrayWithRange:NSMakeRange(factor, factor)] reversedArray];

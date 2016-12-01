@@ -159,7 +159,7 @@
         }
     // if there is no group stage
     } else {
-        return self.tournament.knockoutStages[section].matches.count;
+        return self.tournament.knockoutStages[(self.tournament.knockoutStages.count - section) - 1].matches.count;
     }
 }
 
@@ -189,7 +189,7 @@
     if (indexPath.section < self.tournament.knockoutStages.count) {
         match = self.tournament.knockoutStages[(self.tournament.knockoutStages.count - indexPath.section) - 1].matches[indexPath.row];
         
-        return !match.played && (self.tournament.currentStage.type == self.tournament.knockoutStages[indexPath.section].type);
+        return !match.played && (self.tournament.currentStage.type == self.tournament.knockoutStages[(self.tournament.knockoutStages.count - indexPath.section) - 1].type);
     }
     
     long group = indexPath.section - self.tournament.knockoutStages.count;

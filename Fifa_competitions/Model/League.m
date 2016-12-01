@@ -9,6 +9,7 @@
 #import "League.h"
 #import "Utils.h"
 #import "Statistics.h"
+#import "NSMutableArray+Shuffling.h"
 
 @implementation League
 
@@ -28,7 +29,20 @@
     
     [self.weeks addObjects:[self generateSchedule]];
     
+    [self generateInitialStatistics];
+    
     return nil;
+}
+
+- (void) generateInitialStatistics {
+    self.statistics = [Statistics new];
+    for (Player * player in self.players) {
+        StatisticsItem * item = [[StatisticsItem alloc] init];
+        item.player = player;
+        item.id = [Utils uniqueId];
+        
+        [self.statistics.items addObject:item];
+    }
 }
 
 + (NSArray<Week *> *) generateScheduleFrom:(NSArray<Player *> *) _players hasTwoStages: (BOOL) twoStages {
@@ -41,12 +55,9 @@
         }
         return false;
     }] != NSNotFound;
+    
     NSUInteger n = count;
-    
-    if (addDummy) {
-        n += 1;
-    }
-    
+
     NSUInteger limit = n - 1;
     NSUInteger factor = n / 2;
     
@@ -149,9 +160,9 @@
 + (void) removeDummyGames: (NSArray<Week*> *) weeks  {
     
     for (Week * week in weeks) {
+       // NSUInteger index = [week.matches indexOfObjectWhere:@"name == Dummy"];
         [week.matches removeObjectAtIndex:0];
     }
-    
     
 }
 
@@ -177,19 +188,25 @@
 
 + (NSArray<Player *> *) convertPlayersToNSArray: (RLMArray<Player *><Player> *) players {
     NSUInteger count = players.count;
+    NSMutableArray<Player *> * _players = [[players valueForKey:@"self"] mutableCopy];
+    [_players shuffle];
+    
     NSMutableArray * array = [[NSMutableArray alloc] initWithCapacity:(count % 2 == 1)? count + 1: count];
     
     int i = 1;
-    for (Player * player in players) {
+    for (Player * player in _players) {
         player.index = i;
         [array addObject:player];
         i++;
     }
     
+    
+    
     if (count % 2 == 1) {
         
         [array addObject: [[Player alloc] initWithValue:@{@"name": @"Dummy", @"index": @(i) }]];
     }
+    
     
     return array;
     

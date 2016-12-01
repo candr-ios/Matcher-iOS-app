@@ -26,4 +26,14 @@ typedef enum : int {
 @property League * league;
 @property Tournament * tournament;
 
+
+/// Prepare competition for usage.
+/// Generate groups, matches and save it into data base
+///
+/// ! Competition should not be saved in db
+///
+/// Returns: true if all right, false it players not setted or league or tournament don't exist
+
+- (BOOL) completeSetup;
+
 @end

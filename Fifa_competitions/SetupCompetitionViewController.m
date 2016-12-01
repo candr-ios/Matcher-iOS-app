@@ -144,11 +144,32 @@
 }
 
 - (void) didTapNext: (UIButton *) sender {
+#ifdef TESTING
+    NSLog(@"TESTING");
+    
+    int numberOfPlayers = self.numberOfPlayers.text.intValue;
+    if (self.competition.type == CompetitionTypeTournament) {
+        for (int i = 0; i < numberOfPlayers; i++) {
+            Player * player = [[Player alloc] initWithName:[NSString stringWithFormat:@"Player %d", i + 1]];
+            [self.competition.tournament.players addObject:player];
+        }
+    } else {
+        for (int i = 0; i < numberOfPlayers; i++) {
+            Player * player = [[Player alloc] initWithName:[NSString stringWithFormat:@"Player %d", i + 1]];
+            [self.competition.league.players addObject:player];
+        }
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PresentCompetition" object:nil userInfo:@{@"competition": self.competition}];
+#else
+    
     PlayerSetupViewController * vc = [PlayerSetupViewController new];
     vc.count = 1;
     vc.numberOfPlayers = self.numberOfPlayers.text.intValue;
     vc.competition = self.competition;
     [self.navigationController pushViewController:vc animated:true];
+    
+#endif
 }
 
 /*

@@ -103,9 +103,6 @@
     return -1;
 }
 
-- (NSArray*) shufflePlayers {
-    return nil;
-}
 
 #pragma mark - For Initial Stage
 
@@ -149,7 +146,24 @@
     
     [self.groups addObjects:groups];
     
+    // generate initial statistics for groups
+    [self generateInitialStatistics];
+    
     return self.groups;
+}
+
+- (void) generateInitialStatistics {
+    for (Group * group in self.groups) {
+        group.statistics = [Statistics new];
+        for (Player * player in group.players) {
+            StatisticsItem * item = [[StatisticsItem alloc] init];
+            item.player = player;
+            item.id = [Utils uniqueId];
+            
+            [group.statistics.items addObject:item];
+        }
+    }
+    
 }
 
 
@@ -181,12 +195,12 @@
     [initialStage typeOfInitialStage];
     [initialStage generateMathesForCurrenrStage:self.isGroupStageCompleted];
     
-    [self.realm beginWriteTransaction];
+    //[self.realm beginWriteTransaction];
     [self.knockoutStages addObject:initialStage];
     self.currentStage = initialStage;
-    [self.realm commitWriteTransaction];
-    //[initialStage setRandomGoalsForMatches];
-    return nil;
+    //[self.realm commitWriteTransaction];
+    
+    return self.currentStage;
 }
 
 
