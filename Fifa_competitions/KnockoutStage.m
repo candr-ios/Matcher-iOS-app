@@ -132,31 +132,6 @@
     return winners;
 }
 
-/*
-         else if(match.homeGoals == match.awayGoals) {
-            
-            PenaltySeries *penalty = [[PenaltySeries alloc] initWithFirstPlayer:match.home andSecondPlayer:match.away];
-            
-            /// for test
-            [self setRandomGoalsForPenaltySeries:penalty];
-            ///
-            [winners addObject:[self getWinnerOfPenaltySeries:penalty]];
-            
-            [self.realm beginWriteTransaction];
-            match.penalty = penalty;
-            [self.penaltySeries addObject:penalty];
-            [self.realm commitWriteTransaction];
-        }
-    
-    }
-    if (![self checkAllPenaltyPlayed]) {
-        return nil;
-    } else {
-    return winners;
-    }
-}
-*/
-
 - (BOOL) isAllMatchesPlayed {
     BOOL completed = true;
     for (Match * match in self.matches) {

@@ -18,6 +18,7 @@
 #import "Tournament.h"
 #import "TournamentMatchesViewController.h"
 #import "CompetitionTypeViewController.h"
+#import "CompetitionTableViewCell.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -53,7 +54,7 @@
 
 - (void) fetchCompetitions {
     // Fetch all competitions
-    self.competitions = [[Competition allObjects] sortedResultsUsingProperty:@"dateCreated" ascending:true];
+    self.competitions = [[Competition allObjects] sortedResultsUsingProperty:@"dateCreated" ascending:false];
     
 }
 
@@ -94,8 +95,10 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.tableFooterView = [UIView new];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CompetitionTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
 }
 
 
@@ -129,12 +132,14 @@
 
 #pragma mark - UITableViewDelegte && UITableViewDataSource
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 94;
+}
+
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    CompetitionTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", self.competitions[indexPath.row].title];
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.competition = self.competitions[indexPath.row];
     
     return cell;
 }

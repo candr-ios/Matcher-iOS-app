@@ -10,6 +10,7 @@
 #import "League.h"
 #import "NSMutableArray+Shuffling.h"
 #import "Statistics.h"
+#import "Competition.h"
 
 @implementation Tournament
 
@@ -29,6 +30,12 @@
 - (BOOL) canCreateGroups {
     NSInteger x = self.players.count;
     return  [self isTournamentSetupValid] && x >= 8;
+}
+
++ (NSDictionary *)linkingObjectsProperties {
+    return @{
+             @"competition": [RLMPropertyDescriptor descriptorWithClass:Competition.class propertyName:@"tournament"],
+             };
 }
 
 #pragma mark - Initialization
@@ -195,10 +202,10 @@
     [initialStage typeOfInitialStage];
     [initialStage generateMathesForCurrenrStage:self.isGroupStageCompleted];
     
-    //[self.realm beginWriteTransaction];
+    [self.realm beginWriteTransaction];
     [self.knockoutStages addObject:initialStage];
     self.currentStage = initialStage;
-    //[self.realm commitWriteTransaction];
+    [self.realm commitWriteTransaction];
     
     return self.currentStage;
 }
@@ -236,16 +243,18 @@
     if([self.currentStage isAllMatchesPlayed]  && self.currentStage.type == ThirdPlace) {
         [realm beginWriteTransaction];
         self.currentStage.isComplete = YES;
-        self.currentStage = [KnockoutStage objectsWhere:@"type == 1"].firstObject;
+        self.currentStage = self.knockoutStages.lastObject;
         [realm commitWriteTransaction];
         return self.currentStage;
     }
     
     if ([self.currentStage isAllMatchesPlayed]  && self.currentStage.type == Final) {
-
+        Competition * comp = [self.competition firstObject];
         [realm beginWriteTransaction];
         self.currentStage.isComplete = YES;
         self.winner = [[self.currentStage winnersOfStage] objectAtIndex:0];
+       
+        comp.winner = self.winner;
         self.isCompleted = YES;
         [realm commitWriteTransaction];
         return nil;

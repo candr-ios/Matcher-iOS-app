@@ -16,6 +16,14 @@
     return @"id";
 }
 
+- (BOOL) isFinished {
+    if (self.type == CompetitionTypeTournament) {
+        return self.tournament.isCompleted;
+    } else {
+        return self.league.isCompleted;
+    }
+}
+
 - (BOOL) completeSetup {
     
     if (self.type == CompetitionTypeTournament) {

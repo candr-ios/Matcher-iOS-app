@@ -20,6 +20,7 @@
 @property Statistics * statistics;
 @property BOOL isCompleted;
 @property int currentWeek;
+@property (readonly) RLMLinkingObjects *competition;
 
 + (NSArray<Week *> *) generateScheduleFrom:(NSArray<Player *> *) _players hasTwoStages:(BOOL) twoStages;
 + (NSArray<Player *> *) convertPlayersToNSArray: (RLMArray<Player *><Player> *) players;

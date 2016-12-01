@@ -17,6 +17,7 @@
 @property BOOL shouldHaveGroups;
 @property BOOL isInitialized;
 @property NSString * id;
+@property (readonly) RLMLinkingObjects *competition;
 
 @property RLMArray<Player *><Player> * players;
 

@@ -170,11 +170,13 @@
         case 0:
             comp.type = CompetitionTypeLeague;
             comp.league = [League new];
+            comp.league.id = [Utils uniqueId];
             comp.league.twoStages = false;
             break;
         case 1:
             comp.type = CompetitionTypeLeague;
             comp.league = [League new];
+            comp.league.id = [Utils uniqueId];
             comp.league.twoStages = true;
             break;
         case 2:

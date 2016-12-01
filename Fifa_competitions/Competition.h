@@ -26,6 +26,8 @@ typedef enum : int {
 @property League * league;
 @property Tournament * tournament;
 
+- (BOOL) isFinished;
+
 
 /// Prepare competition for usage.
 /// Generate groups, matches and save it into data base

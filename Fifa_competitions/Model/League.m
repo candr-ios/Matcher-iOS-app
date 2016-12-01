@@ -10,6 +10,7 @@
 #import "Utils.h"
 #import "Statistics.h"
 #import "NSMutableArray+Shuffling.h"
+#import "Competition.h"
 
 @implementation League
 
@@ -19,6 +20,12 @@
 
 + (NSString *)primaryKey {
     return @"id";
+}
+
++ (NSDictionary *)linkingObjectsProperties {
+    return @{
+             @"competition": [RLMPropertyDescriptor descriptorWithClass:Competition.class propertyName:@"league"],
+             };
 }
 
 - (NSError *) generateMatches {
@@ -216,12 +223,7 @@
 - (void) updateStatistics {
     
     if (self.weeks.count < self.currentWeek) {
-        [self.realm beginWriteTransaction];
-        
-        self.isCompleted = true;
-        
-        [self.realm commitWriteTransaction];
-    
+        [self markAsCompleted];
         return;
     }
     
@@ -297,13 +299,23 @@
     }
     
     if (allWeeksCompleted) {
-        [self.realm beginWriteTransaction];
-        
-        self.isCompleted = true;
-        
-        [self.realm commitWriteTransaction];
+        [self markAsCompleted];
     }
     
+}
+
+- (void) markAsCompleted {
+    Competition * comp = [self.competition firstObject];
+    [self.realm beginWriteTransaction];
+    
+    self.isCompleted = true;
+    
+    
+    comp.winner = [[self.statistics.items sortedResultsUsingDescriptors:@[
+                                                                         [RLMSortDescriptor  sortDescriptorWithProperty:@"score" ascending:false],
+                                                                         [RLMSortDescriptor  sortDescriptorWithProperty:@"goalsFor" ascending:false],
+                                                                         [RLMSortDescriptor sortDescriptorWithProperty:@"goalsDiff" ascending:false]]] firstObject].player;
+    [self.realm commitWriteTransaction];
 }
 
 @end

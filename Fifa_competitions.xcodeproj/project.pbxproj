@@ -34,6 +34,8 @@
 		4A95E5741DE9F7F000B48BEA /* CompetitionTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95E5731DE9F7F000B48BEA /* CompetitionTypeViewController.m */; };
 		4A95E5781DEA033600B48BEA /* CompetitionTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A95E5761DEA033600B48BEA /* CompetitionTypeTableViewCell.m */; };
 		4A95E5791DEA033600B48BEA /* CompetitionTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A95E5771DEA033600B48BEA /* CompetitionTypeTableViewCell.xib */; };
+		4AAF57911DF083130009A46B /* CompetitionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAF578F1DF083130009A46B /* CompetitionTableViewCell.m */; };
+		4AAF57921DF083130009A46B /* CompetitionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AAF57901DF083130009A46B /* CompetitionTableViewCell.xib */; };
 		4AD5ADA91DDE1B7D00913B54 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; };
 		4AD5ADAA1DDE1B7D00913B54 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AD5ADB01DDF309E00913B54 /* Club.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADAF1DDF309E00913B54 /* Club.m */; };
@@ -126,6 +128,9 @@
 		4A95E5751DEA033600B48BEA /* CompetitionTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitionTypeTableViewCell.h; sourceTree = "<group>"; };
 		4A95E5761DEA033600B48BEA /* CompetitionTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitionTypeTableViewCell.m; sourceTree = "<group>"; };
 		4A95E5771DEA033600B48BEA /* CompetitionTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompetitionTypeTableViewCell.xib; sourceTree = "<group>"; };
+		4AAF578E1DF083130009A46B /* CompetitionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitionTableViewCell.h; sourceTree = "<group>"; };
+		4AAF578F1DF083130009A46B /* CompetitionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitionTableViewCell.m; sourceTree = "<group>"; };
+		4AAF57901DF083130009A46B /* CompetitionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompetitionTableViewCell.xib; sourceTree = "<group>"; };
 		4AD5ADA81DDE1B7D00913B54 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		4AD5ADAE1DDF309E00913B54 /* Club.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Club.h; path = Model/Club.h; sourceTree = "<group>"; };
 		4AD5ADAF1DDF309E00913B54 /* Club.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Club.m; path = Model/Club.m; sourceTree = "<group>"; };
@@ -319,6 +324,9 @@
 				4A95E5751DEA033600B48BEA /* CompetitionTypeTableViewCell.h */,
 				4A95E5761DEA033600B48BEA /* CompetitionTypeTableViewCell.m */,
 				4A95E5771DEA033600B48BEA /* CompetitionTypeTableViewCell.xib */,
+				4AAF578E1DF083130009A46B /* CompetitionTableViewCell.h */,
+				4AAF578F1DF083130009A46B /* CompetitionTableViewCell.m */,
+				4AAF57901DF083130009A46B /* CompetitionTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -444,6 +452,7 @@
 				4A4B04401DE0ECA500581C0C /* clubs.plist in Resources */,
 				4A4B04421DE0ECB700581C0C /* Logos.xcassets in Resources */,
 				4A2B59401DD5F8750032D53D /* Main.storyboard in Resources */,
+				4AAF57921DF083130009A46B /* CompetitionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +495,7 @@
 				4AD5ADC81DDF9C7500913B54 /* Tournament.m in Sources */,
 				4A2716371DDB1CAC00A48BDD /* StatsHeaderView.m in Sources */,
 				4A95A9991DD92BEC000F7CF6 /* MatchTableViewCell.m in Sources */,
+				4AAF57911DF083130009A46B /* CompetitionTableViewCell.m in Sources */,
 				4AD5ADBF1DDF942800913B54 /* Statistics.m in Sources */,
 				4AD5ADB01DDF309E00913B54 /* Club.m in Sources */,
 				7870DE101DECDBF7005680ED /* CongratulationWinnerViewController.m in Sources */,
