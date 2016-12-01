@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface StatsHeaderView : UITableViewHeaderFooterView
+@property (weak, nonatomic) IBOutlet UILabel *firstLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondLabel;
 
 @end

@@ -12,10 +12,12 @@
 #import "Statistics.h"
 #import "StatisticsItem.h"
 #import "League.h"
+#import "Tournament.h"
+#import "Group.h"
 
 @interface StatisticsTableViewController ()
 
-@property (nonatomic, strong) RLMResults<StatisticsItem *> * items;
+@property (nonatomic, strong) NSMutableArray<RLMResults<StatisticsItem *> *> * tables;
 
 @end
 
@@ -37,14 +39,40 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"StatsHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"header"];
     [self.tableView registerNib:[UINib nibWithNibName:@"StatsTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
-    self.items = [self.competition.league.statistics.items sortedResultsUsingDescriptors:@[
-                                                                                           [RLMSortDescriptor  sortDescriptorWithProperty:@"score" ascending:false],
-                                                                                           [RLMSortDescriptor  sortDescriptorWithProperty:@"goalsFor" ascending:false],
-                                                                                           [RLMSortDescriptor sortDescriptorWithProperty:@"goalsDiff" ascending:false]]
-                                                                                            
-                  ];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"empty_cell"];
+    
+    self.tables = [[NSMutableArray alloc] init];
+    
+    
+    if (self.competition.type == CompetitionTypeTournament && self.competition.tournament.hasGroupStage) {
+        [self generateTablesForGroups];
+    } else if (self.competition.type == CompetitionTypeLeague) {
+        [self generateTableForLeague];
+    }
     
     [self.tableView reloadData];
+}
+
+- (void) generateTablesForGroups {
+    int i = 0;
+    for (Group * group in self.competition.tournament.groups) {
+        [self.tables addObject:[group.statistics.items sortedResultsUsingDescriptors:@[
+                                                                                                         [RLMSortDescriptor  sortDescriptorWithProperty:@"score" ascending:false],
+                                                                                                         [RLMSortDescriptor  sortDescriptorWithProperty:@"goalsFor" ascending:false],
+                                                                                                         [RLMSortDescriptor sortDescriptorWithProperty:@"goalsDiff" ascending:false]]
+                                
+                                ]];
+        i++;
+    }
+}
+
+- (void) generateTableForLeague {
+    [self.tables addObject:[self.competition.league.statistics.items sortedResultsUsingDescriptors:@[
+                                                                              [RLMSortDescriptor  sortDescriptorWithProperty:@"score" ascending:false],
+                                                                              [RLMSortDescriptor  sortDescriptorWithProperty:@"goalsFor" ascending:false],
+                                                                              [RLMSortDescriptor sortDescriptorWithProperty:@"goalsDiff" ascending:false]]
+     
+     ]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,11 +83,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.tables.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.items.count;
+    return self.tables[section].count + 1;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -72,9 +100,16 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row + 1 > self.tables[indexPath.section].count) {
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"empty_cell" forIndexPath:indexPath];
+        cell.contentView.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor clearColor];
+        return cell;
+    }
+    
     StatsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.statisticsItem = [self.items objectAtIndex:indexPath.row];
+    cell.statisticsItem = [self.tables[indexPath.section] objectAtIndex:indexPath.row];
     cell.positionLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
     
     return cell;
@@ -83,6 +118,15 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     StatsHeaderView * header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"header"];
+    
+    if (self.tables.count == 0) {
+        return nil;
+    }
+    
+    if (self.competition.type == CompetitionTypeTournament && self.competition.tournament.hasGroupStage) {
+        header.firstLabel.text = self.competition.tournament.groups[section].name;
+        header.secondLabel.text = @"Group";
+    }
     
     return header;
 }
