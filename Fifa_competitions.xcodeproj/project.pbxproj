@@ -213,8 +213,6 @@
 				4AD5ADCA1DDF9DF800913B54 /* Group.m */,
 				4AD5ADC61DDF9C7500913B54 /* Tournament.h */,
 				4AD5ADC71DDF9C7500913B54 /* Tournament.m */,
-				4ADD28F01DE88317004C646B /* NSMutableArray+Shuffling.h */,
-				4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */,
 				4AD5ADCC1DDFA0C900913B54 /* KnockoutStage.h */,
 				4AD5ADCD1DDFA0C900913B54 /* KnockoutStage.m */,
 				4AD5ADBD1DDF942800913B54 /* Statistics.h */,
@@ -361,6 +359,8 @@
 			children = (
 				4AD5ADCF1DDFB5EB00913B54 /* Utils.h */,
 				4AD5ADD01DDFB5EB00913B54 /* Utils.m */,
+				4ADD28F01DE88317004C646B /* NSMutableArray+Shuffling.h */,
+				4ADD28F11DE88317004C646B /* NSMutableArray+Shuffling.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";

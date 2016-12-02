@@ -87,7 +87,7 @@
 {
     
     if (fromGroups) {
-        [self.matches addObjects: [self _generateMatchesForCurrentStage]];
+        [self.matches addObjects: [self _generateMatchesForCurrentStageFromGroups]];
         return nil;
     }
     
@@ -97,6 +97,17 @@
     [self.matches addObjects:matches];
    
     return nil;
+}
+
+- (NSArray<Match *> *) _generateMatchesForCurrentStageFromGroups {
+    NSUInteger factor = self.players.count / 2;
+    
+    NSArray<Player *> * players = [self.players valueForKey:@"self"];
+    
+    NSArray<Player*> * top = [players subarrayWithRange:NSMakeRange(0, factor)];
+    NSArray<Player*> * bottom = [[players subarrayWithRange:NSMakeRange(factor, factor)] reversedArray];
+    
+    return [[League generateFirstWeekWithTop:top bottom:bottom].matches valueForKey:@"self"];;
 }
 
 - (NSArray<Match *> *) _generateMatchesForCurrentStage {

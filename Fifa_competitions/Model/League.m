@@ -74,8 +74,7 @@
     NSArray<Player*> * top = [players subarrayWithRange:NSMakeRange(0, factor)];
     NSArray<Player*> * bottom = [[players subarrayWithRange:NSMakeRange(factor, factor)] reversedArray];
     
-    NSLog(@"Top: %@",top);
-    NSLog(@"Bottom: %@", bottom);
+
     
     
     Week * firstWeek = [self generateFirstWeekWithTop:top bottom:bottom];
