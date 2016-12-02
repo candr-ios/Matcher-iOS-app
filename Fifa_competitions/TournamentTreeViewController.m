@@ -41,7 +41,7 @@
         [subview removeFromSuperview];
     }
     
-    if ( self.tournament.knockoutStages.count == 1) {
+    if ( self.tournament.knockoutStages.count == 1 && self.tournament.knockoutStages.firstObject.type == Final) {
         KnockoutMatchView * matchView = [[KnockoutMatchView alloc] initWithFrame:CGRectMake(20,60 , 160, 44)];
         matchView.match = [self.tournament.knockoutStages[0].matches firstObject];
         [self.treeView addSubview:matchView];
