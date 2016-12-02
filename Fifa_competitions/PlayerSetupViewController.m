@@ -138,8 +138,13 @@
     NSLog(@"%@",path);
     if (path) {
         self.selectedIndexPath = path;
-        [_clubsCollectionView selectItemAtIndexPath:path animated:true scrollPosition:UICollectionViewScrollPositionNone];
+        [_clubsCollectionView selectItemAtIndexPath:path animated:false scrollPosition:UICollectionViewScrollPositionNone];
     }
+}
+
+- (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+ 
+    [self.clubsCollectionView setContentOffset:scrollView.contentOffset animated:true];
 }
 
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
