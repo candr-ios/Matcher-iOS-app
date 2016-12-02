@@ -191,13 +191,16 @@
 - (KnockoutStage *) generateInitialKnockoutStage {
     
     KnockoutStage *initialStage;
-    
+    NSMutableArray<Player *> * players;
     if (self.isGroupStageCompleted) {
         initialStage = [[KnockoutStage alloc] init];
+        players = [self.groupWinners valueForKey:@"self"];
         [initialStage.players addObjects:self.groupWinners];
     } else {
+        players =  [[self.players valueForKey:@"self"] mutableCopy];
+        [players shuffle];
         initialStage = [[KnockoutStage alloc] init];
-        [initialStage.players addObjects:self.players];
+        [initialStage.players addObjects:players];
     }
     [initialStage typeOfInitialStage];
     [initialStage generateMathesForCurrenrStage:self.isGroupStageCompleted];

@@ -19,6 +19,7 @@
 #import "Group.h"
 #import "PenaltySeries.h"
 #import "KnockoutStage.h"
+#import "TournamentTreeViewController.h"
 
 @interface TournamentMatchesViewController ()
 
@@ -81,6 +82,14 @@
 }
 
 - (void) didTouchStatsButton {
+    if (!self.tournament.hasGroupStage) {
+        TournamentTreeViewController * treeVC = [[TournamentTreeViewController alloc] init];
+        treeVC.tournament = _tournament;
+        
+        [self.navigationController pushViewController:treeVC animated:true];
+        return;
+    }
+    
     StatisticsTableViewController * statsVC = [[StatisticsTableViewController alloc] init];
     statsVC.competition = self.competition;
     

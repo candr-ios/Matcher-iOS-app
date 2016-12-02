@@ -36,6 +36,8 @@
 		4A95E5791DEA033600B48BEA /* CompetitionTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A95E5771DEA033600B48BEA /* CompetitionTypeTableViewCell.xib */; };
 		4AAF57911DF083130009A46B /* CompetitionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAF578F1DF083130009A46B /* CompetitionTableViewCell.m */; };
 		4AAF57921DF083130009A46B /* CompetitionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AAF57901DF083130009A46B /* CompetitionTableViewCell.xib */; };
+		4AAF57981DF0AD120009A46B /* KnockoutMatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAF57971DF0AD120009A46B /* KnockoutMatchView.m */; };
+		4AAF579B1DF0BB9C0009A46B /* TournamentTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAF579A1DF0BB9C0009A46B /* TournamentTreeViewController.m */; };
 		4AD5ADA91DDE1B7D00913B54 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; };
 		4AD5ADAA1DDE1B7D00913B54 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD5ADA81DDE1B7D00913B54 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AD5ADB01DDF309E00913B54 /* Club.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5ADAF1DDF309E00913B54 /* Club.m */; };
@@ -131,6 +133,10 @@
 		4AAF578E1DF083130009A46B /* CompetitionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompetitionTableViewCell.h; sourceTree = "<group>"; };
 		4AAF578F1DF083130009A46B /* CompetitionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompetitionTableViewCell.m; sourceTree = "<group>"; };
 		4AAF57901DF083130009A46B /* CompetitionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompetitionTableViewCell.xib; sourceTree = "<group>"; };
+		4AAF57961DF0AD120009A46B /* KnockoutMatchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnockoutMatchView.h; sourceTree = "<group>"; };
+		4AAF57971DF0AD120009A46B /* KnockoutMatchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnockoutMatchView.m; sourceTree = "<group>"; };
+		4AAF57991DF0BB9C0009A46B /* TournamentTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TournamentTreeViewController.h; sourceTree = "<group>"; };
+		4AAF579A1DF0BB9C0009A46B /* TournamentTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TournamentTreeViewController.m; sourceTree = "<group>"; };
 		4AD5ADA81DDE1B7D00913B54 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		4AD5ADAE1DDF309E00913B54 /* Club.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Club.h; path = Model/Club.h; sourceTree = "<group>"; };
 		4AD5ADAF1DDF309E00913B54 /* Club.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Club.m; path = Model/Club.m; sourceTree = "<group>"; };
@@ -305,6 +311,8 @@
 				4A0BB2D61DDB01A10036E6B2 /* StatisticsTableViewController.m */,
 				4ADD28F31DE8DA2D004C646B /* TournamentMatchesViewController.h */,
 				4ADD28F41DE8DA2D004C646B /* TournamentMatchesViewController.m */,
+				4AAF57991DF0BB9C0009A46B /* TournamentTreeViewController.h */,
+				4AAF579A1DF0BB9C0009A46B /* TournamentTreeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -342,6 +350,8 @@
 				4A2716381DDB1CBF00A48BDD /* StatsHeaderView.xib */,
 				4A0BB2D21DDAE0210036E6B2 /* MatchesHeaderView.h */,
 				4A0BB2D31DDAE0210036E6B2 /* MatchesHeaderView.m */,
+				4AAF57961DF0AD120009A46B /* KnockoutMatchView.h */,
+				4AAF57971DF0AD120009A46B /* KnockoutMatchView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -509,7 +519,9 @@
 				4A2B593D1DD5F8750032D53D /* ViewController.m in Sources */,
 				4A2B59611DD610720032D53D /* UnderlineTextField.m in Sources */,
 				4AD5ADCB1DDF9DF800913B54 /* Group.m in Sources */,
+				4AAF57981DF0AD120009A46B /* KnockoutMatchView.m in Sources */,
 				4AD5ADCE1DDFA0C900913B54 /* KnockoutStage.m in Sources */,
+				4AAF579B1DF0BB9C0009A46B /* TournamentTreeViewController.m in Sources */,
 				4AD5ADC21DDF944800913B54 /* StatisticsItem.m in Sources */,
 				4A2B595D1DD607A60032D53D /* CreateCompetitionBaseViewController.m in Sources */,
 				4A0BB2DB1DDB05BC0036E6B2 /* StatsTableViewCell.m in Sources */,

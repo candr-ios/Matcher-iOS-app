@@ -87,33 +87,38 @@
 {
     
     if (fromGroups) {
-        [self.matches addObjects: [self _generateMatchesForCurrentStage: false]];
+        [self.matches addObjects: [self _generateMatchesForCurrentStage]];
         return nil;
     }
     
-    RLMArray<Match *><Match> * matches = [self _generateMatchesForCurrentStage:true];
+    
+    NSArray<Match *> * matches = [self _generateMatchesForCurrentStage];
     
     [self.matches addObjects:matches];
    
     return nil;
 }
 
-- (RLMArray<Match *><Match> *) _generateMatchesForCurrentStage: (BOOL) shuffle {
+- (NSArray<Match *> *) _generateMatchesForCurrentStage {
     
-    long factor = self.players.count / 2;
     
-    NSMutableArray<Player *> * players = [[self.players valueForKey:@"self"] mutableCopy];
+    
+//    NSArray<Player *> * players = [self.players valueForKey:@"self"];
 
-    if (shuffle) {
-      [players shuffle];
+    NSMutableArray<Match *> * matches = [[NSMutableArray alloc] init];
+
+    int count = (int)self.players.count;
+    for (int i = 0; i < count - 1; i = i + 2) {
+//        if (i % 2 == 0) {
+//            continue;
+//        }
+        Match * match = [[Match alloc] init];
+        match.home = self.players[i];
+        match.away = self.players[i + 1];
+        [matches addObject:match];
     }
     
-    NSArray<Player*> * top = [players subarrayWithRange:NSMakeRange(0, factor)];
-    NSArray<Player*> * bottom = [[players subarrayWithRange:NSMakeRange(factor, factor)] reversedArray];
-    
-    
-    Week * week = [League generateFirstWeekWithTop:top bottom:bottom];
-    return week.matches;
+    return [matches copy];
 }
 
 - (NSArray<Player*>*) winnersOfStage {

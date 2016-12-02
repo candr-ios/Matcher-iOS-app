@@ -14,6 +14,7 @@
 #import "League.h"
 #import "Tournament.h"
 #import "Group.h"
+#import "TournamentTreeViewController.h"
 
 @interface StatisticsTableViewController ()
 
@@ -49,8 +50,21 @@
     } else if (self.competition.type == CompetitionTypeLeague) {
         [self generateTableForLeague];
     }
+    if (self.competition.type == CompetitionTypeTournament && self.competition.tournament.knockoutStages.count
+         > 0) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tree" style:UIBarButtonItemStylePlain target:self action:@selector(didTouchTreeButton)];
+    }
+    
+    
     
     [self.tableView reloadData];
+}
+
+- (void) didTouchTreeButton {
+    TournamentTreeViewController * treeVC = [[TournamentTreeViewController alloc] init];
+    treeVC.tournament = self.competition.tournament;
+    
+    [self.navigationController pushViewController:treeVC animated:true];
 }
 
 - (void) generateTablesForGroups {
