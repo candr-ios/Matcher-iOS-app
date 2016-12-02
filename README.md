@@ -18,11 +18,11 @@ sudo ./setup.sh
 
 ## Screenshots
 
-<img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/setup-script/screenshots/competitions.png" width="250">
-<img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/setup-script/screenshots/list.png" width="250">
-<img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/setup-script/screenshots/matches.png" width="250">
-<img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/setup-script/screenshots/player.png" width="250">
-<img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/setup-script/screenshots/table.png" width="250">
+<img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/master/screenshots/competitions.png" width="250">
+<img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/master/screenshots/list.png" width="250">
+<img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/master/screenshots/matches.png" width="250">
+<img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/master/screenshots/player.png" width="250">
+<img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/master/screenshots/table.png" width="250">
 
 ## Developers
 
