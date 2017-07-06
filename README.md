@@ -2,7 +2,11 @@
   <img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/master/Fifa_competitions/Assets.xcassets/AppIcon.appiconset/iTunesArtwork%402x.png" width="170" align="middle">
   <h1 align="middle">Matcher</h1>
 </p>
-[![ios](https://img.shields.io/badge/ios-10.0-blue.svg)]()
+
+
+[![ios](https://img.shields.io/badge/ios-10.0-yellow.svg)]()
+
+[![language](https://img.shields.io/badge/language-Objective_C-blue.svg)]()
 
 iOS app for generating fifa torunaments and fifa league schedules
 
