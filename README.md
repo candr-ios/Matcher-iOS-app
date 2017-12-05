@@ -2,9 +2,7 @@
   <img src="https://github.com/andrewwoz/Matcher-iOS-app/blob/master/Fifa_competitions/Assets.xcassets/AppIcon.appiconset/iTunesArtwork%402x.png" width="170" align="middle">
   <h1 align="middle">Matcher</h1>
 </p>
-[![ios](https://img.shields.io/badge/ios-10.0-blue.svg)]()
-
-iOS app for generating fifa torunaments and fifa league schedules
+iOS app for generating tournaments and league schedules
 
 ## Setup
 To build project add Realm.framework from ios/dynamic folder ([Realm 2.1.0](https://static.realm.io/downloads/objc/realm-objc-2.1.0.zip)) into root project directory.
